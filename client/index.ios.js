@@ -1,20 +1,10 @@
 import React, {Component} from 'react';
 import {AppRegistry, StyleSheet, Text, View} from 'react-native';
-import Header from "../src/components/header";
+import Header from "./src/components/header";
 
 export default class client extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-
-        <Text style={styles.welcome}>
-          Welcome to
-        </Text>
-        <Text style={styles.welcomeHead}>
-          Splitz-Ease
-        </Text>
-      </View>
-    )
+    return (<Header/>)
   }
 }
 const styles = StyleSheet.create({
@@ -36,3 +26,5 @@ const styles = StyleSheet.create({
     fontSize: 40
   }
 })
+
+AppRegistry.registerComponent('client', () => client);
