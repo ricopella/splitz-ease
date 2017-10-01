@@ -1,13 +1,25 @@
 import React, {Component} from 'react';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
 import firebase from 'firebase';
 import {Button, Card, CardSection, Input, Spinner} from './common';
+import {Banner} from "./WelcomeBanner";
 
 const styles = {
     errorTextStyle: {
         fontSize: 20,
         alignSelf: 'center',
         color: 'red'
+    },
+    textStyle1: {
+        fontSize: 50,
+        color: '#EA9683',
+        alignSelf: "center",
+        paddingTop: 125
+    },
+    textStyle2: {
+        fontSize: 50,
+        alignSelf: "center",
+        paddingBottom: 40
     }
 };
 
@@ -62,7 +74,9 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <Card>
+            <View>
+                <Banner/>
+
                 <CardSection>
                     <Input
                         placeholder="user@gmail.com"
@@ -87,7 +101,7 @@ class LoginForm extends Component {
                 <CardSection>
                     {this.renderButton()}
                 </CardSection>
-            </Card>
+            </View>
         );
     }
 }

@@ -11,18 +11,9 @@ const styles = {
         marginRight: 5,
         marginTop: 10
     },
-    textStyle1: {
-        fontSize: 50,
-        color: '#EA9683',
-        alignSelf: "center",
-        paddingTop: 125
-    },
-    textStyle2: {
-        fontSize: 50,
-        alignSelf: "center",
-        paddingBottom: 40
+    button: {
+        color: "black"
     }
-    // containerText: {     flex: 1,     justifyContent: "center" }
 };
 
 // Auth login
@@ -55,8 +46,9 @@ class App extends Component {
     renderContent() {
         switch (this.state.loggedIn) {
             case true:
+                console.log("LOGGED IN");
                 return (
-                    <Button onPress={() => firebase.auth().signOut()}>
+                    <Button style={styles.button} onPress={() => firebase.auth().signOut()}>
                         Log Out
                     </Button>
                 );
@@ -69,15 +61,8 @@ class App extends Component {
 
     render() {
         return (
-            <View>
-
-                <View>
-                    <Text style={styles.textStyle1}>splitz</Text>
-                    <Text style={styles.textStyle2}>ease</Text>
-                </View>
-                <View style={styles.containerStyle}>
-                    {this.renderContent()}
-                </View>
+            <View style={styles.containerStyle}>
+                {this.renderContent()}
             </View>
         );
     }
