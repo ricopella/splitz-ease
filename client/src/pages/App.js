@@ -23,13 +23,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         elevation: 1,
-        marginLeft: 5,
-        marginRight: 5,
-        marginTop: 10,
         backgroundColor: "#8FC2C3"
     },
     imgContainer: {
-        borderColor: '#9B9B9B',
+        borderColor: '#000000',
         borderWidth: 1 / PixelRatio.get(),
         justifyContent: 'center',
         alignItems: 'center'
@@ -38,6 +35,26 @@ const styles = StyleSheet.create({
         borderRadius: 75,
         width: 150,
         height: 150
+    },
+    bgImageContainer: {
+        paddingTop: 60
+    },
+    backdropView: {
+        backgroundColor: 'rgba(0,0,0,0)'
+    },
+    backdropText: {
+        fontSize: 30,
+        textAlign: 'center',
+        backgroundColor: 'rgba(0,0,0,0)',
+        color: 'white',
+        fontWeight: '500'
+    },
+    imageWrapper: {
+        flex: 1,
+        alignItems: 'stretch',
+        left: 0,
+        right: 0,
+        marginTop: 40
     }
 });
 
@@ -104,11 +121,28 @@ class App extends Component {
     }
 
     render() {
-        console.log("Hello1");
         console.log(this.state.ocrResult);
-        const {container, img, imgContainer} = styles;
+        const {
+            container,
+            img,
+            imgContainer,
+            bgImageContainer,
+            imageWrapper,
+            backdropText,
+            backdropView
+        } = styles;
         return (
             <View style={container}>
+                <View style={imageWrapper}>
+                    <Image
+                        style={bgImageContainer}
+                        source={require('../../public/assets/images/creditcard.jpeg')}>
+                        <View style={backdropView}>
+                            <Text style={backdropText}>Ready to split?</Text>
+                        </View>
+
+                    </Image>
+                </View>
                 {this.state.imgSource === null
                     ? <Button
                             onPress={this
