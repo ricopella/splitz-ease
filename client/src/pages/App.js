@@ -20,7 +20,21 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderWidth: 1,
+        borderRadius: 2,
+        borderColor: '#ddd',
+        borderBottomWidth: 0,
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+        elevation: 1,
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 10
     },
     imgContainer: {
         borderColor: '#9B9B9B',
@@ -101,26 +115,30 @@ class App extends Component {
         console.log("Hello1");
         console.log(this.state.ocrResult);
         return (
-            <View style={styles.container}>
-                <Button
-                    onPress={this
-                    .selectPhoto
-                    .bind(this)}>
-                    <View
-                        style={[
-                        styles.img,
-                        styles.imgContainer, {
-                            marginBottom: 20
-                        }
-                    ]}>
-                        {this.state.imgSource === null
-                            ? <Text>Select a Photo</Text>
-                            : <Image style={styles.img} source={this.state.imgSource}/>
-}
-                    </View>
-                </Button>
+            <View>
+                <Header headerText="Grab Reciept"/>
+                <View style={styles.container}>
 
-                <Text>OCR Result: {this.state.ocrResult}</Text>
+                    <Button
+                        onPress={this
+                        .selectPhoto
+                        .bind(this)}>
+                        <View
+                            style={[
+                            styles.img,
+                            styles.imgContainer, {
+                                marginBottom: 20
+                            }
+                        ]}>
+                            {this.state.imgSource === null
+                                ? <Text>Select a Photo</Text>
+                                : <Image style={styles.img} source={this.state.imgSource}/>
+}
+                        </View>
+                    </Button>
+
+                    <Text>OCR Result: {this.state.ocrResult}</Text>
+                </View>
             </View>
         );
     }

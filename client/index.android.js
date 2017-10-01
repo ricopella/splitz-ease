@@ -7,8 +7,8 @@
 // index.android.js                 </Text>                 <Text
 // style={styles.instructions}>                     Double tap R on your
 // keyboard to reload,{'\n'}                     Shake or press menu button for
-// dev menu                 </Text>             </View>         );     } }
-// const styles = StyleSheet.create({     container: {         flex: 1,
+// dev menu                 </Text>             </View>         );     } } const
+// styles = StyleSheet.create({     container: {         flex: 1,
 // justifyContent: 'center',         alignItems: 'center', backgroundColor:
 // '#F5FCFF'     },     welcome: {         fontSize: 20,  textAlign: 'center',
 // margin: 10     },     instructions: { textAlign: 'center', color: '#333333',
@@ -16,6 +16,6 @@
 // client);
 import React from 'react';
 import {AppRegistry} from 'react-native';
-import App from './App';
+import App from './src/pages/App';
 
 AppRegistry.registerComponent('client', () => App);
