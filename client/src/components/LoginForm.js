@@ -55,7 +55,7 @@ class LoginForm extends Component {
                 onPress={this
                 .onButtonPress
                 .bind(this)}>
-                Log in
+                Log In
             </Button>
         );
     }

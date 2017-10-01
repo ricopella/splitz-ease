@@ -4,6 +4,28 @@ import firebase from 'firebase';
 import {Header, Button, Spinner} from "../components/common";
 import LoginForm from '../components/LoginForm';
 
+const styles = {
+    containerStyle: {
+        elevation: 1,
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 10
+    },
+    textStyle1: {
+        fontSize: 50,
+        color: '#EA9683',
+        alignSelf: "center",
+        paddingTop: 125
+    },
+    textStyle2: {
+        fontSize: 50,
+        alignSelf: "center",
+        paddingBottom: 40
+    }
+    // containerText: {     flex: 1,     justifyContent: "center" }
+};
+
+// Auth login
 class App extends Component {
     state = {
         loggedIn: null
@@ -48,11 +70,14 @@ class App extends Component {
     render() {
         return (
             <View>
-                <View>
-                    <Header headerText="Welcome"/>
-                </View>
 
-                {this.renderContent()}
+                <View>
+                    <Text style={styles.textStyle1}>splitz</Text>
+                    <Text style={styles.textStyle2}>ease</Text>
+                </View>
+                <View style={styles.containerStyle}>
+                    {this.renderContent()}
+                </View>
             </View>
         );
     }
