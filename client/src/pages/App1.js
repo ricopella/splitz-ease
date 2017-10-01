@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import RNTesseractOcr from 'react-native-tesseract-ocr';
-// import {Header} from './src/components/common'
+import {Header} from '../components/common/Header'
 
 var Button = (Platform.OS === 'android')
     ? TouchableNativeFeedback
@@ -117,7 +117,7 @@ class App extends Component {
         console.log(this.state.ocrResult);
         return (
             <View style={styles.container}>
-
+                {/* <Header headerText="Take Picture"/> */}
                 <Button
                     onPress={this
                     .selectPhoto
@@ -142,4 +142,4 @@ class App extends Component {
     }
 }
 
-export default App;
+// export default App;
