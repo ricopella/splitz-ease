@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import RNTesseractOcr from 'react-native-tesseract-ocr';
+// import {Header} from './src/components/common'
 
 var Button = (Platform.OS === 'android')
     ? TouchableNativeFeedback
@@ -115,30 +116,27 @@ class App extends Component {
         console.log("Hello1");
         console.log(this.state.ocrResult);
         return (
-            <View>
-                <Header headerText="Grab Reciept"/>
-                <View style={styles.container}>
+            <View style={styles.container}>
 
-                    <Button
-                        onPress={this
-                        .selectPhoto
-                        .bind(this)}>
-                        <View
-                            style={[
-                            styles.img,
-                            styles.imgContainer, {
-                                marginBottom: 20
-                            }
-                        ]}>
-                            {this.state.imgSource === null
-                                ? <Text>Select a Photo</Text>
-                                : <Image style={styles.img} source={this.state.imgSource}/>
+                <Button
+                    onPress={this
+                    .selectPhoto
+                    .bind(this)}>
+                    <View
+                        style={[
+                        styles.img,
+                        styles.imgContainer, {
+                            marginBottom: 20
+                        }
+                    ]}>
+                        {this.state.imgSource === null
+                            ? <Text>Select a Photo</Text>
+                            : <Image style={styles.img} source={this.state.imgSource}/>
 }
-                        </View>
-                    </Button>
+                    </View>
+                </Button>
 
-                    <Text>OCR Result: {this.state.ocrResult}</Text>
-                </View>
+                <Text>OCR Result: {this.state.ocrResult}</Text>
             </View>
         );
     }
