@@ -20,9 +20,6 @@ var Button = (Platform.OS === 'android')
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        elevation: 1,
         backgroundColor: "#8FC2C3"
     },
     imgContainer: {
@@ -50,11 +47,10 @@ const styles = StyleSheet.create({
         fontWeight: '500'
     },
     imageWrapper: {
-        flex: 1,
-        alignItems: 'stretch',
         left: 0,
         right: 0,
-        marginTop: 40
+        marginBottom: 60,
+        marginTop: 60
     }
 });
 
@@ -140,7 +136,6 @@ class App extends Component {
                         <View style={backdropView}>
                             <Text style={backdropText}>Ready to split?</Text>
                         </View>
-
                     </Image>
                 </View>
                 {this.state.imgSource === null
