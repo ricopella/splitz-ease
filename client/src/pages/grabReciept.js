@@ -10,6 +10,7 @@ import {
     View
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
+import firebase from 'firebase';
 import RNTesseractOcr from 'react-native-tesseract-ocr';
 import {Header} from '../components/common';
 
@@ -137,7 +138,9 @@ class grabReciept extends Component {
                             <Text style={backdropText}>Ready to split?</Text>
                         </View>
                     </Image>
+
                 </View>
+
                 {this.state.imgSource === null
                     ? <Button
                             onPress={this

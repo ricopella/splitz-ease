@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
+import {Actions} from 'react-native-router-flux';
 import firebase from 'firebase';
 import {Header, Button, Spinner} from "../components/common";
 import LoginForm from '../components/LoginForm';
@@ -10,9 +11,6 @@ const styles = {
         marginLeft: 5,
         marginRight: 5,
         marginTop: 10
-    },
-    button: {
-        color: "black"
     }
 };
 
@@ -20,7 +18,7 @@ const styles = {
 class App extends Component {
     state = {
         loggedIn: null
-    };
+    }
 
     componentWillMount() {
         firebase.initializeApp({
@@ -47,11 +45,8 @@ class App extends Component {
         switch (this.state.loggedIn) {
             case true:
                 console.log("LOGGED IN");
-                return (
-                    <Button style={styles.button} onPress={() => firebase.auth().signOut()}>
-                        Log Out
-                    </Button>
-                );
+                return Actions.scanReciept();
+                // break;
             case false:
                 return <LoginForm/>;
             default:

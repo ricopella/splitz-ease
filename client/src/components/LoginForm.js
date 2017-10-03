@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, KeyboardAvoidingView} from 'react-native';
 import firebase from 'firebase';
 import {Button, Card, CardSection, Input, Spinner} from './common';
 import {Banner} from "./WelcomeBanner";
@@ -74,7 +74,7 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <View>
+            <KeyboardAvoidingView>
                 <Banner/>
 
                 <CardSection>
@@ -101,7 +101,7 @@ class LoginForm extends Component {
                 <CardSection>
                     {this.renderButton()}
                 </CardSection>
-            </View>
+            </KeyboardAvoidingView>
         );
     }
 }
