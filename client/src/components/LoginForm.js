@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Text, View, KeyboardAvoidingView} from 'react-native';
+import {Text, View} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import firebase from 'firebase';
 import {Button, Card, CardSection, Input, Spinner} from './common';
 import {Banner} from "./WelcomeBanner";
@@ -74,7 +75,13 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <KeyboardAvoidingView>
+            <KeyboardAwareScrollView
+                resetScrollToCoords={{
+                x: 0,
+                y: 0
+            }}
+                contentContainerStyle={styles.container}
+                scrollEnabled={false}>
                 <Banner/>
 
                 <CardSection>
@@ -101,7 +108,10 @@ class LoginForm extends Component {
                 <CardSection>
                     {this.renderButton()}
                 </CardSection>
-            </KeyboardAvoidingView>
+                <View style={{
+                    height: 60
+                }}/>
+            </KeyboardAwareScrollView>
         );
     }
 }
