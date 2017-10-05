@@ -13,7 +13,7 @@ const RouterComponent = () => {
                     <Scene
                         key="loginPage"
                         component={LoginForm}
-                        title="Login"
+                        hideNavBar={true}
                         navigationBarStyle={{
                         backgroundColor: 'transparent',
                         marginTop: 8

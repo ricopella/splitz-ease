@@ -95,10 +95,6 @@ class LoginForm extends Component {
                             .bind(this)}/>
                     </CardSection>
 
-                    <Text style={styles.errorTextStyle}>
-                        {this.props.error}
-                    </Text>
-
                     <CardSection>
                         <Button
                             onPress={this
@@ -107,6 +103,10 @@ class LoginForm extends Component {
                             Log In
                         </Button>
                     </CardSection>
+
+                    <Text style={styles.errorTextStyle}>
+                        {this.props.error}
+                    </Text>
                     <View style={{
                         height: 60
                     }}/>
