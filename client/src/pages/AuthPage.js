@@ -20,47 +20,38 @@ class App extends Component {
         loggedIn: null
     }
 
-    componentWillMount() {
-        firebase.initializeApp({
-            apiKey: "AIzaSyCChQI4JivNOHkakjY0Yx1R9CziFJh_9cg",
-            authDomain: "splitz-ease.firebaseapp.com",
-            databaseURL: "https://splitz-ease.firebaseio.com",
-            projectId: "splitz-ease",
-            storageBucket: "",
-            messagingSenderId: "348025455260"
+    firebase
+        .auth()
+        .onAuthStateChanged((user) => {
+            if (user) {
+                console.log("We're Logged in");
+                this.setState({loggedIn: true});
+            } else {
+                console.log("We're not logged in");
+                this.setState({loggedIn: false});
+            }
         });
-        firebase
-            .auth()
-            .onAuthStateChanged((user) => {
-                if (user) {
-                    console.log("We're Logged in");
-                    this.setState({loggedIn: true});
-                } else {
-                    console.log("We're not logged in");
-                    this.setState({loggedIn: false});
-                }
-            });
+}
+renderContent() {
+    switch (this.state.loggedIn) {
+        case true:
+            console.log("LOGGED IN");
+            return Actions.scanReciept();
+            // break;
+        case false:
+            return <LoginForm/>;
+        default:
+            return <Spinner size="large"/>;
     }
-    renderContent() {
-        switch (this.state.loggedIn) {
-            case true:
-                console.log("LOGGED IN");
-                return Actions.scanReciept();
-                // break;
-            case false:
-                return <LoginForm/>;
-            default:
-                return <Spinner size="large"/>;
-        }
-    }
+}
 
-    render() {
-        return (
-            <View style={styles.containerStyle}>
-                {this.renderContent()}
-            </View>
-        );
-    }
+render() {
+    return (
+        <View style={styles.containerStyle}>
+            {this.renderContent()}
+        </View>
+    );
+}
 
 }
 

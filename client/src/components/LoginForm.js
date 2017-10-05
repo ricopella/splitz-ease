@@ -2,10 +2,18 @@ import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import firebase from 'firebase';
+import {connect} from 'react-redux';
+import {emailChanged, passwordChanged, loginUser} from '../actions';
 import {Button, Card, CardSection, Input, Spinner} from './common';
 import {Banner} from "./WelcomeBanner";
 
 const styles = {
+    containerStyle: {
+        elevation: 1,
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 10
+    },
     errorTextStyle: {
         fontSize: 20,
         alignSelf: 'center',
@@ -25,29 +33,24 @@ const styles = {
 };
 
 class LoginForm extends Component {
-    state = {
-        email: '',
-        password: '',
-        error: '',
-        loading: false
-    };
+    onEmailChange(text) {
+        this
+            .props
+            .emailChanged(text);
+    }
+
+    onPasswordChange(text) {
+        this
+            .props
+            .passwordChanged(text);
+    }
 
     onButtonPress() {
-        const {email, password} = this.state;
+        const {email, password} = this.props;
 
-        this.setState({error: '', loading: true});
-
-        firebase
-            .auth()
-            .signInWithEmailAndPassword(email, password)
-            .then(this.onLoginSuccess.bind(this))
-            .catch(() => {
-                firebase
-                    .auth()
-                    .createUserWithEmailAndPassword(email, password)
-                    .then(this.onLoginSuccess.bind(this))
-                    .catch(this.onLoginFail.bind(this));
-            });
+        this
+            .props
+            .loginUser({email, password});
     }
 
     onLoginFail() {
@@ -56,21 +59,6 @@ class LoginForm extends Component {
 
     onLoginSuccess() {
         this.setState({email: '', password: '', loading: false, error: ''});
-    }
-
-    renderButton() {
-        if (this.state.loading) {
-            return <Spinner size="small"/>;
-        }
-
-        return (
-            <Button
-                onPress={this
-                .onButtonPress
-                .bind(this)}>
-                Log In
-            </Button>
-        );
     }
 
     render() {
@@ -82,38 +70,56 @@ class LoginForm extends Component {
             }}
                 contentContainerStyle={styles.container}
                 scrollEnabled={false}>
-                <Banner/>
 
-                <CardSection>
-                    <Input
-                        placeholder="user@gmail.com"
-                        label="Email"
-                        value={this.state.email}
-                        onChangeText={email => this.setState({email})}/>
-                </CardSection>
+                <View style={styles.containerStyle}>
+                    <Banner/>
 
-                <CardSection>
-                    <Input
-                        secureTextEntry
-                        placeholder="password"
-                        label="Password"
-                        value={this.state.password}
-                        onChangeText={password => this.setState({password})}/>
-                </CardSection>
+                    <CardSection>
+                        <Input
+                            placeholder="user@gmail.com"
+                            label="Email"
+                            value={this.props.email}
+                            onChangeText={this
+                            .onEmailChange
+                            .bind(this)}/>
+                    </CardSection>
 
-                <Text style={styles.errorTextStyle}>
-                    {this.state.error}
-                </Text>
+                    <CardSection>
+                        <Input
+                            secureTextEntry
+                            placeholder="password"
+                            label="Password"
+                            value={this.props.password}
+                            onChangeText={this
+                            .onPasswordChange
+                            .bind(this)}/>
+                    </CardSection>
 
-                <CardSection>
-                    {this.renderButton()}
-                </CardSection>
-                <View style={{
-                    height: 60
-                }}/>
+                    <Text style={styles.errorTextStyle}>
+                        {this.props.error}
+                    </Text>
+
+                    <CardSection>
+                        <Button
+                            onPress={this
+                            .onButtonPress
+                            .bind(this)}>
+                            Log In
+                        </Button>
+                    </CardSection>
+                    <View style={{
+                        height: 60
+                    }}/>
+                </View>
             </KeyboardAwareScrollView>
         );
     }
 }
 
-export default LoginForm;
+const mapStateToProps = ({auth}) => {
+    const {email, password, error, loading} = auth;
+
+    return {email, password, error, loading};
+};
+
+export default connect(mapStateToProps, {emailChanged, passwordChanged, loginUser})(LoginForm);

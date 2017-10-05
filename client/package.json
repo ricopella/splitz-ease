@@ -16,7 +16,9 @@
 		"react-native-keyboard-aware-scroll-view": "^0.3.0",
 		"react-native-router-flux": "^4.0.0-beta.21",
 		"react-native-tesseract-ocr": "^1.0.8",
-		"redux": "^3.7.2"
+		"react-redux": "^5.0.6",
+		"redux": "^3.7.2",
+		"redux-thunk": "^2.2.0"
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",
