@@ -94,20 +94,11 @@ class ConfirmItems extends Component {
     render() {
 
         const {
-            actionButtons,
-            currentBalanceAmount,
-            currentBalanceText,
-            paymentHeader,
-            negativePayment,
-            friendImage,
             paddIt,
             alignRight,
-            positivePayment,
-            lightHeaderText,
             itemText,
-            itemPrice,
-            itemPadding,
-            splitButton
+            splitButton,
+            lightHeaderText
         } = styles;
 
 
@@ -124,16 +115,20 @@ class ConfirmItems extends Component {
                             <View>
                                 <Title>Confirm Details</Title>
                             </View>
-
                         </Body>
                         <Right />
                     </Header>
                     <Content>
+                    <View style={[{flex: 1,justifyContent: "center", alignItems: "center"}, paddIt]}>
+                        <View>
+                            <Text style={lightHeaderText}>Please categorize the orders.</Text>
+                        </View>
+                    </View>
                         <View style={[{ flex: 1, flexDirection: 'row' }, paddIt]}>
                             <View>
                                 <Text>
-                                    <Text style={itemText}>Levian Bread{'\n'}</Text>
-                                    <Text>4.00</Text>
+                                    <Text style={itemText}>Doughnuts{'\n'}</Text>
+                                    <Text>8.00</Text>
                                 </Text>
                             </View>
                             <View style={alignRight}>
@@ -148,6 +143,7 @@ class ConfirmItems extends Component {
                                                 },
                                                 buttonIndex => {
                                                     this.setState({ clicked: BUTTONS[buttonIndex] });
+                                                    console.log(this.state);
                                                 })}>
                                         <Text>0</Text>
                                     </Button>
@@ -184,8 +180,8 @@ class ConfirmItems extends Component {
                         <View style={[{ flex: 1, flexDirection: 'row' }, paddIt]}>
                             <View>
                                 <Text>
-                                    <Text style={itemText}>Levian Bread{'\n'}</Text>
-                                    <Text>4.00</Text>
+                                    <Text style={itemText}>Lasagne{'\n'}</Text>
+                                    <Text>14.00</Text>
                                 </Text>
                             </View>
                             <View style={alignRight}>
@@ -210,8 +206,8 @@ class ConfirmItems extends Component {
                         <View style={[{ flex: 1, flexDirection: 'row' }, paddIt]}>
                             <View>
                                 <Text>
-                                    <Text style={itemText}>Levian Bread{'\n'}</Text>
-                                    <Text>4.00</Text>
+                                    <Text style={itemText}>Bread Pudding{'\n'}</Text>
+                                    <Text>6.00</Text>
                                 </Text>
                             </View>
                             <View style={alignRight}>
