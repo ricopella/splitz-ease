@@ -50,10 +50,31 @@ const styles = StyleSheet.create({
     paddIt: {
         padding: 20
         // paddingLeft: 30
+    },
+    lightHeaderText: {
+        color: '#5E5E5E',
+        fontWeight: '100',
+        fontSize: 24,
+        textAlign: 'center'
+    },
+    itemText: {
+        fontSize: 22
+    },
+    itemPrice: {
+        fontSize: 22
+    },
+    itemPadding: {
+        paddingTop: 5,
+        paddingBottom: 5,
+        paddingRight: 20,
+        paddingLeft: 20
+    },
+    splitButton: {
+        alignSelf: 'center'
     }
 });
 
-class home extends Component {
+class ConfirmItems extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -73,7 +94,12 @@ class home extends Component {
             friendImage,
             paddIt,
             alignRight,
-            positivePayment
+            positivePayment,
+            lightHeaderText,
+            itemText,
+            itemPrice,
+            itemPadding,
+            splitButton
         } = styles;
 
 
@@ -87,57 +113,72 @@ class home extends Component {
                         </Button>
                     </Left>
                     <Body>
-                        <Title>Home</Title>
+                        <View>
+                            <Title>Confirm Details</Title>
+                        </View>
+                        
                     </Body>
                     <Right />
                 </Header>
                 <Content>
-                    {/* Current Balance */}
-                    <View style={[{ flex: 1, flexDirection: 'row' }, paddIt]}>
+                    {/* Sub heading */}
+                    <View style={[{flex: 1,justifyContent: "center", alignItems: "center"}, paddIt]}>
                         <View>
-                            <Text style={currentBalanceText}>Current{'\n'}Balance</Text>
+                            <Text style={lightHeaderText}>Do these prices look right?</Text>
                         </View>
-                        <View style={alignRight}>
-                            <Text style={currentBalanceAmount}>$54.45</Text>
-                        </View>
-                    </View>
-                    {/* Action buttons */}
-                    <View style={[{ flex: 1, flexDirection: 'row' }]}>
-                        <Button style={actionButtons} primary><Text> Pay </Text></Button>
-                        <Button style={actionButtons} success><Text> Request </Text></Button>
-                        <Button style={actionButtons} danger><Text> Transfer </Text></Button>
                     </View>
                     {/* Recent Activity */}
-                    <View style={[{ flex: 1, flexDirection: 'row' }, paddIt]}>
-                        <View style={friendImage}>
-                            <Thumbnail source={require('./../../public/assets/images/emily.jpeg')} />
-                        </View>
+                    <View style={[{ flex: 1, flexDirection: 'row' }, itemPadding]}>
                         <View>
-                            <Text>
-                                <Text style={paymentHeader}>Paid Emily{"\n"}</Text>
-                                <Text>2 days ago</Text>
-                            </Text>
+                            <Text style={itemText}>Levian Bread</Text>
                         </View>
                         <View style={alignRight}>
-                            <Text style={negativePayment}>-23.45</Text>
+                            <Text style={itemPrice}>4.00</Text>
                         </View>
                     </View>
-                    <View style={[{ flex: 1, flexDirection: 'row' }, paddIt]}>
-                        <View style={friendImage}>
-                            <Thumbnail source={require('./../../public/assets/images/emily.jpeg')} />
-                        </View>
+                    <View style={[{ flex: 1, flexDirection: 'row' }, itemPadding]}>
                         <View>
-                            <Text>
-                                <Text style={paymentHeader}>Paid Emily{"\n"}</Text>
-                                <Text>2 days ago</Text>
-                            </Text>
+                            <Text style={itemText}>Doughnuts</Text>
                         </View>
                         <View style={alignRight}>
-                            <Text style={positivePayment}>13.32</Text>
+                            <Text style={itemPrice}>8.00</Text>
                         </View>
                     </View>
-                   
-
+                    <View style={[{ flex: 1, flexDirection: 'row' }, itemPadding]}>
+                        <View>
+                            <Text style={itemText}>Lasagne</Text>
+                        </View>
+                        <View style={alignRight}>
+                            <Text style={itemPrice}>14.00</Text>
+                        </View>
+                    </View>
+                    <View style={[{ flex: 1, flexDirection: 'row' }, itemPadding]}>
+                        <View>
+                            <Text style={itemText}>Bread Pudding</Text>
+                        </View>
+                        <View style={alignRight}>
+                            <Text style={itemPrice}>9.00</Text>
+                        </View>
+                    </View>
+                    <View style={[{ flex: 1, flexDirection: 'row' }, itemPadding]}>
+                        <View>
+                            <Text style={itemText}>Tax</Text>
+                        </View>
+                        <View style={alignRight}>
+                            <Text style={itemPrice}>3.33</Text>
+                        </View>
+                    </View>
+                    <View style={[{ flex: 1, flexDirection: 'row' }, itemPadding]}>
+                        <View>
+                            <Text style={itemText}>Total</Text>
+                        </View>
+                        <View style={alignRight}>
+                            <Text style={itemPrice}>38.38</Text>
+                        </View>
+                    </View>
+                    <View style={[paddIt, splitButton]}>
+                        <Button success><Text style={itemText}> Splitz These </Text></Button>
+                    </View>
                     {/* <View>
                         <Camera ref={(cam) => { this.camera = cam; }} style={styles.preview} aspect={Camera.constants.Aspect.fill}>
                             <Text onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
@@ -158,4 +199,4 @@ class home extends Component {
     } */
 }
 
-export default home;
+export default ConfirmItems;

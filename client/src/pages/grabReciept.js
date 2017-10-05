@@ -13,6 +13,7 @@ import ImagePicker from 'react-native-image-picker';
 import firebase from 'firebase';
 import RNTesseractOcr from 'react-native-tesseract-ocr';
 import {Header} from '../components/common';
+import Camera from 'react-native-camera';
 
 var Button = (Platform.OS === 'android')
     ? TouchableNativeFeedback

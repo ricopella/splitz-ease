@@ -50,6 +50,7 @@
 		3E890B26E33D4DDB88B600C8 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CB2630E930435196C0E751 /* rubicon-icon-font.ttf */; };
 		228B3A2AE2944A2DB5CD4E88 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A057F47A2FE41F482E9CDDA /* SimpleLineIcons.ttf */; };
 		981CBE1AF2D74C1FAB8F0D0A /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7D35E053A194663ADE9CA24 /* Zocial.ttf */; };
+		08EB2D30FFD647D59D61F204 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 837F94BB6C8B4858A56D693B /* libRCTCamera.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -293,6 +294,8 @@
 		C3CB2630E930435196C0E751 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		0A057F47A2FE41F482E9CDDA /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E7D35E053A194663ADE9CA24 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D02792F6B34849B4AF55401F /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; name = "RCTCamera.xcodeproj"; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		837F94BB6C8B4858A56D693B /* libRCTCamera.a */ = {isa = PBXFileReference; name = "libRCTCamera.a"; path = "libRCTCamera.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +326,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				6C915E5D72CE4BF694B55BCA /* libRNImagePicker.a in Frameworks */,
 				BF31089AC19F4B848A78933E /* libRNTesseractOcr.a in Frameworks */,
+				08EB2D30FFD647D59D61F204 /* libRCTCamera.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +497,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				8C46605C7B644845B91C2EF1 /* RNImagePicker.xcodeproj */,
 				DD92EF7738044999BC0B41C7 /* RNTesseractOcr.xcodeproj */,
+				D02792F6B34849B4AF55401F /* RCTCamera.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1075,11 +1080,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-tesseract-ocr/ios",
+					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 				);
 			};
 			name = Debug;
@@ -1102,11 +1109,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-tesseract-ocr/ios",
+					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 				);
 			};
 			name = Release;
@@ -1130,6 +1139,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-tesseract-ocr/ios",
+					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 				);
 			};
 			name = Debug;
@@ -1152,6 +1162,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-tesseract-ocr/ios",
+					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 				);
 			};
 			name = Release;
@@ -1183,11 +1194,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-tesseract-ocr/ios",
+					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 				);
 			};
 			name = Debug;
@@ -1219,11 +1232,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-tesseract-ocr/ios",
+					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 				);
 			};
 			name = Release;
@@ -1250,6 +1265,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1274,6 +1290,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
