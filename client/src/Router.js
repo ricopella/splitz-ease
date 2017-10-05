@@ -1,6 +1,8 @@
 import React from 'react';
 import {Scene, Router, Actions, Stack} from 'react-native-router-flux';
+import firebase from 'firebase';
 import AuthPage from './pages/AuthPage';
+
 import grabReciept from './pages/grabReciept';
 
 const RouterComponent = () => {
@@ -20,7 +22,12 @@ const RouterComponent = () => {
                 </Scene>
 
                 <Scene key="main">
-                    <Scene key="scanReciept" component={grabReciept} title="Grab Reciept"/>
+                    <Scene
+                        key="scanReciept"
+                        component={grabReciept}
+                        title="Grab Reciept"
+                        onRight={() => firebase.auth().signOut()}
+                        rightTitle="Sign Out"/>
                 </Scene>
             </Stack>
         </Router>

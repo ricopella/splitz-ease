@@ -35,7 +35,10 @@ const styles = StyleSheet.create({
         height: 150
     },
     bgImageContainer: {
-        paddingTop: 60
+        paddingTop: 60,
+        width: 460,
+        height: 190,
+        opacity: .6
     },
     backdropView: {
         backgroundColor: 'rgba(0,0,0,0)'
@@ -44,7 +47,6 @@ const styles = StyleSheet.create({
         fontSize: 30,
         textAlign: 'center',
         backgroundColor: 'rgba(0,0,0,0)',
-        color: 'white',
         fontWeight: '500'
     },
     imageWrapper: {
@@ -135,7 +137,12 @@ class grabReciept extends Component {
                         style={bgImageContainer}
                         source={require('../../public/assets/images/creditcard.jpeg')}>
                         <View style={backdropView}>
-                            <Text style={backdropText}>Ready to split?</Text>
+                            <Text
+                                style={[
+                                backdropText, {
+                                    color: 'rgba(255, 255, 255, 1)'
+                                }
+                            ]}>Ready to split?</Text>
                         </View>
                     </Image>
 
@@ -150,7 +157,8 @@ class grabReciept extends Component {
                                 style={[
                                 img,
                                 imgContainer, {
-                                    marginBottom: 20
+                                    marginBottom: 20,
+                                    marginLeft: 125
                                 }
                             ]}>
                                 <Image style={img} source={require('../../public/assets/images/barcam.png')}/>
