@@ -1,17 +1,11 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Image, View} from 'react-native';
 
 const styles = {
-    textStyle1: {
-        fontSize: 50,
-        color: '#EA9683',
-        alignSelf: "center",
-        paddingTop: 125
-    },
-    textStyle2: {
-        fontSize: 50,
-        alignSelf: "center",
-        paddingBottom: 40
+    ImageStyle: {
+        marginTop: 150,
+        marginBottom: 100,
+        alignSelf: "center"
     }
 };
 
@@ -19,8 +13,9 @@ const Banner = () => {
     return (
 
         <View>
-            <Text style={styles.textStyle1}>splitz</Text>
-            <Text style={styles.textStyle2}>ease</Text>
+            <Image
+                source={require("../../public/assets/images/splitz.png")}
+                style={styles.ImageStyle}/>
         </View>
     )
 }
