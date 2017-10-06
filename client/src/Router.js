@@ -4,12 +4,13 @@ import firebase from 'firebase';
 import LoginForm from './components/LoginForm';
 import grabReciept from './pages/grabReciept';
 import SplitEvenly from './pages/splitEvenly1';
+import SplitEvenlyRequest from './pages/splitEventlyRequest';
 
 const RouterComponent = () => {
     return (
         <Router>
             <Stack key="root" hideNavBar={true}>
-                <Scene key="SplitEvenly" component={SplitEvenly} initial/>
+                <Scene key="splitEvenlyRequest" component={SplitEvenlyRequest} initial/>
 
                 <Scene key="auth">
                     <Scene
@@ -29,6 +30,7 @@ const RouterComponent = () => {
                         title="Grab Reciept"
                         onRight={() => firebase.auth().signOut().then(Actions.loginPage())}
                         rightTitle="Sign Out"/>
+                    <Scene key="SplitEvenly" component={SplitEvenly}/>
                 </Scene>
             </Stack>
         </Router>

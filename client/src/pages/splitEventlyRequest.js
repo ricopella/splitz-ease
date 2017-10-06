@@ -1,0 +1,149 @@
+import React, {Component} from 'react';
+import {StyleSheet, TouchableNativeFeedback, TouchableOpacity, View} from 'react-native';
+
+import {
+    Container,
+    Header,
+    Title,
+    Content,
+    Button,
+    Left,
+    Right,
+    Body,
+    Text,
+    Badge,
+    Thumbnail,
+    TextInput,
+    Icon
+} from 'native-base';
+import Nav from './../components/common/Nav';
+
+const styles = StyleSheet.create({
+    actionButtons: {
+        width: 140,
+        alignItems: 'center'
+    },
+    alignRight: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        paddingRight: 20
+    },
+    paddIt: {
+        padding: 20
+        // paddingLeft: 30
+    },
+    lightHeaderText: {
+        color: '#5E5E5E',
+        fontWeight: '100',
+        fontSize: 24,
+        textAlign: 'center',
+        width: 250
+    },
+    itemText: {
+        fontSize: 22
+    },
+    splitButton: {
+        alignSelf: 'center',
+        marginTop: 30
+    },
+    textInput: {
+        paddingTop: 2
+    }
+});
+
+class SplitEvenlyRequest extends Component {
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            imgSource: null,
+            ocrResult: null,
+            myNumber: ''
+        };
+    }
+
+    onChanged(text) {
+        // code to remove non-numeric characters from text
+        let newText = '';
+        let numbers = '0123456789';
+        for (var i = 0; i < text.length; i++) {
+            if (numbers.indexOf(text[i]) > -1) {
+                newText = newText + text[i];
+            } else {
+                // your call back function
+                alert("please enter numbers only");
+            }
+            this.setState({myNumber: newText});
+        }
+    }
+
+    render() {
+
+        const {paddIt, lightHeaderText, itemText, splitButton, textInput} = styles;
+
+        return (
+
+            <Container>
+                <Header>
+                    <Left>
+                        <Button transparent>
+                            <Icon name='menu'/>
+                        </Button>
+                    </Left>
+                    <Body>
+                        <View>
+                            <Title>Split Evenly</Title>
+                        </View>
+
+                    </Body>
+                    <Right/>
+                </Header>
+                <Content>
+                    {/* Sub heading */}
+                    <View
+                        style={[
+                        {
+                            flex: 1,
+                            justifyContent: "center",
+                            alignItems: "center"
+                        },
+                        paddIt
+                    ]}>
+                        <View>
+                            <Text style={lightHeaderText}>Who should we send reciepts to?</Text>
+                        </View>
+                    </View>
+
+                    {/* Request Area */}
+                    <View>
+                        <Badge>
+                            <Text>1</Text>
+                        </Badge>
+                        <Icon name="phone"/>
+                        <TextInput
+                            style={textInput}
+                            keyboardType='numeric'
+                            onChangeText=
+                            {(text)=> this.onChanged(text)}
+                            value={this.state.myNumber}
+                            maxLength={10}/>
+                    </View>
+
+                    {/* Recent Activity */}
+                    <View style={[paddIt, splitButton]}>
+                        <Button success>
+                            <Text style={itemText}>
+                                Send Requests
+                            </Text>
+                        </Button>
+                    </View>
+                </Content>
+                {/* <Nav /> */}
+                <Nav/>
+            </Container>
+        );
+    }
+}
+
+export default SplitEvenlyRequest;
