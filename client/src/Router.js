@@ -3,11 +3,13 @@ import {Scene, Router, Actions, Stack} from 'react-native-router-flux';
 import firebase from 'firebase';
 import LoginForm from './components/LoginForm';
 import grabReciept from './pages/grabReciept';
+import SplitEvenly from './pages/splitEvenly1';
 
 const RouterComponent = () => {
     return (
         <Router>
             <Stack key="root" hideNavBar={true}>
+                <Scene key="SplitEvenly" component={SplitEvenly} initial/>
 
                 <Scene key="auth">
                     <Scene
