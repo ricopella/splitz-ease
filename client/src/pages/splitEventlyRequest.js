@@ -14,8 +14,9 @@ import {
     Badge,
     Thumbnail,
     TextInput,
-    Icon
+    Input
 } from 'native-base';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import Nav from './../components/common/Nav';
 
 const styles = StyleSheet.create({
@@ -49,7 +50,12 @@ const styles = StyleSheet.create({
         marginTop: 30
     },
     textInput: {
-        paddingTop: 2
+        width: 50,
+        height: 50,
+        backgroundColor: "#fff",
+        fontSize: 25,
+        marginRight: 45,
+        paddingLeft: 10
     }
 });
 
@@ -88,7 +94,7 @@ class SplitEvenlyRequest extends Component {
                 <Header>
                     <Left>
                         <Button transparent>
-                            <Icon name='menu'/>
+                            <Icon name='navicon' size={28} color="#fff"/>
                         </Button>
                     </Left>
                     <Body>
@@ -116,13 +122,28 @@ class SplitEvenlyRequest extends Component {
                     </View>
 
                     {/* Request Area */}
-                    <View>
-                        <Badge>
+                    <View
+                        style={{
+                        flex: 1,
+                        flexDirection: 'row',
+                        paddingLeft: 100
+                    }}>
+                        <Badge
+                            style={{
+                            marginRight: 10
+                        }}>
                             <Text>1</Text>
                         </Badge>
-                        <Icon name="phone"/>
-                        <TextInput
+                        <Icon
+                            size={30}
+                            name="phone"
+                            style={{
+                            paddingLeft: 10,
+                            paddingRight: 10
+                        }}/>
+                        <Input
                             style={textInput}
+                            placeholder="XXX-XXX-XXXX"
                             keyboardType='numeric'
                             onChangeText=
                             {(text)=> this.onChanged(text)}
@@ -139,7 +160,6 @@ class SplitEvenlyRequest extends Component {
                         </Button>
                     </View>
                 </Content>
-                {/* <Nav /> */}
                 <Nav/>
             </Container>
         );
