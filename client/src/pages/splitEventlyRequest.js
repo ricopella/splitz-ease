@@ -65,23 +65,28 @@ class SplitEvenlyRequest extends Component {
         this.state = {
             imgSource: null,
             ocrResult: null,
-            myNumber: ''
+            myNumber0: '',
+            myNumber1: '',
+            myNumber2: '',
+            myNumber3: '',
+            myNumber4: '',
+            myNumber5: '',
+            myNumber6: '',
+            myNumber7: '',
+            myNumber8: '',
+            myNumber9: ''
         };
     }
 
-    onChanged(text) {
-        // code to remove non-numeric characters from text
-        let newText = '';
-        let numbers = '0123456789';
-        for (var i = 0; i < text.length; i++) {
-            if (numbers.indexOf(text[i]) > -1) {
-                newText = newText + text[i];
-            } else {
-                // your call back function
-                alert("please enter numbers only");
-            }
-            this.setState({myNumber: newText});
-        }
+    // onChanged(text) {     // code to remove non-numeric characters from text let
+    // newText = '';     let numbers = '0123456789';     for (var i = 0; i <
+    // text.length; i++) {         if (numbers.indexOf(text[i]) > -1) { newText =
+    // newText + text[i];         } else {             // your call back function
+    // alert("please enter numbers only");         } this.setState({[myNumber]:
+    // newText});     } }
+
+    handleInputChange = (state) => (event, value) => {
+        this.setState({[state]: value});
     }
 
     render() {
@@ -126,11 +131,13 @@ class SplitEvenlyRequest extends Component {
                         style={{
                         flex: 1,
                         flexDirection: 'row',
-                        paddingLeft: 100
+                        paddingLeft: 75,
+                        marginBottom: 5
                     }}>
                         <Badge
                             style={{
-                            marginRight: 10
+                            marginRight: 10,
+                            marginTop: 10
                         }}>
                             <Text>1</Text>
                         </Badge>
@@ -139,15 +146,108 @@ class SplitEvenlyRequest extends Component {
                             name="phone"
                             style={{
                             paddingLeft: 10,
-                            paddingRight: 10
+                            paddingRight: 10,
+                            marginTop: 10
                         }}/>
                         <Input
                             style={textInput}
                             placeholder="XXX-XXX-XXXX"
                             keyboardType='numeric'
-                            onChangeText=
-                            {(text)=> this.onChanged(text)}
-                            value={this.state.myNumber}
+                            onChangeText={this.handleInputChange('myNumber0')}
+                            value={this.state.myNumber0}
+                            maxLength={10}/>
+                    </View>
+
+                    <View
+                        style={{
+                        flex: 1,
+                        flexDirection: 'row',
+                        paddingLeft: 75,
+                        marginBottom: 5
+                    }}>
+                        <Badge
+                            style={{
+                            marginRight: 10,
+                            marginTop: 10
+                        }}>
+                            <Text>2</Text>
+                        </Badge>
+                        <Icon
+                            size={30}
+                            name="phone"
+                            style={{
+                            paddingLeft: 10,
+                            paddingRight: 10,
+                            marginTop: 10
+                        }}/>
+                        <Input
+                            style={textInput}
+                            placeholder="XXX-XXX-XXXX"
+                            keyboardType='numeric'
+                            onChangeText={this.handleInputChange('myNumber1')}
+                            value={this.state.myNumber1}
+                            maxLength={10}/>
+                    </View>
+
+                    <View
+                        style={{
+                        flex: 1,
+                        flexDirection: 'row',
+                        paddingLeft: 75,
+                        marginBottom: 5
+                    }}>
+                        <Badge
+                            style={{
+                            marginRight: 10,
+                            marginTop: 10
+                        }}>
+                            <Text>3</Text>
+                        </Badge>
+                        <Icon
+                            size={30}
+                            name="phone"
+                            style={{
+                            paddingLeft: 10,
+                            paddingRight: 10,
+                            marginTop: 10
+                        }}/>
+                        <Input
+                            style={textInput}
+                            placeholder="XXX-XXX-XXXX"
+                            keyboardType='numeric'
+                            onChangeText={this.handleInputChange('myNumber2')}
+                            value={this.state.myNumber2}
+                            maxLength={10}/>
+                    </View>
+
+                    <View
+                        style={{
+                        flex: 1,
+                        flexDirection: 'row',
+                        paddingLeft: 75,
+                        marginBottom: 5
+                    }}>
+                        <Badge
+                            style={{
+                            marginRight: 10,
+                            marginTop: 10
+                        }}>
+                            <Text>4</Text>
+                        </Badge>
+                        <Icon
+                            size={30}
+                            name="phone"
+                            style={{
+                            paddingLeft: 10,
+                            paddingRight: 10,
+                            marginTop: 10
+                        }}/>
+                        <Input
+                            style={textInput}
+                            placeholder="XXX-XXX-XXXX"
+                            keyboardType='numeric'
+                            onChangeText={this.handleInputChange('myNumber3')}
+                            value={this.state.myNumber3}
                             maxLength={10}/>
                     </View>
 
