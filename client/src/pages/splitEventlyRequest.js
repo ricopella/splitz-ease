@@ -74,7 +74,8 @@ class SplitEvenlyRequest extends Component {
             myNumber6: '',
             myNumber7: '',
             myNumber8: '',
-            myNumber9: ''
+            myNumber9: '',
+            selectedArray: undefined
         };
     }
 
@@ -87,6 +88,13 @@ class SplitEvenlyRequest extends Component {
 
     handleInputChange = (state) => (event, value) => {
         this.setState({[state]: value});
+    }
+    componentWillMount() {
+        console.log("THESE PROPS +++ ", this.props);
+
+        const selectedLength = new Array(parseInt(this.props.selected));
+        console.log(selectedLength);
+        this.setState({selectedArray: selectedLength})
     }
 
     render() {

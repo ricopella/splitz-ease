@@ -8,6 +8,7 @@ import {
     TouchableOpacity,
     View
 } from 'react-native';
+import {Actions} from 'react-native-router-flux';
 
 import {
     Container,
@@ -109,14 +110,15 @@ class SplitEvenly extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            imgSource: null,
-            ocrResult: null,
-            selected2: undefined
+            selected: undefined
         };
     }
 
     onValueChange2(value : string) {
-        this.setState({selected2: value});
+        this.setState({selected: value});
+    }
+    onButtonPress() {
+        Actions.splitEvenlyRequest({selected: this.state.selected});
     }
 
     render() {
@@ -176,27 +178,31 @@ class SplitEvenly extends Component {
                             mode="dropdown"
                             style={styles.pickerStyles}
                             placeholder="Select One"
-                            selectedValue={this.state.selected2}
+                            selectedValue={this.state.selected}
                             onValueChange={this
                             .onValueChange2
                             .bind(this)}>
-                            <Item label="1" value="key1"/>
-                            <Item label="2" value="key2"/>
-                            <Item label="3" value="key3"/>
-                            <Item label="4" value="key4"/>
-                            <Item label="5" value="key5"/>
-                            <Item label="6" value="key6"/>
-                            <Item label="7" value="key7"/>
-                            <Item label="8" value="key8"/>
-                            <Item label="9" value="key9"/>
-                            <Item label="10" value="key10"/>
+                            <Item label="1" value="1"/>
+                            <Item label="2" value="2"/>
+                            <Item label="3" value="3"/>
+                            <Item label="4" value="4"/>
+                            <Item label="5" value="5"/>
+                            <Item label="6" value="6"/>
+                            <Item label="7" value="7"/>
+                            <Item label="8" value="8"/>
+                            <Item label="9" value="9"/>
+                            <Item label="10" value="10"/>
 
                         </Picker>
                     </Form>
 
                     {/* Recent Activity */}
                     <View style={[paddIt, splitButton]}>
-                        <Button success>
+                        <Button
+                            success
+                            onPress={this
+                            .onButtonPress
+                            .bind(this)}>
                             <Text style={itemText}>
                                 Total Up
                             </Text>

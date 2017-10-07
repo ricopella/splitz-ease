@@ -10,7 +10,6 @@ const RouterComponent = () => {
     return (
         <Router>
             <Stack key="root" hideNavBar={true}>
-                <Scene key="splitEvenlyRequest" component={SplitEvenlyRequest}/>
 
                 <Scene key="auth">
                     <Scene
@@ -24,14 +23,14 @@ const RouterComponent = () => {
                 </Scene>
 
                 <Scene key="main">
+                    <Scene key="SplitEvenly" component={SplitEvenly}/>
+                    <Scene key="splitEvenlyRequest" component={SplitEvenlyRequest}/>
                     <Scene
                         key="scanReciept"
                         component={grabReciept}
                         title="Grab Reciept"
                         onRight={() => firebase.auth().signOut().then(Actions.loginPage())}
                         rightTitle="Sign Out"/>
-                    <Scene key="SplitEvenly" component={SplitEvenly}/>
-
                 </Scene>
             </Stack>
         </Router>
