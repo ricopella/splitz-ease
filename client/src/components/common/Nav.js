@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import {
-    Container,
-    Header,
-    Content,
     Footer,
     FooterTab,
     Button,
@@ -10,6 +7,7 @@ import {
     Text,
     Badge
 } from 'native-base';
+import {Actions} from 'react-native-router-flux';
 
 class Nav extends Component {
     // const Nav = () => { const { footerStyle } = styles;
@@ -17,22 +15,22 @@ class Nav extends Component {
         return (
             <Footer>
                 <FooterTab>
-                    <Button vertical active>
+                    <Button onPress={Actions.scanReciept} vertical active>
                         <Icon name="home"/>
                         <Text>Home</Text>
                     </Button>
-                    <Button vertical>
+                    <Button onPress={Actions.scanReciept} vertical>
                         <Icon name="shuffle"/>
                         <Text>Split</Text>
                     </Button>
-                    <Button badge vertical>
+                    <Button badge onPress={Actions.SplitEvenly} vertical>
                         <Badge>
                             <Text>2</Text>
                         </Badge>
                         <Icon active name="list"/>
                         <Text>Requests</Text>
                     </Button>
-                    <Button vertical>
+                    <Button onPress={Actions.splitEvenlyRequest} vertical>
                         <Icon name="person"/>
                         <Text>Settings</Text>
                     </Button>
