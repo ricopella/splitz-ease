@@ -86,12 +86,26 @@ const styles = StyleSheet.create({
 });
 
 class ConfirmItems extends Component {
+    
+    state = { 
+        data: [],
+        itemOne: 0,
+        itemTwo: 0,
+        itemThree: 0
+    };
+    
+    // .then(response => this.setState({ albums: response.data }));
+
     constructor(props) {
         super(props);
-        this.state = {};
+        // this.state = {};
+    }
+    componentWillMount () {
+        console.log("mounting comp");
     }
 
     render() {
+        console.log(this.state);
 
         const {
             paddIt,
@@ -120,9 +134,9 @@ class ConfirmItems extends Component {
                     </Header>
                     <Content>
                     <View style={[{flex: 1,justifyContent: "center", alignItems: "center"}, paddIt]}>
-                        <View>
+                        {/* <View> */}
                             <Text style={lightHeaderText}>Please categorize the orders.</Text>
-                        </View>
+                        {/* </View> */}
                     </View>
                         <View style={[{ flex: 1, flexDirection: 'row' }, paddIt]}>
                             <View>
@@ -131,7 +145,7 @@ class ConfirmItems extends Component {
                                     <Text>8.00</Text>
                                 </Text>
                             </View>
-                            <View style={alignRight}>
+                                <View style={alignRight}>
                                     <Button
                                         onPress={() =>
                                             ActionSheet.show(

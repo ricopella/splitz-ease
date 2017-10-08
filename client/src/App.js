@@ -6,10 +6,12 @@ import { Image, Platform, PixelRatio, StyleSheet, TouchableNativeFeedback, Touch
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Badge, Thumbnail } from 'native-base';
 import ConfirmItems from './pages/ConfirmItems';
 import CategorizeItems from './pages/CategorizeItems';
+import Settings from './pages/Settings';
+import AddTax from './pages/AddTax';
 
 class App extends Component {
     render() {
-        return (<CategorizeItems/>)
+        return (<AddTax/>)
     }
 }
 
