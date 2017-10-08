@@ -10,6 +10,8 @@ const RouterComponent = () => {
     return (
         <Router>
             <Stack key="root" hideNavBar={true}>
+                <Scene key="SplitEvenly" component={SplitEvenly}/>
+                <Scene key="splitEvenlyRequest" component={SplitEvenlyRequest}/>
 
                 <Scene key="auth">
                     <Scene
@@ -23,8 +25,7 @@ const RouterComponent = () => {
                 </Scene>
 
                 <Scene key="main">
-                    <Scene key="SplitEvenly" component={SplitEvenly}/>
-                    <Scene key="splitEvenlyRequest" component={SplitEvenlyRequest}/>
+
                     <Scene
                         key="scanReciept"
                         component={grabReciept}

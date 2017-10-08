@@ -75,27 +75,47 @@ class SplitEvenlyRequest extends Component {
             myNumber7: '',
             myNumber8: '',
             myNumber9: '',
-            selectedArray: undefined
+            selectedArray: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
         };
     }
 
-    // onChanged(text) {     // code to remove non-numeric characters from text let
-    // newText = '';     let numbers = '0123456789';     for (var i = 0; i <
-    // text.length; i++) {         if (numbers.indexOf(text[i]) > -1) { newText =
-    // newText + text[i];         } else {             // your call back function
-    // alert("please enter numbers only");         } this.setState({[myNumber]:
-    // newText});     } }
+    onChanged(text) { // code to remove non-numeric characters from text let
+        newText = '';
+        let numbers = '0123456789';
+        for (var i = 0; i < text.length; i++) {
+            if (numbers.indexOf(text[i]) > -1) {
+                newText = newText + text[i];
+            } else { // your call back function
+                alert("please enter numbers only");
+            }
+            this.setState({[myNumber]: newText});
+        }
+    }
 
     handleInputChange = (state) => (event, value) => {
-        this.setState({[state]: value});
+        console.log(event);
+        newText = '';
+        let numbers = '0123456789';
+        for (var i = 0; i < event.length; i++) {
+            if (numbers.indexOf(event[i]) > -1) {
+                newText = newText + event[i];
+            } else { // your call back function
+                alert("please enter numbers only");
+            }
+            this.setState({[state]: newText});
+        }
     }
-    componentWillMount() {
-        console.log("THESE PROPS +++ ", this.props);
-
-        const selectedLength = new Array(parseInt(this.props.selected));
-        console.log(selectedLength);
-        this.setState({selectedArray: selectedLength})
-    }
+    // componentWillMount() {     console.log(parseInt(this.props.selected)); const
+    // selectedLength = new Array(parseInt(this.props.selected));
+    // console.log(selectedLength);     this.setState({selectedArray:
+    // selectedLength});     console.log(this.state.selectedArray); }
 
     render() {
 
@@ -135,129 +155,45 @@ class SplitEvenlyRequest extends Component {
                     </View>
 
                     {/* Request Area */}
-                    <View
-                        style={{
-                        flex: 1,
-                        flexDirection: 'row',
-                        paddingLeft: 75,
-                        marginBottom: 5
-                    }}>
-                        <Badge
-                            style={{
-                            marginRight: 10,
-                            marginTop: 10
-                        }}>
-                            <Text>1</Text>
-                        </Badge>
-                        <Icon
-                            size={30}
-                            name="phone"
-                            style={{
-                            paddingLeft: 10,
-                            paddingRight: 10,
-                            marginTop: 10
-                        }}/>
-                        <Input
-                            style={textInput}
-                            placeholder="XXX-XXX-XXXX"
-                            keyboardType='numeric'
-                            onChangeText={this.handleInputChange('myNumber0')}
-                            value={this.state.myNumber0}
-                            maxLength={10}/>
-                    </View>
-
-                    <View
-                        style={{
-                        flex: 1,
-                        flexDirection: 'row',
-                        paddingLeft: 75,
-                        marginBottom: 5
-                    }}>
-                        <Badge
-                            style={{
-                            marginRight: 10,
-                            marginTop: 10
-                        }}>
-                            <Text>2</Text>
-                        </Badge>
-                        <Icon
-                            size={30}
-                            name="phone"
-                            style={{
-                            paddingLeft: 10,
-                            paddingRight: 10,
-                            marginTop: 10
-                        }}/>
-                        <Input
-                            style={textInput}
-                            placeholder="XXX-XXX-XXXX"
-                            keyboardType='numeric'
-                            onChangeText={this.handleInputChange('myNumber1')}
-                            value={this.state.myNumber1}
-                            maxLength={10}/>
-                    </View>
-
-                    <View
-                        style={{
-                        flex: 1,
-                        flexDirection: 'row',
-                        paddingLeft: 75,
-                        marginBottom: 5
-                    }}>
-                        <Badge
-                            style={{
-                            marginRight: 10,
-                            marginTop: 10
-                        }}>
-                            <Text>3</Text>
-                        </Badge>
-                        <Icon
-                            size={30}
-                            name="phone"
-                            style={{
-                            paddingLeft: 10,
-                            paddingRight: 10,
-                            marginTop: 10
-                        }}/>
-                        <Input
-                            style={textInput}
-                            placeholder="XXX-XXX-XXXX"
-                            keyboardType='numeric'
-                            onChangeText={this.handleInputChange('myNumber2')}
-                            value={this.state.myNumber2}
-                            maxLength={10}/>
-                    </View>
-
-                    <View
-                        style={{
-                        flex: 1,
-                        flexDirection: 'row',
-                        paddingLeft: 75,
-                        marginBottom: 5
-                    }}>
-                        <Badge
-                            style={{
-                            marginRight: 10,
-                            marginTop: 10
-                        }}>
-                            <Text>4</Text>
-                        </Badge>
-                        <Icon
-                            size={30}
-                            name="phone"
-                            style={{
-                            paddingLeft: 10,
-                            paddingRight: 10,
-                            marginTop: 10
-                        }}/>
-                        <Input
-                            style={textInput}
-                            placeholder="XXX-XXX-XXXX"
-                            keyboardType='numeric'
-                            onChangeText={this.handleInputChange('myNumber3')}
-                            value={this.state.myNumber3}
-                            maxLength={10}/>
-                    </View>
+                    {this
+                        .state
+                        .selectedArray
+                        .map((data) => {
+                            return (
+                                <View
+                                    key={this.state.selectedArray[data]}
+                                    style={{
+                                    flex: 1,
+                                    flexDirection: 'row',
+                                    paddingLeft: 75,
+                                    marginBottom: 5
+                                }}>
+                                    <Badge
+                                        style={{
+                                        marginRight: 10,
+                                        marginTop: 10
+                                    }}>
+                                        <Text>{this.state.selectedArray[data] + 1}</Text>
+                                    </Badge>
+                                    <Icon
+                                        size={30}
+                                        name="phone"
+                                        style={{
+                                        paddingLeft: 10,
+                                        paddingRight: 10,
+                                        marginTop: 10
+                                    }}/>
+                                    <Input
+                                        style={textInput}
+                                        placeholder="XXX-XXX-XXXX"
+                                        keyboardType='numeric'
+                                        key={this.state.selectedArray[data]}
+                                        onChangeText={this.handleInputChange(`myNumber${this.state.selectedArray[data]}`)}
+                                        value={this.state.myNumber}
+                                        maxLength={10}/>
+                                </View>
+                            )
+                        })}
 
                     {/* Recent Activity */}
                     <View style={[paddIt, splitButton]}>
