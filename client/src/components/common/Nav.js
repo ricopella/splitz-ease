@@ -15,7 +15,7 @@ class Nav extends Component {
         return (
             <Footer>
                 <FooterTab>
-                    <Button onPress={Actions.scanReciept} vertical active>
+                    <Button onPress={Actions.home} vertical active>
                         <Icon name="home"/>
                         <Text>Home</Text>
                     </Button>
@@ -23,14 +23,14 @@ class Nav extends Component {
                         <Icon name="shuffle"/>
                         <Text>Split</Text>
                     </Button>
-                    <Button badge onPress={Actions.SplitEvenly} vertical>
+                    <Button badge onPress={Actions.home} vertical>
                         <Badge>
                             <Text>2</Text>
                         </Badge>
                         <Icon active name="list"/>
                         <Text>Requests</Text>
                     </Button>
-                    <Button onPress={Actions.splitEvenlyRequest} vertical>
+                    <Button onPress={Actions.settings} vertical>
                         <Icon name="person"/>
                         <Text>Settings</Text>
                     </Button>
