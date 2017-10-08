@@ -1,7 +1,19 @@
-import React, { Component } from 'react';
-import { StyleSheet, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native';
+import React, {Component} from 'react';
+import {StyleSheet, TouchableNativeFeedback, TouchableOpacity, View} from 'react-native';
 
-import { Container, Header, Title, Content, Button, Left, Right, Body, Icon, Text, Badge } from 'native-base';
+import {
+    Container,
+    Header,
+    Title,
+    Content,
+    Button,
+    Left,
+    Right,
+    Body,
+    Icon,
+    Text,
+    Badge
+} from 'native-base';
 import Nav from './../components/common/Nav';
 
 const styles = StyleSheet.create({
@@ -64,101 +76,65 @@ class ConfirmItems extends Component {
             splitButton
         } = styles;
 
-
         return (
 
             <Container>
                 <Header>
                     <Left>
                         <Button transparent>
-                            <Icon name='menu' />
+                            <Icon name='menu'/>
                         </Button>
                     </Left>
                     <Body>
                         <View>
                             <Title>Confirm Details</Title>
                         </View>
-                        
+
                     </Body>
-                    <Right />
+                    <Right/>
                 </Header>
                 <Content>
                     {/* Sub heading */}
-                    <View style={[{flex: 1,justifyContent: "center", alignItems: "center"}, paddIt]}>
+                    <View
+                        style={[
+                        {
+                            flex: 1,
+                            justifyContent: "center",
+                            alignItems: "center"
+                        },
+                        paddIt
+                    ]}>
                         <View>
                             <Text style={lightHeaderText}>Do these prices look right?</Text>
                         </View>
                     </View>
                     {/* Recent Activity */}
-                    <View style={[{ flex: 1, flexDirection: 'row' }, itemPadding]}>
-                        <View>
-                            <Text style={itemText}>Levian Bread</Text>
-                        </View>
-                        <View style={alignRight}>
-                            <Text style={itemPrice}>4.00</Text>
-                        </View>
-                    </View>
-                    <View style={[{ flex: 1, flexDirection: 'row' }, itemPadding]}>
-                        <View>
-                            <Text style={itemText}>Doughnuts</Text>
-                        </View>
-                        <View style={alignRight}>
-                            <Text style={itemPrice}>8.00</Text>
-                        </View>
-                    </View>
-                    <View style={[{ flex: 1, flexDirection: 'row' }, itemPadding]}>
-                        <View>
-                            <Text style={itemText}>Lasagne</Text>
-                        </View>
-                        <View style={alignRight}>
-                            <Text style={itemPrice}>14.00</Text>
-                        </View>
-                    </View>
-                    <View style={[{ flex: 1, flexDirection: 'row' }, itemPadding]}>
-                        <View>
-                            <Text style={itemText}>Bread Pudding</Text>
-                        </View>
-                        <View style={alignRight}>
-                            <Text style={itemPrice}>9.00</Text>
-                        </View>
-                    </View>
-                    <View style={[{ flex: 1, flexDirection: 'row' }, itemPadding]}>
-                        <View>
-                            <Text style={itemText}>Tax</Text>
-                        </View>
-                        <View style={alignRight}>
-                            <Text style={itemPrice}>3.33</Text>
-                        </View>
-                    </View>
-                    <View style={[{ flex: 1, flexDirection: 'row' }, itemPadding]}>
-                        <View>
-                            <Text style={itemText}>Total</Text>
-                        </View>
-                        <View style={alignRight}>
-                            <Text style={itemPrice}>38.38</Text>
-                        </View>
-                    </View>
-                    <View style={[paddIt, splitButton]}>
-                        <Button success><Text style={itemText}> Splitz These </Text></Button>
-                    </View>
-                    {/* <View>
-                        <Camera ref={(cam) => { this.camera = cam; }} style={styles.preview} aspect={Camera.constants.Aspect.fill}>
-                            <Text onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
-                        </Camera>
-                    </View> */}
+
+                    {this
+                        .props
+                        .ocrResult
+                        .map((val) => (
+                            <View
+                                style={[
+                                {
+                                    flex: 1,
+                                    flexDirection: 'row'
+                                },
+                                itemPadding
+                            ]}>
+                                <View>
+                                    <Text key={val} style={itemText}>{val[0]}</Text>
+                                </View>
+                                <View style={alignRight}>
+                                    <Text >{val[1]}</Text>
+                                </View>
+                            </View>
+                        ))}
                 </Content>
-                {/* <Nav /> */}
-                <Nav />
+                <Nav/>
             </Container>
         );
     }
-    /* takePicture() {
-        const options = {};
-        //options.location = ...
-        this.camera.capture({ metadata: options })
-            .then((data) => console.log(data))
-            .catch(err => console.error(err));
-    } */
 }
 
 export default ConfirmItems;

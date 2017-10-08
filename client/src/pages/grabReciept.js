@@ -14,6 +14,7 @@ import firebase from 'firebase';
 import RNTesseractOcr from 'react-native-tesseract-ocr';
 import {Header, Nav} from '../components/common';
 import Camera from 'react-native-camera';
+import {Actions} from 'react-native-router-flux';
 
 var Button = (Platform.OS === 'android')
     ? TouchableNativeFeedback
@@ -109,13 +110,36 @@ class grabReciept extends Component {
                 RNTesseractOcr
                     .startOcr(response.path, "LANG_ENGLISH")
                     .then((result) => {
+
+                        const regex = /\d+.?\d*$/; //regex matching decimal value at end of line
+                        let newResult = result;
+                        console.log(newResult);
+
+                        return newResult
+                            .replace(/[|'"]+/g, '')
+                            .split('\n')
+                            .map(line => {
+                                line = line.trim(); //trim whitespace
+                                let index = line.search(regex); //returns index of beginning of match
+                                return [
+                                    line
+                                        .substring(0, index)
+                                        .trim(),
+                                    line
+                                        .substring(index)
+                                        .trim()
+                                ]; //return array of two trimmed strings
+                            });
+
+                    })
+                    .then((result) => {
                         this.setState({ocrResult: result});
-                        console.log("OCR Result: ", result);
+                        Actions.ConfirmItemDetails({ocrResult: result});
                     })
                     .catch((err) => {
                         console.log("OCR Error: ", err);
                     })
-                    .done();
+                    .done(console.log("done!"));
             }
         });
     }
