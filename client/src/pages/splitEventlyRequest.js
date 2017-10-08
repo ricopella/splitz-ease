@@ -20,17 +20,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Nav from './../components/common/Nav';
 
 const styles = StyleSheet.create({
-    actionButtons: {
-        width: 140,
-        alignItems: 'center'
-    },
-    alignRight: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        paddingRight: 20
-    },
     paddIt: {
         padding: 20
         // paddingLeft: 30
