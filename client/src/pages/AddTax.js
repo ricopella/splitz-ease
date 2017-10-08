@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Image, Platform, PixelRatio, StyleSheet, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native';
-import { Root, Container, Header, Title, Content, FooterTab, Button, Left, Right, Body, Icon, Text, Badge, Thumbnail, ActionSheet, List, ListItem, Radio, Item, Label, Input } from 'native-base';
-import Camera from 'react-native-camera';
+import { Image, StyleSheet, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native';
+import { Container, Header, Title, Content, Button, Left, Right, Body, Icon, Text, Radio, Item, Input } from 'native-base';
 import Nav from './../components/common/Nav';
 
 const styles = StyleSheet.create({
@@ -79,8 +78,6 @@ const styles = StyleSheet.create({
 });
 
 class AddTax extends Component {
-
-
     // .then(response => this.setState({ albums: response.data }));
     constructor(props) {
         super(props);

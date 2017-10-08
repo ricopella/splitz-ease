@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Image, Platform, PixelRatio, StyleSheet, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native';
-import { Root, Container, Header, Title, Content, FooterTab, Button, Left, Right, Body, Icon, Text, Badge, Thumbnail, ActionSheet } from 'native-base';
+import { StyleSheet, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native';
+import { Root, Container, Header, Title, Content, Button, Left, Right, Body, Icon, Text, ActionSheet } from 'native-base';
 import Camera from 'react-native-camera';
 import Nav from './../components/common/Nav';
 

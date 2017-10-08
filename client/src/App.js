@@ -11,7 +11,7 @@ import AddTax from './pages/AddTax';
 
 class App extends Component {
     render() {
-        return (<AddTax/>)
+        return (<Settings/>)
     }
 }
 

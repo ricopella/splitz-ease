@@ -1,20 +1,10 @@
 import React, { Component } from 'react';
-import { Image, Platform, PixelRatio, StyleSheet, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native';
 
-import { Container, Header, Title, Content, FooterTab, Button, Left, Right, Body, Icon, Text, Badge, Thumbnail } from 'native-base';
-import Camera from 'react-native-camera';
+import { Container, Header, Title, Content, Button, Left, Right, Body, Icon, Text, Badge } from 'native-base';
 import Nav from './../components/common/Nav';
 
 const styles = StyleSheet.create({
-    actionButtons: {
-        width: 140,
-        alignItems: 'center'
-    },
-    currentBalanceAmount: {
-        fontWeight: '800',
-        fontSize: 40,
-        color: '#8FC2C3'
-    },
     currentBalanceText: {
         fontWeight: '100',
         fontSize: 22,
@@ -27,29 +17,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingRight: 20
     },
-    paymentHeader: {
-        fontWeight: '800',
-        fontSize: 25,
-        color: '#626262'
-    },
-    negativePayment: {
-        fontWeight: '300',
-        fontSize: 22,
-        color: '#FF8989',
-        alignSelf: 'flex-end'
-    },
-    positivePayment: {
-        fontWeight: '300',
-        fontSize: 22,
-        color: '#70CB9D',
-        alignSelf: 'flex-end'
-    },
-    friendImage: {
-        paddingRight: 20
-    },
     paddIt: {
         padding: 20
-        // paddingLeft: 30
     },
     lightHeaderText: {
         color: '#5E5E5E',
@@ -86,15 +55,8 @@ class ConfirmItems extends Component {
     render() {
 
         const {
-            actionButtons,
-            currentBalanceAmount,
-            currentBalanceText,
-            paymentHeader,
-            negativePayment,
-            friendImage,
             paddIt,
             alignRight,
-            positivePayment,
             lightHeaderText,
             itemText,
             itemPrice,

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Image, Platform, PixelRatio, StyleSheet, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native';
-
-import { Container, Header, Title, Content, FooterTab, Button, Left, Right, Body, Icon, Text, Badge, Thumbnail } from 'native-base';
-import Camera from 'react-native-camera';
+import { Image, StyleSheet, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native';
+import { Container, Header, Title, Content, Button, Left, Right, Body, Icon, Text, Badge, Thumbnail } from 'native-base';
 import Nav from './../components/common/Nav';
 
 const styles = StyleSheet.create({
@@ -49,7 +47,6 @@ const styles = StyleSheet.create({
     },
     paddIt: {
         padding: 20
-        // paddingLeft: 30
     }
 });
 
@@ -63,7 +60,6 @@ class home extends Component {
     }
 
     render() {
-
         const {
             actionButtons,
             currentBalanceAmount,
@@ -76,9 +72,7 @@ class home extends Component {
             positivePayment
         } = styles;
 
-
         return (
-
             <Container>
                 <Header>
                     <Left>
@@ -124,11 +118,11 @@ class home extends Component {
                     </View>
                     <View style={[{ flex: 1, flexDirection: 'row' }, paddIt]}>
                         <View style={friendImage}>
-                            <Thumbnail source={require('./../../public/assets/images/emily.jpeg')} />
+                            <Thumbnail source={require('./../../public/assets/images/connor.jpeg')} />
                         </View>
                         <View>
                             <Text>
-                                <Text style={paymentHeader}>Paid Emily{"\n"}</Text>
+                                <Text style={paymentHeader}>Connor Paid{"\n"}</Text>
                                 <Text>2 days ago</Text>
                             </Text>
                         </View>
@@ -136,13 +130,7 @@ class home extends Component {
                             <Text style={positivePayment}>13.32</Text>
                         </View>
                     </View>
-                   
-
-                    {/* <View>
-                        <Camera ref={(cam) => { this.camera = cam; }} style={styles.preview} aspect={Camera.constants.Aspect.fill}>
-                            <Text onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
-                        </Camera>
-                    </View> */}
+                
                 </Content>
                 {/* <Nav /> */}
                 <Nav />
