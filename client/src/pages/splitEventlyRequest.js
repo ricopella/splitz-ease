@@ -75,14 +75,7 @@ class SplitEvenlyRequest extends Component {
             myNumber7: '',
             myNumber8: '',
             myNumber9: '',
-            selectedArray: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5
-            ]
+            selectedArray: []
         };
     }
 
@@ -112,10 +105,15 @@ class SplitEvenlyRequest extends Component {
             this.setState({[state]: newText});
         }
     }
-    // componentWillMount() {     console.log(parseInt(this.props.selected)); const
-    // selectedLength = new Array(parseInt(this.props.selected));
-    // console.log(selectedLength);     this.setState({selectedArray:
-    // selectedLength});     console.log(this.state.selectedArray); }
+    componentWillMount() {
+        const selected = this.props.selected;
+        let newArr = [];
+
+        for (let i = 0; i < selected; i++) {
+            newArr.push(i);
+        }
+        this.setState({selectedArray: newArr});
+    }
 
     render() {
 
