@@ -5,17 +5,11 @@ import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import Router from './Router';
+import config from './utils/firebaseConfig'
 
 class App extends Component {
     componentWillMount() {
-        const config = {
-            apiKey: "AIzaSyCChQI4JivNOHkakjY0Yx1R9CziFJh_9cg",
-            authDomain: "splitz-ease.firebaseapp.com",
-            databaseURL: "https://splitz-ease.firebaseio.com",
-            projectId: "splitz-ease",
-            storageBucket: "",
-            messagingSenderId: "348025455260"
-        };
+
         firebase.initializeApp(config);
     }
 
