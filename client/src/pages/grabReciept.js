@@ -64,7 +64,8 @@ class grabReciept extends Component {
         super(props, context);
         this.state = {
             imgSource: null,
-            ocrResult: null
+            ocrResult: null,
+            total: 0
         };
     }
 
@@ -125,16 +126,14 @@ class grabReciept extends Component {
                                     line
                                         .substring(0, index)
                                         .trim(),
-                                    line
-                                        .substring(index)
-                                        .trim()
+                                    parseFloat(line.substring(index).trim())
                                 ]; //return array of two trimmed strings
                             });
 
                     })
                     .then((result) => {
                         this.setState({ocrResult: result});
-                        Actions.ConfirmItemDetails({ocrResult: result});
+                        Actions.ConfirmItemDetails({ocrResult: result, total: 0});
                     })
                     .catch((err) => {
                         console.log("OCR Error: ", err);

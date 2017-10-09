@@ -15,16 +15,6 @@ const RouterComponent = () => {
     return (
         <Router>
             <Stack key="root" hideNavBar={true}>
-                <Scene key="auth">
-                    <Scene
-                        key="loginPage"
-                        component={LoginForm}
-                        hideNavBar={true}
-                        navigationBarStyle={{
-                        backgroundColor: 'transparent',
-                        marginTop: 8
-                    }}/>
-                </Scene>
 
                 <Scene key="main">
 
@@ -35,11 +25,28 @@ const RouterComponent = () => {
                         title="Grab Reciept"
                         onRight={() => firebase.auth().signOut().then(Actions.loginPage())}
                         rightTitle="Sign Out"/>
-                    <Scene key="ConfirmItemDetails" component={ConfirmItemDetails}/>
-                    <Scene key="SplitEvenly" component={SplitEvenly}/>
-                    <Scene key="CategorizeItems" component={CategorizeItems}/>
-                    <Scene key="AddTip" component={AddTax}/>
-                    <Scene key="splitEvenlyRequest" component={SplitEvenlyRequest}/>
+                    <Scene
+                        key="ConfirmItemDetails"
+                        component={ConfirmItemDetails}
+                        hideNavBar={true}/>
+                    <Scene key="SplitEvenly" component={SplitEvenly} hideNavBar={true}/>
+                    <Scene key="CategorizeItems" component={CategorizeItems} hideNavBar={true}/>
+                    <Scene key="AddTip" component={AddTax} hideNavBar={true}/>
+                    <Scene
+                        key="splitEvenlyRequest"
+                        component={SplitEvenlyRequest}
+                        hideNavBar={true}/>
+                </Scene>
+
+                <Scene key="auth">
+                    <Scene
+                        key="loginPage"
+                        component={LoginForm}
+                        hideNavBar={true}
+                        navigationBarStyle={{
+                        backgroundColor: 'transparent',
+                        marginTop: 8
+                    }}/>
                 </Scene>
 
                 <Scene key="settings" component={settings}/>

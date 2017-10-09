@@ -15,6 +15,7 @@ import {
     Badge
 } from 'native-base';
 import Nav from './../components/common/Nav';
+import {Actions} from 'react-native-router-flux';
 
 const styles = StyleSheet.create({
     currentBalanceText: {
@@ -60,8 +61,33 @@ class ConfirmItems extends Component {
         super(props, context);
         this.state = {
             imgSource: null,
-            ocrResult: null
+            ocrResult: null,
+            total: undefined,
+            tax: undefined
         };
+    }
+
+    componentWillMount() {
+        this.generateTotal();
+    }
+    generateTotal() {
+        let totalAmount = 0;
+        for (let i = 0; i < this.props.ocrResult.length; i++) {
+            totalAmount += this.props.ocrResult[i][1];
+        }
+        console.log(totalAmount);
+
+        let taxAmount = (totalAmount * .095).toFixed(2);
+
+        totalAmount = parseFloat(totalAmount + taxAmount);
+
+        this.setState({total: totalAmount, tax: parseFloat(taxAmount)});
+        return totalAmount,
+        taxAmount;
+    }
+
+    goToNextPage() {
+        Actions.SplitEvenly({ocrResult: this.props.ocrResult, total: this.state.total, tax: this.state.tax});
     }
 
     render() {
@@ -126,10 +152,52 @@ class ConfirmItems extends Component {
                                     <Text key={val} style={itemText}>{val[0]}</Text>
                                 </View>
                                 <View style={alignRight}>
-                                    <Text >{val[1]}</Text>
+                                    <Text>{val[1]}</Text>
                                 </View>
                             </View>
                         ))}
+
+                    <View
+                        style={[
+                        {
+                            flex: 1,
+                            flexDirection: 'row'
+                        },
+                        itemPadding
+                    ]}>
+                        <View>
+                            <Text style={itemText}>Tax</Text>
+                        </View>
+                        <View style={alignRight}>
+                            <Text style={itemPrice}>{this.state.tax}</Text>
+                        </View>
+                    </View>
+                    <View
+                        style={[
+                        {
+                            flex: 1,
+                            flexDirection: 'row'
+                        },
+                        itemPadding
+                    ]}>
+                        <View>
+                            <Text style={itemText}>Total</Text>
+                        </View>
+                        <View style={alignRight}>
+                            <Text style={itemPrice}>{this.state.total}</Text>
+                        </View>
+                    </View>
+                    <View style={[paddIt, splitButton]}>
+                        <Button
+                            success
+                            onPress={this
+                            .goToNextPage
+                            .bind(this)}>
+                            <Text style={itemText}>
+                                Splitz These
+                            </Text>
+                        </Button>
+                    </View>
                 </Content>
                 <Nav/>
             </Container>

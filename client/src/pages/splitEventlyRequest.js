@@ -94,7 +94,9 @@ class SplitEvenlyRequest extends Component {
             this.setState({[state]: newText});
         }
     }
+
     componentWillMount() {
+        console.log(this.props);
         const selected = this.props.selected;
         let newArr = [];
 
