@@ -141,6 +141,7 @@ class ConfirmItems extends Component {
                         .ocrResult
                         .map((val) => (
                             <View
+                                key={val}
                                 style={[
                                 {
                                     flex: 1,
