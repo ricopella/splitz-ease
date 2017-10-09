@@ -121,7 +121,12 @@ class SplitEvenly extends Component {
         this.setState({selected: value});
     }
     onButtonPress() {
-        Actions.splitEvenlyRequest({selected: this.state.selected, ocrResults: this.props.ocrResult, tax: this.props.tax, total: this.props.total});
+        Actions.splitEvenlyRequest({
+            selected: parseFloat(this.state.selected),
+            ocrResults: this.props.ocrResult,
+            tax: this.props.tax,
+            total: this.props.total
+        });
     }
 
     render() {
