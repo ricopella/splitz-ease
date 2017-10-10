@@ -23,7 +23,7 @@ class Nav extends Component {
                         <Icon name="shuffle"/>
                         <Text>Split</Text>
                     </Button>
-                    <Button badge onPress={Actions.home} vertical>
+                    <Button badge onPress={Actions.request} vertical>
                         <Badge>
                             <Text>2</Text>
                         </Badge>
