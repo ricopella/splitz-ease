@@ -110,23 +110,7 @@ class AddTax extends Component {
     }
 
     nextComponent() {
-        Actions.splitEvenlyRequest({
-            selected: this.props.selected,
-            ocrResults: this.props.ocrResult,
-            tax: this.props.tax,
-            total: this.props.total,
-            myNumber0: this.props.myNumber0,
-            myNumber1: this.props.myNumber1,
-            myNumber2: this.props.myNumber2,
-            myNumber3: this.props.myNumber3,
-            myNumber4: this.props.myNumber4,
-            myNumber5: this.props.myNumber5,
-            myNumber6: this.props.myNumber6,
-            myNumber7: this.props.myNumber7,
-            myNumber8: this.props.myNumber8,
-            myNumber9: this.props.myNumber9,
-            tipAmount: this.state.tipAmount
-        })
+        Actions.splitEvenlyRequest({selected: this.props.selected, ocrResult: this.props.ocrResult, tax: this.props.tax, total: this.props.total, tipAmount: this.state.tipAmount})
     }
 
     render() {

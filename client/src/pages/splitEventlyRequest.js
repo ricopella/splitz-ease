@@ -74,9 +74,9 @@ class SplitEvenlyRequest extends Component {
             imgSource: null,
             ocrResult: null,
             myNumber: Array(this.props.selected).fill(''),
-            tipPer: 0,
-            tip: 0,
-            perPerson: 0
+            tipPer: null,
+            tip: null,
+            perPerson: null
         };
     }
 
@@ -84,46 +84,46 @@ class SplitEvenlyRequest extends Component {
     // newText = '';     let numbers = '0123456789';     for (var i = 0; i <
     // text.length; i++) {         if (numbers.indexOf(text[i]) > -1) { newText =
     // newText + text[i];         } else { // your call back function alert("please
-    // enter numbers only");         } this.setState({[myNumber]: newText});     } }
-
-    // TODO VENMO
-    // https://venmo.com/?txn=pay&audience=private&recipients=1234567890&amount=10&n
-    // o te=dinner
+    // enter numbers only");         } this.setState({[myNumber]: newText});     }
+    // }
 
     componentWillMount() {
         let tip = 0;
         let tipPer = 0;
+        let perPerson = 0;
         if (this.props.tipAmount.tenPercent) {
             tip = (this.props.total * .10).toFixed(2);
             tipPer = (this.props.selected / tip).toFixed(2);
-            this.setState({tipPer: tipPer, totalTip: tip})
+            this.setState({tipPer: tipPer, perPerson: tip})
+            perPerson = ((this.props.total + parseFloat(tip)) / this.props.selected).toFixed(2)
+            this.setState({perPerson: perPerson});
         } else if (this.props.tipAmount.fifteenPercent) {
             tip = (this.props.total * .15).toFixed(2);
-            console.log("TIP: ", tip);
             tipPer = (this.props.selected / tip).toFixed(2);
-            console.log("TIP PER: ", tipPer);
-            this.setState({tipPer: tipPer, totalTip: tip})
+            this.setState({tipPer: tipPer, perPerson: tip})
+            perPerson = ((this.props.total + parseFloat(tip)) / this.props.selected).toFixed(2)
+            this.setState({perPerson: perPerson});
         } else if (this.props.tipAmount.twentyPercent) {
             tip = (this.props.total * .20).toFixed(2);
             tipPer = (this.props.selected / tip).toFixed(2);
-            this.setState({tipPer: tipPer, totalTip: tip})
+            this.setState({tipPer: tipPer, perPerson: tip});
+            perPerson = ((this.props.total + parseFloat(tip)) / this.props.selected).toFixed(2)
+            this.setState({perPerson: perPerson});
         }
-        let perPerson = (this.state.total + tip) / this.props.selected
-        this.setState({perPerson: perPerson});
-
     }
 
     nextComponent() {
 
         Communications.web(`https://venmo.com/?txn=charge&amount=${this.state.perPerson}&note=for+testing&recipients=${this.state.myNumber}`)
-        Actions.ThankYou();
-        // Actions.AddTip({     selected: this.props.selected,     ocrResults:
-        // this.props.ocrResult,     tax: this.props.tax,     total: this.props.total,
-        // myNumber0: this.state.myNumber0,     myNumber1: this.state.myNumber1,
-        // myNumber2: this.state.myNumber2,     myNumber3: this.state.myNumber3,
-        // myNumber4: this.state.myNumber4,     myNumber5: this.state.myNumber5,
-        // myNumber6: this.state.myNumber6,     myNumber7: this.state.myNumber7,
-        // myNumber8: this.state.myNumber8,     myNumber9: this.state.myNumber9 })
+        Actions.ThankYou({
+            ocrResult: this.props.ocrResult,
+            tax: this.props.tax,
+            total: this.props.total,
+            myNumber: this.state.myNumber,
+            tipPer: this.state.tipPer,
+            tip: this.state.tip,
+            perPerson: this.state.perPerson
+        });
     }
 
     handleInputChange(i, value) {
