@@ -101,12 +101,20 @@ class AddTax extends Component {
                 tenPercent: false,
                 fifteenPercent: false,
                 twentyPercent: false
-            }
+            },
+            tipTen: null,
+            tipFifteen: null,
+            tipTwenty: null
         }
     }
     componentWillMount() {
         console.log("mounting comp");
         console.log(this.props)
+
+        let tipTen = (this.props.total * .10).toFixed(2);
+        let tipFifteen = (this.props.total * .15).toFixed(2);
+        let tipTwenty = (this.props.total * .20).toFixed(2);
+        this.setState({tipTen: tipTen, tipFifteen: tipFifteen, tipTwenty: tipTwenty});
     }
 
     nextComponent() {
@@ -184,7 +192,7 @@ class AddTax extends Component {
                                 </Text>
                             </View>
                             <View style={alignRight}>
-                                <Text style={itemText}>$3.68</Text>
+                                <Text style={itemText}>${this.state.tipTen}</Text>
                             </View>
                         </View>
                         <View
@@ -214,7 +222,7 @@ class AddTax extends Component {
                                 </Text>
                             </View>
                             <View style={alignRight}>
-                                <Text style={itemText}>$3.68</Text>
+                                <Text style={itemText}>${this.state.tipFifteen}</Text>
                             </View>
                         </View>
                         <View
@@ -244,46 +252,7 @@ class AddTax extends Component {
                                 </Text>
                             </View>
                             <View style={alignRight}>
-                                <Text style={itemText}>$3.68</Text>
-                            </View>
-                        </View>
-                        <View
-                            style={[
-                            {
-                                flex: 1,
-                                flexDirection: 'row'
-                            },
-                            paddIt
-                        ]}>
-                            <View style={radioStyle}>
-                                <Radio
-                                    selected={this.state.tipAmount.customAmount}
-                                    style={{
-                                    padding: 10
-                                }}
-                                    onPress={() => this.setState({
-                                    tipAmount: {
-                                        customAmount: !this.state.tipAmount.customAmount
-                                    }
-                                })}/>
-                            </View>
-                            <View>
-                                <Text >
-                                    <Text style={itemText}>Custom Tip{'\n'}</Text>
-                                    <Text>Enter Dollar Amount</Text>
-                                </Text>
-                            </View>
-                            <View style={alignRight}>
-                                <Item
-                                    style={{
-                                    width: 70
-                                }}>
-                                    {/* <Label>Username</Label> */}
-                                    <Input
-                                        style={{
-                                        fontSize: 22
-                                    }}/>
-                                </Item>
+                                <Text style={itemText}>${this.state.tipTwenty}</Text>
                             </View>
                         </View>
 
