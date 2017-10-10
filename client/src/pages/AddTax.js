@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Image, StyleSheet, TouchableNativeFeedback, TouchableOpacity, View} from 'react-native';
+import React, { Component } from 'react';
+import { Image, StyleSheet, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native';
 import {
     Container,
     Header,
@@ -16,6 +16,7 @@ import {
     Input
 } from 'native-base';
 import Nav from './../components/common/Nav';
+import { Actions } from 'react-native-router-flux';
 
 const styles = StyleSheet.create({
     actionButtons: {
@@ -96,17 +97,38 @@ class AddTax extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            radioButtons: {
-                buttonOne: false,
-                buttonTwo: false,
-                buttonThree: false,
-                buttonFour: false
+            tipAmount: {
+                tenPercent: false,
+                fifteenPercent: false,
+                twentyPercent: false,
+                customAmount: false,
+                customValue: ''
             }
         }
     }
     componentWillMount() {
         console.log("mounting comp");
         console.log(this.props)
+    }
+
+    nextComponent() {
+        Actions.ThankYou({
+            selected: this.props.selected,
+            ocrResults: this.props.ocrResult,
+            tax: this.props.tax,
+            total: this.props.total,
+            myNumber0: this.props.myNumber0,
+            myNumber1: this.props.myNumber1,
+            myNumber2: this.props.myNumber2,
+            myNumber3: this.props.myNumber3,
+            myNumber4: this.props.myNumber4,
+            myNumber5: this.props.myNumber5,
+            myNumber6: this.props.myNumber6,
+            myNumber7: this.props.myNumber7,
+            myNumber8: this.props.myNumber8,
+            myNumber9: this.props.myNumber9,
+            tipAmount: this.state.tipAmount
+        })
     }
 
     render() {
@@ -126,7 +148,7 @@ class AddTax extends Component {
                 <Header>
                     <Left>
                         <Button transparent>
-                            <Icon name='menu'/>
+                            <Icon name='menu' />
                         </Button>
                     </Left>
                     <Body>
@@ -134,19 +156,19 @@ class AddTax extends Component {
                             <Title>Confirm Details</Title>
                         </View>
                     </Body>
-                    <Right/>
+                    <Right />
                 </Header>
                 <Content>
                     {/* Title */}
                     <View
                         style={[
-                        {
-                            flex: 1,
-                            justifyContent: "center",
-                            alignItems: "center"
-                        },
-                        paddIt
-                    ]}>
+                            {
+                                flex: 1,
+                                justifyContent: "center",
+                                alignItems: "center"
+                            },
+                            paddIt
+                        ]}>
                         {/* <View> */}
                         <Text style={lightHeaderText}>How much tip would you like to add?</Text>
                         {/* </View> */}
@@ -155,18 +177,19 @@ class AddTax extends Component {
                     <View>
                         <View
                             style={[
-                            {
-                                flex: 1,
-                                flexDirection: 'row'
-                            },
-                            paddIt
-                        ]}>
+                                {
+                                    flex: 1,
+                                    flexDirection: 'row'
+                                },
+                                paddIt
+                            ]}>
                             <View style={radioStyle}>
                                 <Radio
-                                    selected={false}
+                                selected={this.state.tipAmount.tenPercent}
+                                    onPress={() => this.setState({tipAmount: { tenPercent: !this.state.tipAmount.tenPercent}})}
                                     style={{
-                                    padding: 10
-                                }}/>
+                                        padding: 10
+                                    }} />
                             </View>
                             <View>
                                 <Text >
@@ -180,18 +203,19 @@ class AddTax extends Component {
                         </View>
                         <View
                             style={[
-                            {
-                                flex: 1,
-                                flexDirection: 'row'
-                            },
-                            paddIt
-                        ]}>
+                                {
+                                    flex: 1,
+                                    flexDirection: 'row'
+                                },
+                                paddIt
+                            ]}>
                             <View style={radioStyle}>
                                 <Radio
-                                    selected={false}
+                                selected={this.state.tipAmount.fifteenPercent}
+                                    onPress={() => this.setState({tipAmount: { fifteenPercent: !this.state.tipAmount.fifteenPercent}})}
                                     style={{
-                                    padding: 10
-                                }}/>
+                                        padding: 10
+                                    }} />
                             </View>
                             <View>
                                 <Text >
@@ -205,18 +229,19 @@ class AddTax extends Component {
                         </View>
                         <View
                             style={[
-                            {
-                                flex: 1,
-                                flexDirection: 'row'
-                            },
-                            paddIt
-                        ]}>
+                                {
+                                    flex: 1,
+                                    flexDirection: 'row'
+                                },
+                                paddIt
+                            ]}>
                             <View style={radioStyle}>
                                 <Radio
-                                    selected={false}
+                                    selected={this.state.tipAmount.twentyPercent}
+                                    onPress={() => this.setState({tipAmount: { twentyPercent: !this.state.tipAmount.twentyPercent}})}
                                     style={{
-                                    padding: 10
-                                }}/>
+                                        padding: 10
+                                    }} />
                             </View>
                             <View>
                                 <Text >
@@ -230,23 +255,19 @@ class AddTax extends Component {
                         </View>
                         <View
                             style={[
-                            {
-                                flex: 1,
-                                flexDirection: 'row'
-                            },
-                            paddIt
-                        ]}>
+                                {
+                                    flex: 1,
+                                    flexDirection: 'row'
+                                },
+                                paddIt
+                            ]}>
                             <View style={radioStyle}>
                                 <Radio
-                                    selected={this.state.radioButtons.buttonFour}
+                                    selected={this.state.tipAmount.customAmount}
                                     style={{
-                                    padding: 10
-                                }}
-                                    onPress={() => this.setState({
-                                    radioButtons: {
-                                        buttonFour: true
-                                    }
-                                })}/>
+                                        padding: 10
+                                    }}
+                                    onPress={() => this.setState({tipAmount: { customAmount: !this.state.tipAmount.customAmount}})} />
                             </View>
                             <View>
                                 <Text >
@@ -257,19 +278,24 @@ class AddTax extends Component {
                             <View style={alignRight}>
                                 <Item
                                     style={{
-                                    width: 70
-                                }}>
+                                        width: 70
+                                    }}>
                                     {/* <Label>Username</Label> */}
                                     <Input
-                                        style={{
-                                        fontSize: 22
-                                    }}/>
+                                   /* { onChangeText={this.setState({tipAmount: {customValue: this.state.tipAmount.customValue}})} }*/
+                                    style={{
+                                            fontSize: 22
+                                        }}/>
                                 </Item>
                             </View>
                         </View>
 
                         <View style={[paddIt, splitButton]}>
-                            <Button success>
+                        <Button
+                            success
+                            onPress={this
+                            .nextComponent
+                            .bind(this)}>
                                 <Text style={itemText}>
                                     Add Tip
                                 </Text>
@@ -278,7 +304,7 @@ class AddTax extends Component {
                     </View>
                 </Content>
                 {/* <Nav /> */}
-                <Nav/>
+                <Nav />
             </Container>
         );
     }

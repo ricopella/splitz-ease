@@ -33,14 +33,17 @@ const styles = StyleSheet.create({
     }
 });
 
-class ConfirmItems extends Component {
+class ThankYou extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
 
         };
     }
-
+    componentWillMount() {
+        console.log("mounting comp");
+        console.log(this.props)
+    }
 
     render() {
 
@@ -100,4 +103,4 @@ class ConfirmItems extends Component {
     }
 }
 
-export default ConfirmItems;
+export default ThankYou;
