@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { StyleSheet, TouchableNativeFeedback, TouchableOpacity, View, Image } from 'react-native';
+import React, {Component} from 'react';
+import {StyleSheet, TouchableNativeFeedback, TouchableOpacity, View, Image} from 'react-native';
 
 import {
     Container,
@@ -14,7 +14,7 @@ import {
     Text
 } from 'native-base';
 import Nav from './../components/common/Nav';
-import { Actions } from 'react-native-router-flux';
+import {Actions} from 'react-native-router-flux';
 
 const styles = StyleSheet.create({
     paddIt: {
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     successText: {
-        fontSize: 18, 
+        fontSize: 18,
         color: '#5E5E5E',
         textAlign: 'center'
     }
@@ -36,9 +36,7 @@ const styles = StyleSheet.create({
 class ThankYou extends Component {
     constructor(props, context) {
         super(props, context);
-        this.state = {
-
-        };
+        this.state = {};
     }
     componentWillMount() {
         console.log("mounting comp");
@@ -47,11 +45,7 @@ class ThankYou extends Component {
 
     render() {
 
-        const {
-            paddIt,
-            successText,
-            lightHeaderText
-        } = styles;
+        const {paddIt, successText, lightHeaderText} = styles;
 
         return (
 
@@ -59,7 +53,7 @@ class ThankYou extends Component {
                 <Header>
                     <Left>
                         <Button transparent>
-                            <Icon name='menu' />
+                            <Icon name='menu'/>
                         </Button>
                     </Left>
                     <Body>
@@ -67,40 +61,45 @@ class ThankYou extends Component {
                             <Title>Congrats!</Title>
                         </View>
                     </Body>
-                    <Right />
+                    <Right/>
                 </Header>
                 <Content>
                     {/* Sub heading */}
-                    <View style={{justifyContent: 'center',
-                            alignItems: 'center'}}>
-                        <Image style={{
+                    <View
+                        style={{
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <Image
+                            style={{
                             justifyContent: 'center',
                             alignItems: 'center',
                             marginTop: 80
-                        }} source={require('./../../public/assets/images/congrats.png')} />
+                        }}
+                            source={require('./../../public/assets/images/congrats.png')}/>
                     </View>
                     <View
                         style={[
-                            {
-                                flex: 1,
-                                justifyContent: "center",
-                                alignItems: "center"
-                            },
-                            paddIt
-                        ]}>
+                        {
+                            flex: 1,
+                            justifyContent: "center",
+                            alignItems: "center"
+                        },
+                        paddIt
+                    ]}>
                         <View>
                             <Text style={lightHeaderText}>You've Splitzeased!</Text>
                         </View>
                         <View style={paddIt}>
-                            <Text style={successText}>Your payment requests have successfully been sent to your friends. Thanks for using Splitsease!</Text>
+                            <Text style={successText}>Your payment requests have successfully been sent to
+                                your friends. Thanks for using Splitsease!</Text>
                         </View>
                     </View>
 
                 </Content>
-                <Nav />
+                <Nav/>
             </Container>
         );
     }
 }
-
 export default ThankYou;

@@ -9,7 +9,9 @@ import home from './pages/Home';
 import ConfirmItemDetails from './pages/ConfirmItems';
 import CategorizeItems from './pages/CategorizeItems';
 import AddTax from './pages/AddTax';
-import settings from './pages/Settings'
+import settings from './pages/Settings';
+import ThankYou from './pages/ThankYou';
+import request from './pages/Requests';
 
 const RouterComponent = () => {
     return (
@@ -29,14 +31,15 @@ const RouterComponent = () => {
                         key="ConfirmItemDetails"
                         component={ConfirmItemDetails}
                         hideNavBar={true}/>
+                    <Scene key="AddTip" component={AddTax} hideNavBar={true}/>
                     <Scene key="SplitEvenly" component={SplitEvenly} hideNavBar={true}/>
                     <Scene key="CategorizeItems" component={CategorizeItems} hideNavBar={true}/>
-                    <Scene key="AddTip" component={AddTax} hideNavBar={true}/>
                     <Scene
                         key="splitEvenlyRequest"
                         component={SplitEvenlyRequest}
                         hideNavBar={true}/>
                 </Scene>
+                <Scene key="ThankYou" component={ThankYou} hideNaveBar={true}/>
 
                 <Scene key="auth">
                     <Scene
@@ -48,7 +51,7 @@ const RouterComponent = () => {
                         marginTop: 8
                     }}/>
                 </Scene>
-
+                <Scene key="request" component={request}/>
                 <Scene key="settings" component={settings}/>
             </Stack>
         </Router>
