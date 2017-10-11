@@ -263,45 +263,6 @@ class AddTax extends Component {
                                 <Text style={itemText}>$3.68</Text>
                             </View>
                         </View>
-                        <View
-                            style={[
-                            {
-                                flex: 1,
-                                flexDirection: 'row'
-                            },
-                            paddIt
-                        ]}>
-                            <View style={radioStyle}>
-                                <Radio
-                                    selected={this.state.tipAmount.customAmount}
-                                    style={{
-                                    padding: 10
-                                }}
-                                    onPress={() => this.setState({
-                                    tipAmount: {
-                                        customAmount: !this.state.tipAmount.customAmount
-                                    }
-                                })}/>
-                            </View>
-                            <View>
-                                <Text >
-                                    <Text style={itemText}>Custom Tip{'\n'}</Text>
-                                    <Text>Enter Dollar Amount</Text>
-                                </Text>
-                            </View>
-                            <View style={alignRight}>
-                                <Item
-                                    style={{
-                                    width: 70
-                                }}>
-                                    {/* <Label>Username</Label> */}
-                                    <Input
-                                        style={{
-                                        fontSize: 22
-                                    }}/>
-                                </Item>
-                            </View>
-                        </View>
 
                         <View style={[paddIt, splitButton]}>
                             <Button

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     Image,
     Platform,
@@ -12,9 +12,25 @@ import {
 import ImagePicker from 'react-native-image-picker';
 import firebase from 'firebase';
 import RNTesseractOcr from 'react-native-tesseract-ocr';
-import {Header, Nav} from '../components/common';
+// import { Nav } from '../components/common';
 import Camera from 'react-native-camera';
-import {Actions} from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
+
+import {
+    Container,
+    Title,
+    Content,
+    Left,
+    Right,
+    Body,
+    Badge,
+    Thumbnail,
+    TextInput,
+    Input,
+    Spinner,
+    Header,
+    Icon
+} from 'native-base';
 
 var Button = (Platform.OS === 'android')
     ? TouchableNativeFeedback
@@ -23,32 +39,39 @@ var Button = (Platform.OS === 'android')
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#8FC2C3"
+        backgroundColor: 'white'
     },
     imgContainer: {
         borderColor: '#000000',
+        padding: 50,
         borderWidth: 1 / PixelRatio.get(),
         justifyContent: 'center',
         alignItems: 'center'
     },
     img: {
         borderRadius: 75,
+        padding: 60,
         width: 150,
         height: 150
     },
     bgImageContainer: {
-        paddingTop: 60,
-        width: 460,
-        height: 190,
-        opacity: .6
+        // width: 460,
+        // height: 190,
+        // opacity: .6
+    },
+    lightHeaderText: {
+        color: '#5E5E5E',
+        fontWeight: '100',
+        fontSize: 24,
+        textAlign: 'center'
     },
     backdropView: {
-        backgroundColor: 'rgba(0,0,0,0)'
+        // backgroundColor: 'rgba(0,0,0,0)'
     },
     backdropText: {
         fontSize: 30,
         textAlign: 'center',
-        backgroundColor: 'rgba(0,0,0,0)',
+        // backgroundColor: 'rgba(0,0,0,0)',
         fontWeight: '500'
     },
     imageWrapper: {
@@ -106,7 +129,7 @@ class grabReciept extends Component {
                     };
                 }
 
-                this.setState({imgSource: source});
+                this.setState({ imgSource: source });
 
                 RNTesseractOcr
                     .startOcr(response.path, "LANG_ENGLISH")
@@ -132,8 +155,8 @@ class grabReciept extends Component {
 
                     })
                     .then((result) => {
-                        this.setState({ocrResult: result});
-                        Actions.ConfirmItemDetails({ocrResult: result, total: 0});
+                        this.setState({ ocrResult: result });
+                        Actions.ConfirmItemDetails({ ocrResult: result, total: 0 });
                     })
                     .catch((err) => {
                         console.log("OCR Error: ", err);
@@ -152,12 +175,31 @@ class grabReciept extends Component {
             bgImageContainer,
             imageWrapper,
             backdropText,
-            backdropView
+            backdropView,
+            lightHeaderText
         } = styles;
         return (
             <View style={container}>
+                <Header>
+                    <Left>
+                        <Button transparent>
+                            <Icon name='navicon' size={28} color="#fff" />
+                        </Button>
+                    </Left>
+                    <Body>
+                        <View>
+                            <Title>Split Evenly</Title>
+                        </View>
+
+                    </Body>
+                    <Right />
+                </Header>
+
+                <View>
+                    <Text style={[lightHeaderText, { marginTop: 90 }]}>Select an image from your image library to get started.</Text>
+                </View>
                 <View style={imageWrapper}>
-                    <Image
+                    {/* <Image
                         style={bgImageContainer}
                         source={require('../../public/assets/images/creditcard.jpeg')}>
                         <View style={backdropView}>
@@ -168,28 +210,32 @@ class grabReciept extends Component {
                                 }
                             ]}>Ready to split?</Text>
                         </View>
-                    </Image>
+                    </Image> */}
 
                 </View>
-
-                {this.state.imgSource === null
-                    ? <Button
+                <View>
+                    {this.state.imgSource === null
+                        ? <Button
                             onPress={this
-                            .selectPhoto
-                            .bind(this)}>
+                                .selectPhoto
+                                .bind(this)}>
                             <View
                                 style={[
-                                img,
-                                imgContainer, {
-                                    marginBottom: 20,
-                                    marginLeft: 125
-                                }
-                            ]}>
-                                <Image style={img} source={require('../../public/assets/images/barcam.png')}/>
+                                    img,
+                                    imgContainer, {
+                                        marginBottom: 20,
+                                        marginLeft: 125
+                                    }
+                                ]}>
+                                <Image style={img} source={require('../../public/assets/images/barcam.png')} />
                             </View>
+
                         </Button>
-                    : <Text>OCR Result: {this.state.ocrResult}</Text>
-}
+                        : <Spinner color='blue' />
+                        // <Text>OCR Result: {this.state.ocrResult}</Text>
+                    }
+                </View>
+
             </View>
         );
     }
