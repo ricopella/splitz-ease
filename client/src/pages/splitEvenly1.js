@@ -125,7 +125,8 @@ class SplitEvenly extends Component {
             selected: parseFloat(this.state.selected),
             ocrResult: this.props.ocrResult,
             tax: this.props.tax,
-            total: this.props.total
+            total: this.props.total,
+            uid: this.props.uid
         });
     }
 

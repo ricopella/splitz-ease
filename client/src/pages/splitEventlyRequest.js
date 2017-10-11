@@ -77,7 +77,8 @@ class SplitEvenlyRequest extends Component {
             myNumber: Array(this.props.selected).fill(''),
             tipPer: null,
             tip: null,
-            perPerson: null
+            perPerson: null,
+            uid: this.props.uid
         };
     }
 
@@ -85,7 +86,8 @@ class SplitEvenlyRequest extends Component {
     // newText = '';     let numbers = '0123456789';     for (var i = 0; i <
     // text.length; i++) {         if (numbers.indexOf(text[i]) > -1) { newText =
     // newText + text[i];         } else { // your call back function alert("please
-    // enter numbers only");         } this.setState({[myNumber]: newText});     } }
+    // enter numbers only");         } this.setState({[myNumber]: newText});     }
+    // }
 
     componentWillMount() {
         let tip = 0;

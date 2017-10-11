@@ -69,6 +69,10 @@ class grabReciept extends Component {
         };
     }
 
+    componentWillMount() {
+        console.log(this.props);
+    }
+
     selectPhoto() {
         console.log("Reached me!");
         const options = {
@@ -133,7 +137,7 @@ class grabReciept extends Component {
                     })
                     .then((result) => {
                         this.setState({ocrResult: result});
-                        Actions.ConfirmItemDetails({ocrResult: result, total: 0});
+                        Actions.ConfirmItemDetails({ocrResult: result, total: 0, uid: this.props.uid});
                     })
                     .catch((err) => {
                         console.log("OCR Error: ", err);

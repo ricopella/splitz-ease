@@ -72,6 +72,10 @@ class home extends Component {
         };
     }
 
+    componentWillMount() {
+        console.log(this.props);
+    }
+
     render() {
         const {
             actionButtons,

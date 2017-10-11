@@ -39,5 +39,5 @@ const loginUserSuccess = (dispatch, user) => {
 
     console.log("USER INFO: ", user.uid);
 
-    Actions.main();
+    Actions.home({uid: user.uid});
 };

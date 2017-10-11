@@ -48,7 +48,7 @@ const RouterComponent = () => {
                         key="splitEvenlyRequest"
                         component={SplitEvenlyRequest}
                         hideNavBar={true}/>
-                    <Scene key="ThankYou" component={ThankYou} hideNaveBar={true}/>
+                    <Scene key="ThankYou" component={ThankYou} hideNavBar={true}/>
                     <Scene key="request" component={request}/>
                     <Scene key="settings" component={settings}/>
                 </Scene>

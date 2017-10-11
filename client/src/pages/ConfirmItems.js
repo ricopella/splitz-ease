@@ -68,6 +68,7 @@ class ConfirmItems extends Component {
     }
 
     componentWillMount() {
+        console.log(this.props);
         this.generateTotal();
     }
     generateTotal() {
@@ -87,7 +88,7 @@ class ConfirmItems extends Component {
     }
 
     goToNextPage() {
-        Actions.SplitEvenly({ocrResult: this.props.ocrResult, total: this.state.total, tax: this.state.tax});
+        Actions.SplitEvenly({ocrResult: this.props.ocrResult, total: this.state.total, tax: this.state.tax, uid: this.props.uid});
     }
 
     render() {
