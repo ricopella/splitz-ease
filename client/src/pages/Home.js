@@ -1,6 +1,19 @@
-import React, { Component } from 'react';
-import { Image, StyleSheet, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native';
-import { Container, Header, Title, Content, Button, Left, Right, Body, Icon, Text, Badge, Thumbnail } from 'native-base';
+import React, {Component} from 'react';
+import {Image, StyleSheet, TouchableNativeFeedback, TouchableOpacity, View} from 'react-native';
+import {
+    Container,
+    Header,
+    Title,
+    Content,
+    Button,
+    Left,
+    Right,
+    Body,
+    Icon,
+    Text,
+    Badge,
+    Thumbnail
+} from 'native-base';
 import Nav from './../components/common/Nav';
 
 const styles = StyleSheet.create({
@@ -77,17 +90,24 @@ class home extends Component {
                 <Header>
                     <Left>
                         <Button transparent>
-                            <Icon name='menu' />
+                            <Icon name='menu'/>
                         </Button>
                     </Left>
                     <Body>
                         <Title>Home</Title>
                     </Body>
-                    <Right />
+                    <Right/>
                 </Header>
                 <Content>
                     {/* Current Balance */}
-                    <View style={[{ flex: 1, flexDirection: 'row' }, paddIt]}>
+                    <View
+                        style={[
+                        {
+                            flex: 1,
+                            flexDirection: 'row'
+                        },
+                        paddIt
+                    ]}>
                         <View>
                             <Text style={currentBalanceText}>Current{'\n'}Balance</Text>
                         </View>
@@ -96,15 +116,39 @@ class home extends Component {
                         </View>
                     </View>
                     {/* Action buttons */}
-                    <View style={[{ flex: 1, flexDirection: 'row' }]}>
-                        <Button style={actionButtons} primary><Text> Pay </Text></Button>
-                        <Button style={actionButtons} success><Text> Request </Text></Button>
-                        <Button style={actionButtons} danger><Text> Transfer </Text></Button>
+                    <View
+                        style={[{
+                            flex: 1,
+                            flexDirection: 'row'
+                        }
+                    ]}>
+                        <Button style={actionButtons} primary>
+                            <Text>
+                                Pay
+                            </Text>
+                        </Button>
+                        <Button style={actionButtons} success>
+                            <Text>
+                                Request
+                            </Text>
+                        </Button>
+                        <Button style={actionButtons} danger>
+                            <Text>
+                                Transfer
+                            </Text>
+                        </Button>
                     </View>
                     {/* Recent Activity */}
-                    <View style={[{ flex: 1, flexDirection: 'row' }, paddIt]}>
+                    <View
+                        style={[
+                        {
+                            flex: 1,
+                            flexDirection: 'row'
+                        },
+                        paddIt
+                    ]}>
                         <View style={friendImage}>
-                            <Thumbnail source={require('./../../public/assets/images/emily.jpeg')} />
+                            <Thumbnail source={require('./../../public/assets/images/emily.jpeg')}/>
                         </View>
                         <View>
                             <Text>
@@ -116,9 +160,16 @@ class home extends Component {
                             <Text style={negativePayment}>-23.45</Text>
                         </View>
                     </View>
-                    <View style={[{ flex: 1, flexDirection: 'row' }, paddIt]}>
+                    <View
+                        style={[
+                        {
+                            flex: 1,
+                            flexDirection: 'row'
+                        },
+                        paddIt
+                    ]}>
                         <View style={friendImage}>
-                            <Thumbnail source={require('./../../public/assets/images/connor.jpeg')} />
+                            <Thumbnail source={require('./../../public/assets/images/connor.jpeg')}/>
                         </View>
                         <View>
                             <Text>
@@ -130,20 +181,13 @@ class home extends Component {
                             <Text style={positivePayment}>13.32</Text>
                         </View>
                     </View>
-                
+
                 </Content>
                 {/* <Nav /> */}
-                <Nav />
+                <Nav/>
             </Container>
         );
     }
-    /* takePicture() {
-        const options = {};
-        //options.location = ...
-        this.camera.capture({ metadata: options })
-            .then((data) => console.log(data))
-            .catch(err => console.error(err));
-    } */
 }
 
 export default home;

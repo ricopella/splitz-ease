@@ -18,6 +18,16 @@ const RouterComponent = () => {
         <Router>
             <Stack key="root" hideNavBar={true}>
 
+                <Scene key="auth">
+                    <Scene
+                        key="loginPage"
+                        component={LoginForm}
+                        hideNavBar={true}
+                        navigationBarStyle={{
+                        backgroundColor: 'transparent',
+                        marginTop: 8
+                    }}/>
+                </Scene>
                 <Scene key="main">
 
                     <Scene key="home" component={home} hideNavBar={true}/>
@@ -38,21 +48,11 @@ const RouterComponent = () => {
                         key="splitEvenlyRequest"
                         component={SplitEvenlyRequest}
                         hideNavBar={true}/>
+                    <Scene key="ThankYou" component={ThankYou} hideNaveBar={true}/>
+                    <Scene key="request" component={request}/>
+                    <Scene key="settings" component={settings}/>
                 </Scene>
-                <Scene key="ThankYou" component={ThankYou} hideNaveBar={true}/>
 
-                <Scene key="auth">
-                    <Scene
-                        key="loginPage"
-                        component={LoginForm}
-                        hideNavBar={true}
-                        navigationBarStyle={{
-                        backgroundColor: 'transparent',
-                        marginTop: 8
-                    }}/>
-                </Scene>
-                <Scene key="request" component={request}/>
-                <Scene key="settings" component={settings}/>
             </Stack>
         </Router>
     )

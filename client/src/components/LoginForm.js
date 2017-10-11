@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {emailChanged, passwordChanged, loginUser} from '../actions';
 import {Button, Card, CardSection, Input, Spinner} from './common';
 import {Banner} from "./WelcomeBanner";
+import {Actions} from 'react-native-router-flux';
 
 const styles = {
     containerStyle: {
@@ -51,6 +52,7 @@ class LoginForm extends Component {
         this
             .props
             .loginUser({email, password});
+
     }
 
     onLoginFail() {
