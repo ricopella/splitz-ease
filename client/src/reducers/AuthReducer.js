@@ -27,6 +27,7 @@ export default(state = INITIAL_STATE, action) => {
                 error: ''
             };
         case LOGIN_USER_SUCCESS:
+            console.log("Login Success!", action.payload.uid);
             return {
                 ...state,
                 ...INITIAL_STATE,

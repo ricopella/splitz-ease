@@ -15,6 +15,7 @@ import RNTesseractOcr from 'react-native-tesseract-ocr';
 import {Header, Nav} from '../components/common';
 import Camera from 'react-native-camera';
 import {Actions} from 'react-native-router-flux';
+import {connect} from 'react-redux';
 
 var Button = (Platform.OS === 'android')
     ? TouchableNativeFeedback
@@ -65,12 +66,13 @@ class grabReciept extends Component {
         this.state = {
             imgSource: null,
             ocrResult: null,
-            total: 0
+            total: 0,
+            uid: this.props.uid
         };
     }
 
     componentWillMount() {
-        console.log(this.props);
+        console.log("This User:", this.props.user.uid);
     }
 
     selectPhoto() {
@@ -199,4 +201,10 @@ class grabReciept extends Component {
     }
 }
 
-export default grabReciept;
+const mapStateToProps = ({auth}) => {
+    const {user} = auth;
+
+    return {user};
+};
+
+export default connect(mapStateToProps)(grabReciept);
