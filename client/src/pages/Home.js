@@ -14,7 +14,9 @@ import {
     Badge,
     Thumbnail
 } from 'native-base';
+import axios from 'axios';
 import Nav from './../components/common/Nav';
+import {connect} from 'react-redux';
 
 const styles = StyleSheet.create({
     actionButtons: {
@@ -73,7 +75,11 @@ class home extends Component {
     }
 
     componentWillMount() {
-        console.log(this.props);
+
+        axios
+            .get(`/user/${this.props.user.uid}`)
+            .then((response) => console.log(response))
+            .catch((error) => console.log(error));
     }
 
     render() {
@@ -194,4 +200,10 @@ class home extends Component {
     }
 }
 
-export default home;
+const mapStateToProps = ({auth}) => {
+    const {user} = auth;
+
+    return {user};
+};
+
+export default connect(mapStateToProps)(home);
