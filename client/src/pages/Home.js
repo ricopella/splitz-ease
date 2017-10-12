@@ -79,6 +79,8 @@ class home extends Component {
             .get(`https://peaceful-oasis-94736.herokuapp.com/user/${this.props.user.uid}`)
             .then((response) => console.log(response))
             .catch((error) => console.log(error));
+
+        this.setState({party: response.party, date: response.date})
     }
 
     render() {
