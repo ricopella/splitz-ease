@@ -76,10 +76,8 @@ class home extends Component {
 
     componentWillMount() {
 
-        axios
-            .get(`/user/${this.props.user.uid}`)
-            .then((response) => console.log(response))
-            .catch((error) => console.log(error));
+        // axios     .get(`/user/${this.props.user.uid}`)     .then((response) =>
+        // console.log(response))     .catch((error) => console.log(error));
     }
 
     render() {

@@ -86,8 +86,7 @@ class SplitEvenlyRequest extends Component {
     // newText = '';     let numbers = '0123456789';     for (var i = 0; i <
     // text.length; i++) {         if (numbers.indexOf(text[i]) > -1) { newText =
     // newText + text[i];         } else { // your call back function alert("please
-    // enter numbers only");         } this.setState({[myNumber]: newText});     }
-    // }
+    // enter numbers only");         } this.setState({[myNumber]: newText});     } }
 
     componentWillMount() {
         let tip = 0;
@@ -127,18 +126,11 @@ class SplitEvenlyRequest extends Component {
             perPerson: this.state.perPerson
         });
 
-        axios
-            .post('/user/tbd', {
-            ocrResult: this.props.ocrResult,
-            tax: this.props.tax,
-            total: this.props.total,
-            myNumber: this.state.myNumber,
-            tipPer: this.state.tipPer,
-            tip: this.state.tip,
-            perPerson: this.state.perPerson
-        })
-            .then((response) => console.log(response))
-            .catch((error) => console.log(error))
+        // axios     .post('/user/tbd', {     ocrResult: this.props.ocrResult,     tax:
+        // this.props.tax,     total: this.props.total,     myNumber:
+        // this.state.myNumber,     tipPer: this.state.tipPer,     tip: this.state.tip,
+        //    perPerson: this.state.perPerson })     .then((response) =>
+        // console.log(response))     .catch((error) => console.log(error))
     }
 
     handleInputChange(i, value) {
