@@ -102,9 +102,9 @@ class AddTax extends Component {
                 fifteenPercent: false,
                 twentyPercent: false
             },
-            tipTen: null,
-            tipFifteen: null,
-            tipTwenty: null
+            tipTen: 0,
+            tipFifteen: 0,
+            tipTwenty: 0
         }
     }
     componentWillMount() {
