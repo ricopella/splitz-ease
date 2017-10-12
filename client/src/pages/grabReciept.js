@@ -42,14 +42,14 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     imgContainer: {
-        borderColor: '#000000',
+        // borderColor: '#000000',
         padding: 50,
-        borderWidth: 1 / PixelRatio.get(),
+        // borderWidth: 1 / PixelRatio.get(),
         justifyContent: 'center',
         alignItems: 'center'
     },
     img: {
-        borderRadius: 75,
+        // borderRadius: 75,
         padding: 60,
         width: 150,
         height: 150
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         marginBottom: 60,
-        marginTop: 60
+        // marginTop: 60
     }
 });
 
@@ -183,12 +183,12 @@ class grabReciept extends Component {
                 <Header>
                     <Left>
                         <Button transparent>
-                            <Icon name='navicon' size={28} color="#fff" />
+                            <Icon name='menu' style={{color: "#fff"}} />
                         </Button>
                     </Left>
                     <Body>
                         <View>
-                            <Title>Split Evenly</Title>
+                            <Title>Grab Reciept</Title>
                         </View>
 
                     </Body>
@@ -227,7 +227,7 @@ class grabReciept extends Component {
                                         marginLeft: 125
                                     }
                                 ]}>
-                                <Image style={img} source={require('../../public/assets/images/barcam.png')} />
+                                <Image source={require('../../public/assets/images/scan.png')} />
                             </View>
 
                         </Button>
