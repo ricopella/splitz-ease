@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { StyleSheet, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native';
-import { Container, Header, Title, Content, Button, Left, Right, Body, Icon, Text, List, ListItem } from 'native-base';
+import { Container, Header, Title, Content, Button, Left, Right, Body, Icon, Text, List, ListItem, Item } from 'native-base';
 import Nav from './../components/common/Nav';
+import firebase from 'firebase';
+import {Scene, Router, Actions, Stack} from 'react-native-router-flux';
+
 
 const styles = StyleSheet.create({
+    itemStyle: {
+        padding: 20
+    }
 });
+
 
 class Settings extends Component {
     // .then(response => this.setState({ albums: response.data }));
@@ -19,6 +26,10 @@ class Settings extends Component {
 
     render() {
         console.log(this.state);
+        const {
+            itemStyle
+        } = styles;
+    
 
         // const { paddIt } = styles;
 
@@ -38,25 +49,16 @@ class Settings extends Component {
                     <Right />
                 </Header>
                 <Content>
-                    {/* <View style={[{ flex: 1, justifyContent: "center", alignItems: "center" }, paddIt]}>
-                        <View>
-                            <Text style={lightHeaderText}>Please categorize the orders.</Text>
-                        </View>
-                    </View>
-
-                    <View style={[paddIt, splitButton]}>
-                        <Button success><Text style={itemText}> Send Requests </Text></Button>
-                    </View> */}
                     <List>
-                        <ListItem>
+                        <Item style={itemStyle}>
                             <Text>My Account</Text>
-                        </ListItem>
-                        <ListItem>
+                        </Item>
+                        <Item style={itemStyle}>
                             <Text>Social Applications</Text>
-                        </ListItem>
-                        <ListItem>
-                            <Text>Sign Out</Text>
-                        </ListItem>
+                        </Item>
+                        <Item style={itemStyle}>
+                            <Text onPress={() => firebase.auth().signOut().then(Actions.loginPage())}>Sign Out</Text>
+                        </Item>
                     </List>
                 </Content>
                 <Nav />
