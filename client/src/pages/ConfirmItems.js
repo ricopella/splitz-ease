@@ -84,33 +84,32 @@ class ConfirmItems extends Component {
         };
     }
 
+    // update items
     handleInputChange(i, value) {
-        console.log('i is', i);
-        console.log('value is', value);
 
         let updatedItem = this.props.ocrResult[i];
         updatedItem[0] = value;
 
-        this.setState({ocerResult: updatedItem});
+        this.setState({ocrResult: updatedItem});
     }
 
+    // update prices
     handleInputChange1(i, value) {
-        console.log('i is', i);
-        console.log('value is', value);
-        let updatedItem = this.props.ocrResult[i];
-        updatedItem[1] = value;
-
-        this.setState({ocerResult: updatedItem});
+        let updatedItem1 = this.props.ocrResult[i];
+        updatedItem1[1] = value;
+        this.generateTotal();
+        this.setState({ocrResult: updatedItem1});
     }
 
     componentWillMount() {
         console.log(this.props);
         this.generateTotal();
     }
+
     generateTotal() {
         let totalAmount = 0;
         for (let i = 0; i < this.props.ocrResult.length; i++) {
-            totalAmount += this.props.ocrResult[i][1];
+            totalAmount += parseInt(this.props.ocrResult[i][1]);
         }
         console.log(totalAmount);
 

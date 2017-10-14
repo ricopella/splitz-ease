@@ -77,10 +77,7 @@ class home extends Component {
     componentWillMount() {
         axios
             .get(`https://peaceful-oasis-94736.herokuapp.com/user/${this.props.user.uid}`)
-            .then((response) => {
-                console.log(response)
-                this.setState({party: response.party, date: response.date})
-            })
+            .then((response) => this.setState({party: response.party, date: response.date}))
             .catch((error) => console.log(error));
 
     }

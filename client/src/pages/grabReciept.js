@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     Image,
     Platform,
@@ -12,7 +12,6 @@ import {
 import ImagePicker from 'react-native-image-picker';
 import firebase from 'firebase';
 import RNTesseractOcr from 'react-native-tesseract-ocr';
-// import { Nav } from '../components/common';
 import Camera from 'react-native-camera';
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
@@ -42,43 +41,32 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     imgContainer: {
-        // borderColor: '#000000',
         padding: 50,
-        // borderWidth: 1 / PixelRatio.get(),
         justifyContent: 'center',
         alignItems: 'center'
     },
     img: {
-        // borderRadius: 75,
         padding: 60,
         width: 150,
         height: 150
     },
-    bgImageContainer: {
-        // width: 460,
-        // height: 190,
-        // opacity: .6
-    },
+    bgImageContainer: {},
     lightHeaderText: {
         color: '#5E5E5E',
         fontWeight: '100',
         fontSize: 24,
         textAlign: 'center'
     },
-    backdropView: {
-        // backgroundColor: 'rgba(0,0,0,0)'
-    },
+    backdropView: {},
     backdropText: {
         fontSize: 30,
         textAlign: 'center',
-        // backgroundColor: 'rgba(0,0,0,0)',
         fontWeight: '500'
     },
     imageWrapper: {
         left: 0,
         right: 0,
-        marginBottom: 60,
-        // marginTop: 60
+        marginBottom: 60
     }
 });
 
@@ -134,7 +122,7 @@ class grabReciept extends Component {
                     };
                 }
 
-                this.setState({ imgSource: source });
+                this.setState({imgSource: source});
 
                 RNTesseractOcr
                     .startOcr(response.path, "LANG_ENGLISH")
@@ -188,7 +176,11 @@ class grabReciept extends Component {
                 <Header>
                     <Left>
                         <Button transparent>
-                            <Icon name='menu' style={{color: "#fff"}} />
+                            <Icon
+                                name='menu'
+                                style={{
+                                color: "#fff"
+                            }}/>
                         </Button>
                     </Left>
                     <Body>
@@ -197,48 +189,38 @@ class grabReciept extends Component {
                         </View>
 
                     </Body>
-                    <Right />
+                    <Right/>
                 </Header>
 
                 <View>
-                    <Text style={[lightHeaderText, { marginTop: 90 }]}>Select an image from your image library to get started.</Text>
+                    <Text
+                        style={[
+                        lightHeaderText, {
+                            marginTop: 90
+                        }
+                    ]}>Select an image from your image library to get started.</Text>
                 </View>
-                <View style={imageWrapper}>
-                    {/* <Image
-                        style={bgImageContainer}
-                        source={require('../../public/assets/images/creditcard.jpeg')}>
-                        <View style={backdropView}>
-                            <Text
-                                style={[
-                                backdropText, {
-                                    color: 'rgba(255, 255, 255, 1)'
-                                }
-                            ]}>Ready to split?</Text>
-                        </View>
-                    </Image> */}
-
-                </View>
+                <View style={imageWrapper}></View>
                 <View>
                     {this.state.imgSource === null
                         ? <Button
-                            onPress={this
+                                onPress={this
                                 .selectPhoto
                                 .bind(this)}>
-                            <View
-                                style={[
+                                <View
+                                    style={[
                                     img,
                                     imgContainer, {
                                         marginBottom: 20,
                                         marginLeft: 125
                                     }
                                 ]}>
-                                <Image source={require('../../public/assets/images/scan.png')} />
-                            </View>
+                                    <Image source={require('../../public/assets/images/scan.png')}/>
+                                </View>
 
-                        </Button>
-                        : <Spinner color='blue' />
-                        // <Text>OCR Result: {this.state.ocrResult}</Text>
-                    }
+                            </Button>
+                        : <Spinner color='blue'/>
+}
                 </View>
 
             </View>

@@ -93,7 +93,6 @@ const styles = StyleSheet.create({
 });
 
 class AddTax extends Component {
-    // .then(response => this.setState({ albums: response.data }));
     constructor(props) {
         super(props);
         this.state = {
@@ -108,9 +107,6 @@ class AddTax extends Component {
         }
     }
     componentWillMount() {
-        console.log("mounting comp");
-        console.log(this.props)
-
         let tipTen = (this.props.total * .10).toFixed(2);
         let tipFifteen = (this.props.total * .15).toFixed(2);
         let tipTwenty = (this.props.total * .20).toFixed(2);
@@ -129,7 +125,6 @@ class AddTax extends Component {
     }
 
     render() {
-        console.log(this.state);
 
         const {
             paddIt,
