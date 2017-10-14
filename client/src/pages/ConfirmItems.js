@@ -12,7 +12,8 @@ import {
     Body,
     Icon,
     Text,
-    Badge
+    Badge,
+    Input
 } from 'native-base';
 import Nav from './../components/common/Nav';
 import {Actions} from 'react-native-router-flux';
@@ -53,6 +54,22 @@ const styles = StyleSheet.create({
     },
     splitButton: {
         alignSelf: 'center'
+    },
+    textInput: {
+        width: 225,
+        height: 40,
+        backgroundColor: "#fff",
+        fontSize: 18,
+        marginRight: 45,
+        paddingLeft: 10
+    },
+    numInput: {
+        width: 100,
+        height: 40,
+        backgroundColor: "#fff",
+        fontSize: 18,
+        marginRight: 45,
+        paddingLeft: 10
     }
 });
 
@@ -65,6 +82,18 @@ class ConfirmItems extends Component {
             total: undefined,
             tax: undefined
         };
+    }
+
+    handleInputChange(i, value) {
+        console.log('i is', i);
+        console.log('value is', value);
+
+    }
+
+    handleInputChange1(i, value) {
+        console.log('i is', i);
+        console.log('value is', value);
+
     }
 
     componentWillMount() {
@@ -100,7 +129,9 @@ class ConfirmItems extends Component {
             itemText,
             itemPrice,
             itemPadding,
-            splitButton
+            splitButton,
+            textInput,
+            numInput
         } = styles;
 
         return (
@@ -140,9 +171,9 @@ class ConfirmItems extends Component {
                     {this
                         .props
                         .ocrResult
-                        .map((val) => (
+                        .map((val, i) => (
                             <View
-                                key={val}
+                                key={i}
                                 style={[
                                 {
                                     flex: 1,
@@ -150,12 +181,25 @@ class ConfirmItems extends Component {
                                 },
                                 itemPadding
                             ]}>
+                                <View key={i}>
+                                    <Input
+                                        key={i}
+                                        style={textInput}
+                                        onChangeText={this
+                                        .handleInputChange
+                                        .bind(this, i)}
+                                        value={val[0]}/>
+                                </View>
                                 <View>
-                                    <Text key={val} style={itemText}>{val[0]}</Text>
+                                    <Input
+                                        key={val[1]}
+                                        style={numInput}
+                                        onChangeText={this
+                                        .handleInputChange1
+                                        .bind(this, i)}
+                                        value={val[1]}/>
                                 </View>
-                                <View style={alignRight}>
-                                    <Text>{val[1]}</Text>
-                                </View>
+
                             </View>
                         ))}
 
