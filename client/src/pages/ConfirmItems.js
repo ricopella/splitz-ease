@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, TouchableNativeFeedback, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, TouchableNativeFeedback, TouchableOpacity, View, TextInput} from 'react-native';
 
 import {
     Container,
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     textInput: {
-        width: 225,
+        width: 218,
         height: 40,
         backgroundColor: "#fff",
         fontSize: 18,
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10
     },
     numInput: {
-        width: 100,
+        width: 80,
         height: 40,
         backgroundColor: "#fff",
         fontSize: 18,
@@ -88,12 +88,19 @@ class ConfirmItems extends Component {
         console.log('i is', i);
         console.log('value is', value);
 
+        let updatedItem = this.props.ocrResult[i];
+        updatedItem[0] = value;
+
+        this.setState({ocerResult: updatedItem});
     }
 
     handleInputChange1(i, value) {
         console.log('i is', i);
         console.log('value is', value);
+        let updatedItem = this.props.ocrResult[i];
+        updatedItem[1] = value;
 
+        this.setState({ocerResult: updatedItem});
     }
 
     componentWillMount() {
@@ -192,14 +199,14 @@ class ConfirmItems extends Component {
                                 </View>
                                 <View>
                                     <Input
-                                        key={val[1]}
+                                        key={val}
                                         style={numInput}
+                                        keyboardType='numeric'
                                         onChangeText={this
                                         .handleInputChange1
                                         .bind(this, i)}
-                                        value={val[1]}/>
+                                        value={(this.props.ocrResult)[i][1].toString()}/>
                                 </View>
-
                             </View>
                         ))}
 
