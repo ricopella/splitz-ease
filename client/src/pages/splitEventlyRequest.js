@@ -87,7 +87,8 @@ class SplitEvenlyRequest extends Component {
     // newText = '';     let numbers = '0123456789';     for (var i = 0; i <
     // text.length; i++) {         if (numbers.indexOf(text[i]) > -1) { newText =
     // newText + text[i];         } else { // your call back function alert("please
-    // enter numbers only");         } this.setState({[myNumber]: newText});     } }
+    // enter numbers only");         } this.setState({[myNumber]: newText});     }
+    // }
 
     componentWillMount() {
         let tip = 0;
@@ -116,7 +117,7 @@ class SplitEvenlyRequest extends Component {
 
     nextComponent() {
 
-        Communications.web(`https://venmo.com/?txn=charge&amount=${this.state.perPerson}&note=for+testing&recipients=${this.state.myNumber}`)
+        Communications.web(`https://venmo.com/?txn=charge&amount=${this.state.perPerson}&note=for+dinner&recipients=${this.state.myNumber}`)
         Actions.ThankYou({
             ocrResult: this.props.ocrResult,
             tax: this.props.tax,
