@@ -89,6 +89,15 @@ const styles = StyleSheet.create({
     },
     splitButton: {
         alignSelf: 'center'
+    },
+    numInput: {
+        width: 150,
+        height: 40,
+        backgroundColor: "#fff",
+        fontSize: 18,
+        marginRight: 40,
+        marginLeft: 100,
+        paddingLeft: 20
     }
 });
 
@@ -99,11 +108,13 @@ class AddTax extends Component {
             tipAmount: {
                 tenPercent: false,
                 fifteenPercent: false,
-                twentyPercent: false
+                twentyPercent: false,
+                custom: false
             },
             tipTen: 0,
             tipFifteen: 0,
-            tipTwenty: 0
+            tipTwenty: 0,
+            customTip: null
         }
     }
     componentWillMount() {
@@ -120,8 +131,13 @@ class AddTax extends Component {
             tax: this.props.tax,
             total: this.props.total,
             tipAmount: this.state.tipAmount,
-            uid: this.props.uid
+            uid: this.props.uid,
+            customTip: this.state.customTip
         })
+    }
+
+    handleInputChange(value) {
+        this.setState({customTip: value});
     }
 
     render() {
@@ -132,7 +148,8 @@ class AddTax extends Component {
             itemText,
             splitButton,
             lightHeaderText,
-            radioStyle
+            radioStyle,
+            numInput
         } = styles;
 
         return (
@@ -255,6 +272,43 @@ class AddTax extends Component {
                             </View>
                             <View style={alignRight}>
                                 <Text style={itemText}>${this.state.tipTwenty}</Text>
+                            </View>
+                        </View>
+
+                        <View
+                            style={[
+                            {
+                                flex: 1,
+                                flexDirection: 'row'
+                            },
+                            paddIt
+                        ]}>
+                            <View style={radioStyle}>
+                                <Radio
+                                    selected={this.state.tipAmount.custom}
+                                    onPress={() => this.setState({
+                                    tipAmount: {
+                                        custom: !this.state.tipAmount.custom
+                                    }
+                                })}
+                                    style={{
+                                    padding: 10
+                                }}/>
+                            </View>
+                            <View>
+                                <Text >
+                                    <Text style={itemText}>Custom Tip{'\n'}</Text>
+                                </Text>
+                            </View>
+                            <View style={alignRight}>
+                                <Input
+                                    style={[itemText, numInput]}
+                                    keyboardType={'numeric'}
+                                    placeholder='$0.00'
+                                    onChangeText={this
+                                    .handleInputChange
+                                    .bind(this)}
+                                    value={this.state.customTip}/>
                             </View>
                         </View>
 

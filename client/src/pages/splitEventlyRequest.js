@@ -91,27 +91,31 @@ class SplitEvenlyRequest extends Component {
     // }
 
     componentWillMount() {
+        console.log(this.props);
         let tip = 0;
         let tipPer = 0;
         let perPerson = 0;
         if (this.props.tipAmount.tenPercent) {
             tip = (this.props.total * .10).toFixed(2);
             tipPer = (tip / this.props.selected).toFixed(2);
-            this.setState({tipPer: tipPer, perPerson: tip})
             perPerson = ((this.props.total + parseFloat(tip)) / this.props.selected).toFixed(2)
-            this.setState({perPerson: perPerson, tip: tip});
+            this.setState({tipPer: tipPer, perPerson: perPerson, tip: tip});
         } else if (this.props.tipAmount.fifteenPercent) {
             tip = (this.props.total * .15).toFixed(2);
             tipPer = (tip / this.props.selected).toFixed(2);
-            this.setState({tipPer: tipPer, perPerson: tip});
             perPerson = ((this.props.total + parseFloat(tip)) / this.props.selected).toFixed(2)
-            this.setState({perPerson: perPerson});
+            this.setState({tipPer: tipPer, perPerson: perPerson, tip: tip});
         } else if (this.props.tipAmount.twentyPercent) {
             tip = (this.props.total * .20).toFixed(2);
             tipPer = (tip / this.props.selected).toFixed(2);
-            this.setState({tipPer: tipPer, perPerson: tip});
             perPerson = ((this.props.total + parseFloat(tip)) / this.props.selected).toFixed(2)
-            this.setState({perPerson: perPerson});
+            this.setState({tipPer: tipPer, perPerson: perPerson, tip: tip});
+        } else if (this.props.tipAmount.custom) {
+            console.log(this.props.customTip);
+            tip = (parseFloat(this.props.customTip)).toFixed(2);
+            tipPer = (tip / this.props.selected).toFixed(2);
+            perPerson = ((this.props.total + parseFloat(tip)) / this.props.selected).toFixed(2)
+            this.setState({tipPer: tipPer, perPerson: perPerson, tip: tip});
         }
     }
 
