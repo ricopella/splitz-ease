@@ -142,7 +142,9 @@ class grabReciept extends Component {
                                     line
                                         .substring(0, index)
                                         .trim(),
-                                    parseFloat(line.substring(index).trim())
+                                    line
+                                        .substring(index)
+                                        .trim()
                                 ]; //return array of two trimmed strings
                             });
 

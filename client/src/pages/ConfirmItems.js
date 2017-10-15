@@ -111,13 +111,14 @@ class ConfirmItems extends Component {
         let totalAmount = 0;
         for (let i = 0; i < this.props.ocrResult.length; i++) {
             console.log(totalAmount);
-            totalAmount += parseInt(this.props.ocrResult[i][1]);
+            totalAmount += Number(this.props.ocrResult[i][1]);
         }
 
-        let taxAmount = parseFloat((totalAmount * .095).toFixed(2));
-        totalAmount = parseFloat(totalAmount + taxAmount);
-
-        this.setState({total: totalAmount, tax: parseFloat(taxAmount)});
+        let taxAmount = (totalAmount * .095).toFixed(2);
+        totalAmount = (Number(totalAmount) + Number(taxAmount)).toFixed(2);
+        console.log("Tax: ", taxAmount);
+        console.log("Total: ", totalAmount);
+        this.setState({total: totalAmount, tax: taxAmount});
 
     }
 

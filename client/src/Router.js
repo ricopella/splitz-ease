@@ -31,10 +31,7 @@ const RouterComponent = () => {
                 <Scene key="main">
 
                     <Scene key="home" component={home} hideNavBar={true}/>
-                    <Scene
-                        key="scanReciept"
-                        component={grabReciept}
-                        hideNavBar={true} />
+                    <Scene key="scanReciept" component={grabReciept} hideNavBar={true}/>
                     <Scene
                         key="ConfirmItemDetails"
                         component={ConfirmItemDetails}
