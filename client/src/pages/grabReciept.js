@@ -245,4 +245,4 @@ const mapStateToProps = ({auth, saveReceipt}) => {
     return {user, ocrResult};
 };
 
-export default connect(mapStateToProps)(grabReciept);
+export default connect(mapStateToProps, {saveReceipt})(grabReciept);
