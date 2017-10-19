@@ -14,6 +14,7 @@ import firebase from 'firebase';
 import RNTesseractOcr from 'react-native-tesseract-ocr';
 import Camera from 'react-native-camera';
 import {Actions} from 'react-native-router-flux';
+import {saveReceipt} from '../actions';
 import {connect} from 'react-redux';
 import {
     Container,
@@ -84,6 +85,11 @@ class grabReciept extends Component {
     componentWillMount() {
         console.log("This User:", this.props.user.uid);
     }
+    saveReceipt(ocrResult) {
+        this
+            .props
+            .saveReceipt(ocrResult);
+    }
 
     selectPhoto() {
         console.log("Reached me!");
@@ -150,8 +156,10 @@ class grabReciept extends Component {
 
                     })
                     .then((result) => {
-                        this.setState({ocrResult: result});
-                        Actions.ConfirmItemDetails({ocrResult: result, total: 0, uid: this.props.uid});
+                        // this.setState({ocrResult: result});
+                        this.saveReceipt(result);
+                        // Actions.ConfirmItemDetails({ocrResult: result, total: 0, uid:
+                        // this.props.uid});
                     })
                     .catch((err) => {
                         console.log("OCR Error: ", err);
@@ -230,10 +238,11 @@ class grabReciept extends Component {
     }
 }
 
-const mapStateToProps = ({auth}) => {
+const mapStateToProps = ({auth, saveReceipt}) => {
     const {user} = auth;
+    const {ocrResult} = saveReceipt;
 
-    return {user};
+    return {user, ocrResult};
 };
 
 export default connect(mapStateToProps)(grabReciept);

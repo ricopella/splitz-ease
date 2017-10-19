@@ -110,14 +110,11 @@ class ConfirmItems extends Component {
     generateTotal() {
         let totalAmount = 0;
         for (let i = 0; i < this.props.ocrResult.length; i++) {
-            console.log(totalAmount);
-            totalAmount += Number(this.props.ocrResult[i][1]);
+            totalAmount += Number(this.props.ocrResult[i][1]); // add each item in receipt
         }
 
-        let taxAmount = (totalAmount * .095).toFixed(2);
+        let taxAmount = (totalAmount * .095).toFixed(2); // california tax
         totalAmount = (Number(totalAmount) + Number(taxAmount)).toFixed(2);
-        console.log("Tax: ", taxAmount);
-        console.log("Total: ", totalAmount);
         this.setState({total: totalAmount, tax: taxAmount});
 
     }
