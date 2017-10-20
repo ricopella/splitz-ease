@@ -117,7 +117,7 @@ class ConfirmItems extends Component {
     goToNextPage() {
         this
             .props
-            .saveReceipt(this.state.ocrResult);
+            .saveReceipt(this.props.ocrResult);
         Actions.SplitEvenly();
     }
 

@@ -1,11 +1,10 @@
-import {SAVE_RECEIPT, UPDATE_RECEIPT} from './types';
+import {SAVE_RECEIPT, UPDATE_RECEIPT, SELECTED_PARTY} from './types';
 
 export const saveReceipt = (ocrResult) => {
     return {type: SAVE_RECEIPT, payload: ocrResult};
 }
 
 export const updateReceipt = (total, tax) => {
-    console.log("Hitting Update Action: " + total + " " + tax);
     return {
         type: UPDATE_RECEIPT,
         payload: {
@@ -13,4 +12,9 @@ export const updateReceipt = (total, tax) => {
             tax
         }
     }
+}
+
+export const selectedParty = (val) => {
+    console.log("Hitting Selected Action");
+    return {type: SELECTED_PARTY, payload: val}
 }

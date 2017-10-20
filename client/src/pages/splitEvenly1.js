@@ -9,7 +9,8 @@ import {
     View
 } from 'react-native';
 import {Actions} from 'react-native-router-flux';
-
+import {selectedParty} from '../actions';
+import {connect} from 'react-redux';
 import {
     Container,
     Header,
@@ -107,27 +108,18 @@ const styles = StyleSheet.create({
 });
 
 class SplitEvenly extends Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            selected: undefined
-        };
-    }
+
     componentWillMount() {
         console.log(this.props)
     }
 
     onValueChange2(value : string) {
-        this.setState({selected: value});
+        this
+            .props
+            .selectedParty(value);
     }
     onButtonPress() {
-        Actions.AddTip({
-            selected: parseFloat(this.state.selected),
-            ocrResult: this.props.ocrResult,
-            tax: this.props.tax,
-            total: this.props.total,
-            uid: this.props.uid
-        });
+        Actions.AddTip();
     }
 
     render() {
@@ -187,7 +179,7 @@ class SplitEvenly extends Component {
                             mode="dropdown"
                             style={styles.pickerStyles}
                             placeholder="Select One"
-                            selectedValue={this.state.selected}
+                            selectedValue={this.props.selected}
                             onValueChange={this
                             .onValueChange2
                             .bind(this)}>
@@ -225,4 +217,10 @@ class SplitEvenly extends Component {
     }
 }
 
-export default SplitEvenly;
+const mapStateToProps = ({selectedParty}) => {
+    const {selected} = selectedParty;
+
+    return {selected};
+};
+
+export default connect(mapStateToProps, {selectedParty})(SplitEvenly);

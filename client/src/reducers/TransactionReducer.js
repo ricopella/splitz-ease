@@ -1,9 +1,10 @@
-import {SAVE_RECEIPT, UPDATE_RECEIPT} from '../actions/types';
+import {SAVE_RECEIPT, UPDATE_RECEIPT, SELECTED_PARTY} from '../actions/types';
 
 const INITIAL_STATE = {
     ocrResult: {},
     total: 0,
-    tax: 0
+    tax: 0,
+    selected: undefined
 }
 
 export default(state = INITIAL_STATE, action) => {
@@ -20,6 +21,12 @@ export default(state = INITIAL_STATE, action) => {
                 total: action.payload.total,
                 tax: action.payload.tax
             };
+        case SELECTED_PARTY:
+            console.log("Selected:" + action.payload);
+            return {
+                ...state,
+                selected: action.payload
+            }
         default:
             return state;
     }

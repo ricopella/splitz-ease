@@ -5,3 +5,4 @@ export const LOGIN_USER_FAIL = 'login_user_fail';
 export const LOGIN_USER = 'login_user';
 export const SAVE_RECEIPT = 'save_receipt';
 export const UPDATE_RECEIPT = 'update_receipt';
+export const SELECTED_PARTY = 'selected_party';
