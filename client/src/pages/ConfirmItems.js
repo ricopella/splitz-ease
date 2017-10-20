@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {StyleSheet, TouchableNativeFeedback, TouchableOpacity, View, ScrollView} from 'react-native';
-
+import {saveReceipt, updateReceipt} from '../actions';
+import {connect} from 'react-redux';
+import Nav from './../components/common/Nav';
+import {Actions} from 'react-native-router-flux';
 import {
     Container,
     Header,
@@ -15,8 +18,6 @@ import {
     Badge,
     Input
 } from 'native-base';
-import Nav from './../components/common/Nav';
-import {Actions} from 'react-native-router-flux';
 
 const styles = StyleSheet.create({
     currentBalanceText: {
@@ -74,15 +75,6 @@ const styles = StyleSheet.create({
 });
 
 class ConfirmItems extends Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            imgSource: null,
-            ocrResult: null,
-            total: undefined,
-            tax: undefined
-        };
-    }
 
     // update items
     handleInputChange(i, value) {
@@ -100,10 +92,10 @@ class ConfirmItems extends Component {
         updatedItem1[1] = value;
         // this.generateTotal();
         this.setState({ocrResult: updatedItem1});
+
     }
 
     componentWillMount() {
-        console.log(this.props);
         this.generateTotal();
     }
 
@@ -115,12 +107,18 @@ class ConfirmItems extends Component {
 
         let taxAmount = (totalAmount * .095).toFixed(2); // california tax
         totalAmount = (Number(totalAmount) + Number(taxAmount)).toFixed(2);
-        this.setState({total: totalAmount, tax: taxAmount});
+        // this.setState({total: totalAmount, tax: taxAmount});
+        this
+            .props
+            .updateReceipt(totalAmount, taxAmount);
 
     }
 
     goToNextPage() {
-        Actions.SplitEvenly({ocrResult: this.props.ocrResult, total: this.state.total, tax: this.state.tax, uid: this.props.uid});
+        this
+            .props
+            .saveReceipt(this.state.ocrResult);
+        Actions.SplitEvenly();
     }
 
     render() {
@@ -218,7 +216,7 @@ class ConfirmItems extends Component {
                                 <Text style={itemText}>Tax</Text>
                             </View>
                             <View style={alignRight}>
-                                <Text style={itemPrice}>{this.state.tax}</Text>
+                                <Text style={itemPrice}>{this.props.tax}</Text>
                             </View>
                         </View>
                         <View
@@ -233,7 +231,7 @@ class ConfirmItems extends Component {
                                 <Text style={itemText}>Total</Text>
                             </View>
                             <View style={alignRight}>
-                                <Text style={itemPrice}>{this.state.total}</Text>
+                                <Text style={itemPrice}>{this.props.total}</Text>
                             </View>
                         </View>
                         <View style={[paddIt, splitButton]}>
@@ -255,4 +253,11 @@ class ConfirmItems extends Component {
     }
 }
 
-export default ConfirmItems;
+const mapStateToProps = ({updateReceipt, saveReceipt}) => {
+    const {ocrResult} = saveReceipt;
+    const {total, tax} = updateReceipt;
+
+    return {ocrResult, total, tax};
+};
+
+export default connect(mapStateToProps, {updateReceipt, saveReceipt})(ConfirmItems);

@@ -75,10 +75,7 @@ class grabReciept extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            imgSource: null,
-            ocrResult: null,
-            total: 0,
-            uid: this.props.uid
+            imgSource: null
         };
     }
 
@@ -156,10 +153,8 @@ class grabReciept extends Component {
 
                     })
                     .then((result) => {
-                        // this.setState({ocrResult: result});
                         this.saveReceipt(result);
-                        // Actions.ConfirmItemDetails({ocrResult: result, total: 0, uid:
-                        // this.props.uid});
+                        Actions.ConfirmItemDetails();
                     })
                     .catch((err) => {
                         console.log("OCR Error: ", err);
