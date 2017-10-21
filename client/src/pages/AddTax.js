@@ -16,6 +16,9 @@ import {
     Input
 } from 'native-base';
 import Nav from './../components/common/Nav';
+import {updateTip, updateReceipt} from '../actions';
+import {connect} from 'react-redux';
+
 import {Actions} from 'react-native-router-flux';
 
 const styles = StyleSheet.create({
@@ -111,9 +114,6 @@ class AddTax extends Component {
                 twentyPercent: false,
                 custom: false
             },
-            tipTen: 0,
-            tipFifteen: 0,
-            tipTwenty: 0,
             customTip: null
         }
     }
@@ -121,7 +121,11 @@ class AddTax extends Component {
         let tipTen = (this.props.total * .10).toFixed(2);
         let tipFifteen = (this.props.total * .15).toFixed(2);
         let tipTwenty = (this.props.total * .20).toFixed(2);
-        this.setState({tipTen: tipTen, tipFifteen: tipFifteen, tipTwenty: tipTwenty});
+        // this.setState({tipTen: tipTen, tipFifteen: tipFifteen, tipTwenty:
+        // tipTwenty});
+        this
+            .props
+            .updateTip(tipTen, tipFifteen, tipTwenty);
     }
 
     nextComponent() {
@@ -211,7 +215,7 @@ class AddTax extends Component {
                                 </Text>
                             </View>
                             <View style={alignRight}>
-                                <Text style={itemText}>${this.state.tipTen}</Text>
+                                <Text style={itemText}>${this.props.tipTen}</Text>
                             </View>
                         </View>
                         <View
@@ -241,7 +245,7 @@ class AddTax extends Component {
                                 </Text>
                             </View>
                             <View style={alignRight}>
-                                <Text style={itemText}>${this.state.tipFifteen}</Text>
+                                <Text style={itemText}>${this.props.tipFifteen}</Text>
                             </View>
                         </View>
                         <View
@@ -271,7 +275,7 @@ class AddTax extends Component {
                                 </Text>
                             </View>
                             <View style={alignRight}>
-                                <Text style={itemText}>${this.state.tipTwenty}</Text>
+                                <Text style={itemText}>${this.props.tipTwenty}</Text>
                             </View>
                         </View>
 
@@ -332,4 +336,11 @@ class AddTax extends Component {
     }
 }
 
-export default AddTax;
+const mapStateToProps = ({updateTip, updateReceipt}) => {
+    const {tipTen, tipFifteen, tipTwenty} = updateTip;
+    const {total, tax} = updateReceipt;
+
+    return {tipTen, tipFifteen, tipTwenty, total, tax};
+};
+
+export default connect(mapStateToProps, {updateTip, updateReceipt})(AddTax);
