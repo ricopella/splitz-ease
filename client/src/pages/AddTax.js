@@ -85,7 +85,7 @@ class AddTax extends Component {
     }
 
     nextComponent() {
-        Actions.splitEvenlyRequest({customTip: this.state.customTip})
+        Actions.splitEvenlyRequest({customTip: this.state.customTip, tipAmount: this.state.tipAmount})
     }
 
     handleInputChange(value) {

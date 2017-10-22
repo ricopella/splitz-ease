@@ -73,44 +73,30 @@ class SplitEvenlyRequest extends Component {
         super(props, context);
 
         this.state = {
-            myNumber: Array(this.props.selected).fill('')
+            myNumber: this.props.myNumber
         };
     }
 
     componentWillMount() {
-        let tip = 0;
-        let tipPer = 0;
-        let perPerson = 0;
+        let tip;
+
         if (this.props.tipAmount.tenPercent) {
-            tip = (this.props.total * .10).toFixed(2);
-            tipPer = (tip / this.props.selected).toFixed(2);
-            perPerson = ((this.props.total + parseFloat(tip)) / this.props.selected).toFixed(2)
-            this
-                .props
-                .updatePhone(tip, tipPer, perPerson);
+            tip = (this.props.total * .10);
+
         } else if (this.props.tipAmount.fifteenPercent) {
-            tip = (this.props.total * .15).toFixed(2);
-            tipPer = (tip / this.props.selected).toFixed(2);
-            perPerson = ((this.props.total + parseFloat(tip)) / this.props.selected).toFixed(2)
-            this
-                .props
-                .updatePhone(tip, tipPer, perPerson);
+            tip = (this.props.total * .15);
         } else if (this.props.tipAmount.twentyPercent) {
-            tip = (this.props.total * .20).toFixed(2);
-            tipPer = (tip / this.props.selected).toFixed(2);
-            perPerson = ((this.props.total + parseFloat(tip)) / this.props.selected).toFixed(2)
-            this
-                .props
-                .updatePhone(tip, tipPer, perPerson);
+            tip = (this.props.total * .20);
         } else if (this.props.tipAmount.custom) {
             console.log(this.props.customTip);
-            tip = (parseFloat(this.props.customTip)).toFixed(2);
-            tipPer = (tip / this.props.selected).toFixed(2);
-            perPerson = ((this.props.total + parseFloat(tip)) / this.props.selected).toFixed(2)
-            this
-                .props
-                .updatePhone(tip, tipPer, perPerson);
+            tip = (parseFloat(this.props.customTip));
         }
+
+        let tipPer = (tip / this.props.selected);
+        let perPerson = (parseFloat(this.props.total) + parseFloat(tip)) / this.props.selected
+        this
+            .props
+            .updatePhone(tipPer, tip, perPerson);
     }
 
     nextComponent() {
@@ -224,7 +210,7 @@ class SplitEvenlyRequest extends Component {
 
                     {/* Request Area */}
                     {this
-                        .state
+                        .props
                         .myNumber
                         .map((data, i) => {
                             return (
@@ -251,6 +237,7 @@ class SplitEvenlyRequest extends Component {
                                         paddingRight: 10,
                                         marginTop: 10
                                     }}/>
+
                                     <Input
                                         style={textInput}
                                         placeholder="XXX-XXX-XXXX"
@@ -259,7 +246,7 @@ class SplitEvenlyRequest extends Component {
                                         onChangeText={this
                                         .handleInputChange
                                         .bind(this, i)}
-                                        value={this.state.myNumber[i]}
+                                        value={this.props.myNumber[i]}
                                         maxLength={10}/>
                                 </View>
                             )
@@ -284,10 +271,11 @@ class SplitEvenlyRequest extends Component {
     }
 }
 
-const mapStateToProps = ({auth, updatePhone, updateReceipt}) => {
+const mapStateToProps = ({auth, updatePhone, updateReceipt, selectedParty}) => {
     const {user} = auth
     const {tip, tipPer, perPerson} = updatePhone
     const {total, tax} = updateReceipt
+    const {selected, myNumber} = selectedParty
 
     return {
         user,
@@ -295,7 +283,9 @@ const mapStateToProps = ({auth, updatePhone, updateReceipt}) => {
         tipPer,
         perPerson,
         total,
-        tax
+        tax,
+        selected,
+        myNumber
     }
 };
 

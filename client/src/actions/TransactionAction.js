@@ -19,7 +19,6 @@ export const selectedParty = (val) => {
 }
 
 export const updateTip = (tipTen, tipFifteen, tipTwenty) => {
-    console.log("Hitting Selected Action");
     return {
         type: UPDATE_TIP,
         payload: {
@@ -31,6 +30,7 @@ export const updateTip = (tipTen, tipFifteen, tipTwenty) => {
 }
 
 export const updatePhone = (tipPer, tip, perPerson) => {
+    console.log("hitting this action: " + perPerson);
     return {
         type: UPDATE_PHONE,
         payload: {

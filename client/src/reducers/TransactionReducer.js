@@ -4,7 +4,7 @@ const INITIAL_STATE = {
     ocrResult: {},
     total: 0,
     tax: 0,
-    selected: undefined,
+    selected: null,
     tipAmount: {
         tenPercent: false,
         fifteenPercent: false,
@@ -34,9 +34,11 @@ export default(state = INITIAL_STATE, action) => {
                 tax: action.payload.tax
             };
         case SELECTED_PARTY:
+            let number = parseInt(action.payload);
             return {
                 ...state,
-                selected: action.payload
+                selected: action.payload,
+                myNumber: Array(parseInt(action.payload)).fill('')
             }
         case UPDATE_TIP:
             return {
@@ -46,11 +48,12 @@ export default(state = INITIAL_STATE, action) => {
                 tipTwenty: action.payload.tipTwenty
             }
         case UPDATE_PHONE:
-            console.log("HITTING REDUCER: " + action.payload)return {
+            console.log("HITTING REDUCER: " + action.payload.perPerson);
+            return {
                 ...state,
-                perPerson: action.payload.perPerson,
-                tipPer: action.payload.tipPer,
-                tip: action.payload.tip
+                tipPer: (action.payload.tipPer).toFixed(2),
+                tip: (action.payload.tip).toFixed(2),
+                perPerson: (action.payload.perPerson).toFixed(2)
             }
         default:
             return state;
