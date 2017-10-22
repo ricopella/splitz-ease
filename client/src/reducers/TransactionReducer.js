@@ -1,4 +1,4 @@
-import {SAVE_RECEIPT, UPDATE_RECEIPT, SELECTED_PARTY, UPDATE_TIP} from '../actions/types';
+import {SAVE_RECEIPT, UPDATE_RECEIPT, SELECTED_PARTY, UPDATE_TIP, UPDATE_PHONE} from '../actions/types';
 
 const INITIAL_STATE = {
     ocrResult: {},
@@ -14,7 +14,10 @@ const INITIAL_STATE = {
     tipTen: 0,
     tipFifteen: 0,
     tipTwenty: 0,
-    customTip: null
+    customTip: null,
+    perPerson: null,
+    tipPer: null,
+    tip: 0
 }
 
 export default(state = INITIAL_STATE, action) => {
@@ -36,12 +39,18 @@ export default(state = INITIAL_STATE, action) => {
                 selected: action.payload
             }
         case UPDATE_TIP:
-            console.log("TIP: " + action.payload);
             return {
                 ...state,
                 tipTen: action.payload.tipTen,
                 tipFifteen: action.payload.tipFifteen,
                 tipTwenty: action.payload.tipTwenty
+            }
+        case UPDATE_PHONE:
+            console.log("HITTING REDUCER: " + action.payload)return {
+                ...state,
+                perPerson: action.payload.perPerson,
+                tipPer: action.payload.tipPer,
+                tip: action.payload.tip
             }
         default:
             return state;

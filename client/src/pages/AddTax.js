@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
-import {Image, StyleSheet, TouchableNativeFeedback, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import Nav from './../components/common/Nav';
+import {updateTip, updateReceipt} from '../actions';
+import {connect} from 'react-redux';
+import {Actions} from 'react-native-router-flux';
 import {
     Container,
     Header,
@@ -15,54 +19,8 @@ import {
     Item,
     Input
 } from 'native-base';
-import Nav from './../components/common/Nav';
-import {updateTip, updateReceipt} from '../actions';
-import {connect} from 'react-redux';
-
-import {Actions} from 'react-native-router-flux';
 
 const styles = StyleSheet.create({
-    actionButtons: {
-        width: 140,
-        alignItems: 'center'
-    },
-    currentBalanceAmount: {
-        fontWeight: '800',
-        fontSize: 40,
-        color: '#8FC2C3'
-    },
-    currentBalanceText: {
-        fontWeight: '100',
-        fontSize: 22,
-        color: '#5A5A5A'
-    },
-    alignRight: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        paddingRight: 20
-    },
-    paymentHeader: {
-        fontWeight: '800',
-        fontSize: 25,
-        color: '#626262'
-    },
-    negativePayment: {
-        fontWeight: '300',
-        fontSize: 22,
-        color: '#FF8989',
-        alignSelf: 'flex-end'
-    },
-    positivePayment: {
-        fontWeight: '300',
-        fontSize: 22,
-        color: '#70CB9D',
-        alignSelf: 'flex-end'
-    },
-    friendImage: {
-        paddingRight: 20
-    },
     paddIt: {
         padding: 20
         // paddingLeft: 30
@@ -121,23 +79,13 @@ class AddTax extends Component {
         let tipTen = (this.props.total * .10).toFixed(2);
         let tipFifteen = (this.props.total * .15).toFixed(2);
         let tipTwenty = (this.props.total * .20).toFixed(2);
-        // this.setState({tipTen: tipTen, tipFifteen: tipFifteen, tipTwenty:
-        // tipTwenty});
         this
             .props
             .updateTip(tipTen, tipFifteen, tipTwenty);
     }
 
     nextComponent() {
-        Actions.splitEvenlyRequest({
-            selected: this.props.selected,
-            ocrResult: this.props.ocrResult,
-            tax: this.props.tax,
-            total: this.props.total,
-            tipAmount: this.state.tipAmount,
-            uid: this.props.uid,
-            customTip: this.state.customTip
-        })
+        Actions.splitEvenlyRequest({customTip: this.state.customTip})
     }
 
     handleInputChange(value) {

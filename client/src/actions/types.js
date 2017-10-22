@@ -7,3 +7,4 @@ export const SAVE_RECEIPT = 'save_receipt';
 export const UPDATE_RECEIPT = 'update_receipt';
 export const SELECTED_PARTY = 'selected_party';
 export const UPDATE_TIP = 'update_tip';
+export const UPDATE_PHONE = 'update_phone';
