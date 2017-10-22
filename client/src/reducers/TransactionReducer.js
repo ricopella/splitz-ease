@@ -52,7 +52,7 @@ export default(state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 tipPer: (action.payload.tipPer).toFixed(2),
-                tip: (action.payload.tip).toFixed(2),
+                tip: (action.payload.tip).toFixed(2) || 0,
                 perPerson: (action.payload.perPerson).toFixed(2)
             }
         default:

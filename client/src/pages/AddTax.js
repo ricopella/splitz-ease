@@ -21,6 +21,13 @@ import {
 } from 'native-base';
 
 const styles = StyleSheet.create({
+    alignRight: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        paddingRight: 20
+    },
     paddIt: {
         padding: 20
         // paddingLeft: 30
