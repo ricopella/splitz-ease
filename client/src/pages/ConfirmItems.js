@@ -87,16 +87,18 @@ class ConfirmItems extends Component {
 
     // update prices
     handleInputChange1(i, value) {
-        console.log(i);
         let updatedItem1 = this.props.ocrResult[i];
         updatedItem1[1] = value;
-        // this.generateTotal();
-        this.setState({ocrResult: updatedItem1});
+        this.generateTotal();
+        this.setState({
+            ocrResult: (updatedItem1).toString()
+        });
 
     }
 
     componentWillMount() {
         this.generateTotal();
+        console.log(this.props.ocrResult)
     }
 
     generateTotal() {
@@ -195,11 +197,10 @@ class ConfirmItems extends Component {
                                         <Input
                                             key={val}
                                             style={numInput}
-                                            keyboardType={'numeric'}
                                             onChangeText={this
                                             .handleInputChange1
                                             .bind(this, i)}
-                                            value={(this.props.ocrResult)[i][1].toString()}/>
+                                            value={(val[1]).toString()}/>
                                     </View>
                                 </View>
                             ))}

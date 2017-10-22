@@ -1,4 +1,11 @@
-import {SAVE_RECEIPT, UPDATE_RECEIPT, SELECTED_PARTY, UPDATE_TIP, UPDATE_PHONE} from './types';
+import {
+    SAVE_RECEIPT,
+    UPDATE_RECEIPT,
+    SELECTED_PARTY,
+    UPDATE_TIP,
+    UPDATE_PHONE,
+    PRICE_CHANGE
+} from './types';
 
 export const saveReceipt = (ocrResult) => {
     return {type: SAVE_RECEIPT, payload: ocrResult};
