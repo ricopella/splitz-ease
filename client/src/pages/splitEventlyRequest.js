@@ -78,6 +78,8 @@ class SplitEvenlyRequest extends Component {
     }
 
     componentWillMount() {
+        console.log(this.props.tipAmount, this.props.customTip);
+
         let tip;
 
         if (this.props.tipAmount.tenPercent) {
@@ -120,9 +122,6 @@ class SplitEvenlyRequest extends Component {
     }
 
     handleInputChange(i, value) {
-        console.log('i is', i);
-        console.log('value is', value);
-
         let updatedNumbers = this.state.myNumber;
         updatedNumbers[i] = value;
 
@@ -271,11 +270,20 @@ class SplitEvenlyRequest extends Component {
     }
 }
 
-const mapStateToProps = ({auth, updatePhone, updateReceipt, selectedParty}) => {
-    const {user} = auth
-    const {tip, tipPer, perPerson} = updatePhone
-    const {total, tax} = updateReceipt
-    const {selected, myNumber} = selectedParty
+const mapStateToProps = ({
+    auth,
+    updatePhone,
+    updateReceipt,
+    selectedParty,
+    saveTipAmount,
+    updateCustomTip
+}) => {
+    const {user} = auth;
+    const {tip, tipPer, perPerson} = updatePhone;
+    const {total, tax} = updateReceipt;
+    const {selected, myNumber} = selectedParty;
+    const {tipAmount} = saveTipAmount;
+    const {customTip} = updateCustomTip;
 
     return {
         user,
@@ -285,7 +293,9 @@ const mapStateToProps = ({auth, updatePhone, updateReceipt, selectedParty}) => {
         total,
         tax,
         selected,
-        myNumber
+        myNumber,
+        tipAmount,
+        customTip
     }
 };
 

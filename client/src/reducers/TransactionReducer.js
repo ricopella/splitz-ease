@@ -1,4 +1,12 @@
-import {SAVE_RECEIPT, UPDATE_RECEIPT, SELECTED_PARTY, UPDATE_TIP, UPDATE_PHONE} from '../actions/types';
+import {
+    SAVE_RECEIPT,
+    UPDATE_RECEIPT,
+    SELECTED_PARTY,
+    UPDATE_TIP,
+    UPDATE_PHONE,
+    UPDATE_CUSTOM_TIP,
+    SAVE_TIP_AMOUNT
+} from '../actions/types';
 
 const INITIAL_STATE = {
     ocrResult: {},
@@ -34,7 +42,6 @@ export default(state = INITIAL_STATE, action) => {
                 tax: action.payload.tax
             };
         case SELECTED_PARTY:
-            let number = parseInt(action.payload);
             return {
                 ...state,
                 selected: action.payload,
@@ -48,12 +55,21 @@ export default(state = INITIAL_STATE, action) => {
                 tipTwenty: action.payload.tipTwenty
             }
         case UPDATE_PHONE:
-            console.log("HITTING REDUCER: " + action.payload.perPerson);
             return {
                 ...state,
                 tipPer: (action.payload.tipPer).toFixed(2),
                 tip: (action.payload.tip).toFixed(2) || 0,
                 perPerson: (action.payload.perPerson).toFixed(2)
+            }
+        case UPDATE_CUSTOM_TIP:
+            return {
+                ...state,
+                customTip: action.payload
+            }
+        case SAVE_TIP_AMOUNT:
+            return {
+                ...state,
+                tipAmount: action.payload
             }
         default:
             return state;

@@ -80,7 +80,6 @@ class ConfirmItems extends Component {
     handleInputChange(i, value) {
         let updatedItem = this.props.ocrResult[i];
         updatedItem[0] = value;
-
         this.setState({ocrResult: updatedItem});
     }
 
@@ -89,14 +88,11 @@ class ConfirmItems extends Component {
         let updatedItem1 = this.props.ocrResult[i];
         updatedItem1[1] = value;
         this.generateTotal();
-
         this.setState({ocrResult: updatedItem1});
-
     }
 
     componentWillMount() {
         this.generateTotal();
-        console.log(this.props.ocrResult)
     }
 
     generateTotal() {
@@ -107,7 +103,6 @@ class ConfirmItems extends Component {
 
         let taxAmount = (totalAmount * .095).toFixed(2); // california tax
         totalAmount = (Number(totalAmount) + Number(taxAmount)).toFixed(2);
-        // this.setState({total: totalAmount, tax: taxAmount});
         this
             .props
             .updateReceipt(totalAmount, taxAmount);

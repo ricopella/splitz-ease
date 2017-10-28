@@ -8,5 +8,7 @@ export default combineReducers({
     updateReceipt: TransactionReducer,
     selectedParty: TransactionReducer,
     updateTip: TransactionReducer,
-    updatePhone: TransactionReducer
+    updatePhone: TransactionReducer,
+    updateCustomTip: TransactionReducer,
+    saveTipAmount: TransactionReducer
 });

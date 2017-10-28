@@ -1,4 +1,8 @@
 import React, {Component} from 'react';
+import {Actions} from 'react-native-router-flux';
+import {selectedParty} from '../actions';
+import {connect} from 'react-redux';
+import Nav from './../components/common/Nav';
 import {
     Image,
     Platform,
@@ -8,9 +12,6 @@ import {
     TouchableOpacity,
     View
 } from 'react-native';
-import {Actions} from 'react-native-router-flux';
-import {selectedParty} from '../actions';
-import {connect} from 'react-redux';
 import {
     Container,
     Header,
@@ -22,14 +23,10 @@ import {
     Body,
     Icon,
     Text,
-    Badge,
-    Thumbnail,
     Picker,
     Form,
     Item as FormItem
 } from 'native-base';
-import Nav from './../components/common/Nav';
-
 const Item = Picker.Item;
 
 const styles = StyleSheet.create({
@@ -108,10 +105,6 @@ const styles = StyleSheet.create({
 });
 
 class SplitEvenly extends Component {
-
-    componentWillMount() {
-        console.log(this.props)
-    }
 
     onValueChange2(value : string) {
         this

@@ -8,3 +8,6 @@ export const UPDATE_RECEIPT = 'update_receipt';
 export const SELECTED_PARTY = 'selected_party';
 export const UPDATE_TIP = 'update_tip';
 export const UPDATE_PHONE = 'update_phone';
+export const CUSTOM_TIP = 'custom_tip';
+export const UPDATE_CUSTOM_TIP = 'update_custom_tip';
+export const SAVE_TIP_AMOUNT = 'save_tip_amount';

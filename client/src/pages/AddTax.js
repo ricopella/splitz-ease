@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, View} from 'react-native';
 import Nav from './../components/common/Nav';
-import {updateTip, updateReceipt} from '../actions';
+import {updateTip, updateReceipt, updateCustomTip, saveTipAmount} from '../actions';
 import {connect} from 'react-redux';
 import {Actions} from 'react-native-router-flux';
 import {
@@ -92,11 +92,18 @@ class AddTax extends Component {
     }
 
     nextComponent() {
-        Actions.splitEvenlyRequest({customTip: this.state.customTip, tipAmount: this.state.tipAmount})
+        this
+            .props
+            .updateCustomTip(this.state.customTip);
+        this
+            .props
+            .saveTipAmount(this.state.tipAmount);
+        Actions.splitEvenlyRequest();
     }
 
     handleInputChange(value) {
         this.setState({customTip: value});
+
     }
 
     render() {
@@ -291,11 +298,21 @@ class AddTax extends Component {
     }
 }
 
-const mapStateToProps = ({updateTip, updateReceipt}) => {
+const mapStateToProps = ({updateTip, updateReceipt, updateCustomTip, saveTipAmount}) => {
     const {tipTen, tipFifteen, tipTwenty} = updateTip;
     const {total, tax} = updateReceipt;
+    const {customTip} = updateCustomTip;
+    const {tipAmount} = saveTipAmount;
 
-    return {tipTen, tipFifteen, tipTwenty, total, tax};
+    return {
+        tipTen,
+        tipFifteen,
+        tipTwenty,
+        total,
+        tax,
+        customTip,
+        tipAmount
+    };
 };
 
-export default connect(mapStateToProps, {updateTip, updateReceipt})(AddTax);
+export default connect(mapStateToProps, {updateTip, updateReceipt, updateCustomTip, saveTipAmount})(AddTax);

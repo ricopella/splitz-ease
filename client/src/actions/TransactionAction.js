@@ -4,7 +4,8 @@ import {
     SELECTED_PARTY,
     UPDATE_TIP,
     UPDATE_PHONE,
-    PRICE_CHANGE
+    UPDATE_CUSTOM_TIP,
+    SAVE_TIP_AMOUNT
 } from './types';
 
 export const saveReceipt = (ocrResult) => {
@@ -37,7 +38,6 @@ export const updateTip = (tipTen, tipFifteen, tipTwenty) => {
 }
 
 export const updatePhone = (tipPer, tip, perPerson) => {
-    console.log("hitting this action: " + perPerson);
     return {
         type: UPDATE_PHONE,
         payload: {
@@ -46,4 +46,15 @@ export const updatePhone = (tipPer, tip, perPerson) => {
             perPerson
         }
     }
+}
+
+export const updateCustomTip = (val) => {
+    console.log("HITTING UPDATE CUSTOM TIP: " + val);
+    return {type: UPDATE_CUSTOM_TIP, payload: val}
+}
+
+export const saveTipAmount = (val) => {
+    console.log("HITTING SAVE TIP AMOUNT: " + val);
+    return {type: SAVE_TIP_AMOUNT, payload: val}
+
 }
