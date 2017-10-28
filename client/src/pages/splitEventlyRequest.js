@@ -101,7 +101,7 @@ class SplitEvenlyRequest extends Component {
 
     nextComponent() {
 
-        Communications.web(`https://venmo.com/?txn=charge&amount=${this.state.perPerson}&note=for+dinner&recipients=${this.state.myNumber}`)
+        Communications.web(`https://venmo.com/?txn=charge&amount=${this.props.perPerson}&note=for+dinner&recipients=${this.state.myNumber}`)
         Actions.ThankYou({});
 
         axios
