@@ -38,11 +38,17 @@ class Checkbox extends Component {
 
   addGuest(val, i) {
     console.log(val, i)
+    let item = this.props.item;
+    console.log(item)
     let updateGuest = this.props.ocrResult;
-    console.log(updateGuest[this.props.item][2][i]);
-    // !val.checked   ? updateGuest[this.props.item][2][i].checked = true   :
-    // updateGuest[this.props.item][2][i].checked = false; console.log(updateGuest);
-    // this   .props   .saveReceipt(updateGuest);
+    console.log(updateGuest[item][2][i].checked);
+    !val.checked
+      ? updateGuest[item][2][i].checked = true
+      : updateGuest[item][2][i].checked = false;
+    console.log(updateGuest);
+    this
+      .props
+      .saveReceipt(updateGuest);
   }
 
   render() {
