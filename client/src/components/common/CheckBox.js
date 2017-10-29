@@ -27,28 +27,39 @@ const styles = StyleSheet.create({
 });
 
 class Checkbox extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ocrResult: this.props.ocrResult,
+      item: this.props.item
+    }
+  }
 
   componentWillMount() {
-    console.log(this.props.ocrResult[this.props.item][2]);
+    // debugger;
+
   }
 
   goBack() {
     console.log(this);
+    this
+      .props
+      .saveReceipt(this.state.ocrResult);
+    Actions.ConfirmGuests();
   }
 
   addGuest(val, i) {
+    console.log("ITEM: ", this.props.item)
+    let newOCR = this.state.ocrResult;
+    let updateItem = newOCR[this.state.item][2][i]
     console.log(val, i)
-    let item = this.props.item;
-    console.log(item)
-    let updateGuest = this.props.ocrResult;
-    console.log(updateGuest[item][2][i].checked);
-    !val.checked
-      ? updateGuest[item][2][i].checked = true
-      : updateGuest[item][2][i].checked = false;
-    console.log(updateGuest);
-    this
-      .props
-      .saveReceipt(updateGuest);
+    val.checked
+      ? updateItem.checked = false
+      : updateItem.checked = true;
+    newOCR[this.state.item][2][i] = updateItem;
+    this.setState({ocrResult: newOCR});
+    console.log(this.state.ocrResult);
+
   }
 
   render() {
@@ -59,8 +70,8 @@ class Checkbox extends Component {
         <Header/>
         <Content>
           {this
-            .props
-            .ocrResult[this.props.item][2]
+            .state
+            .ocrResult[this.state.item][2]
             .map((val, i) => (
               <ListItem key={i}>
                 <CheckBox checked={val.checked} onPress={() => this.addGuest(val, i)}/>
@@ -75,7 +86,7 @@ class Checkbox extends Component {
             .goBack
             .bind(this)}>
             <Text style={itemText}>
-              Splitz These
+              Return
             </Text>
           </Button>
         </View>

@@ -5,10 +5,12 @@ import LoginForm from './components/LoginForm';
 import grabReciept from './pages/grabReciept';
 import SplitEvenly from './pages/splitEvenly1';
 import SplitEvenlyRequest from './pages/splitEventlyRequest';
+import SplitGuestsRequest from './pages/splitGuestsRequest';
 import home from './pages/Home';
 import ConfirmItemDetails from './pages/ConfirmItems';
 import CategorizeItems from './pages/CategorizeItems';
 import AddTax from './pages/AddTax';
+import AddTaxGuests from './pages/AddTaxGuests';
 import settings from './pages/Settings';
 import ThankYou from './pages/ThankYou';
 import request from './pages/Requests';
@@ -39,12 +41,17 @@ const RouterComponent = () => {
                         component={ConfirmItemDetails}
                         hideNavBar={true}/>
                     <Scene key="AddTip" component={AddTax} hideNavBar={true}/>
+                    <Scene key="AddTipGuests" component={AddTaxGuests} hideNavBar={true}/>
                     <Scene key="SplitEvenly" component={SplitEvenly} hideNavBar={true}/>
                     <Scene key="CategorizeItems" component={CategorizeItems} hideNavBar={true}/>
                     <Scene key="ConfirmGuests" component={ConfirmGuests} hideNavBar={true}/>
                     <Scene
                         key="splitEvenlyRequest"
                         component={SplitEvenlyRequest}
+                        hideNavBar={true}/>
+                    <Scene
+                        key="splitGuestsRequest"
+                        component={SplitGuestsRequest}
                         hideNavBar={true}/>
                     <Scene key="ThankYou" component={ThankYou} hideNavBar={true}/>
                     <Scene key="request" component={request} hideNavBar={true}/>

@@ -100,10 +100,7 @@ class ConfirmGuests extends Component {
     this.generateTotal();
     let guestsArr = Array(parseInt(this.props.selected)).fill('');
     guestsArr = guestsArr.map((x, i) => {
-      return {
-        guest: "Guest " + i,
-        checked: false
-      }
+      return {guest: i, checked: true}
     });
     let updatedOCR = this.props.ocrResult;
 
@@ -130,15 +127,15 @@ class ConfirmGuests extends Component {
 
   }
 
-  goToCheckBox(i) {
-    Actions.Checkbox({item: i});
+  goToCheckBox(val, i) {
+    Actions.Checkbox({item: i, value: val});
   }
 
   goToNextPage() {
     this
       .props
       .saveReceipt(this.props.ocrResult);
-    Actions.SplitEvenly();
+    Actions.AddTipGuests();
   }
 
   render() {
@@ -212,7 +209,7 @@ class ConfirmGuests extends Component {
                       value={val[0]}/>
                   </View>
                   <View>
-                    <Button success onPress={() => this.goToCheckBox(i)}>
+                    <Button success onPress={() => this.goToCheckBox(val, i)}>
                       <Text style={itemText}>
                         Choose Guest
                       </Text>
