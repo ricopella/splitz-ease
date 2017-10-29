@@ -75,7 +75,12 @@ const styles = StyleSheet.create({
 });
 
 class ConfirmGuests extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      ocrResult: this.props.ocrResult
+    }
+  }
   // update items
   handleInputChange(i, value) {
     let updatedItem = this.props.ocrResult[i];
@@ -93,6 +98,22 @@ class ConfirmGuests extends Component {
 
   componentWillMount() {
     this.generateTotal();
+    let guestsArr = Array(parseInt(this.props.selected)).fill('');
+    guestsArr = guestsArr.map((x, i) => {
+      return {
+        guest: "Guest " + i,
+        checked: false
+      }
+    });
+    let updatedOCR = this.props.ocrResult;
+
+    for (i in updatedOCR) {
+      updatedOCR[i].push(guestsArr);
+    }
+    this
+      .props
+      .saveReceipt(updatedOCR);
+    this.setState({ocrResult: updatedOCR});
   }
 
   generateTotal() {
@@ -109,8 +130,8 @@ class ConfirmGuests extends Component {
 
   }
 
-  goToCheckBox() {
-    Actions.Checkbox();
+  goToCheckBox(i) {
+    Actions.Checkbox({item: i});
   }
 
   goToNextPage() {
@@ -191,7 +212,7 @@ class ConfirmGuests extends Component {
                       value={val[0]}/>
                   </View>
                   <View>
-                    <Button success onPress={() => this.goToCheckBox(val, i)}>
+                    <Button success onPress={() => this.goToCheckBox(i)}>
                       <Text style={itemText}>
                         Choose Guest
                       </Text>

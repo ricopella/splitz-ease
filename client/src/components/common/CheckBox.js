@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
+import {saveReceipt} from '../../actions';
 import {View, StyleSheet} from 'react-native';
 import {
   Container,
@@ -26,23 +27,9 @@ const styles = StyleSheet.create({
 });
 
 class Checkbox extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      guests: null
-    }
-  }
 
   componentWillMount() {
-    let guestsArr = Array(parseInt(this.props.selected)).fill('');
-    guestsArr = guestsArr.map((x, i) => {
-      return {
-        guest: "Guest " + i,
-        checked: false
-      }
-    });
-    console.log(guestsArr);
-    this.setState({guests: guestsArr});
+    console.log(this.props.ocrResult[this.props.item][2]);
   }
 
   goBack() {
@@ -51,11 +38,11 @@ class Checkbox extends Component {
 
   addGuest(val, i) {
     console.log(val, i)
-    let updateGuest = this.state.guests;
-    !val.checked
-      ? updateGuest[i].checked = true
-      : updateGuest[i].checked = false;
-    this.setState({guests: updateGuest})
+    let updateGuest = this.props.ocrResult;
+    console.log(updateGuest[this.props.item][2][i]);
+    // !val.checked   ? updateGuest[this.props.item][2][i].checked = true   :
+    // updateGuest[this.props.item][2][i].checked = false; console.log(updateGuest);
+    // this   .props   .saveReceipt(updateGuest);
   }
 
   render() {
@@ -66,13 +53,13 @@ class Checkbox extends Component {
         <Header/>
         <Content>
           {this
-            .state
-            .guests
+            .props
+            .ocrResult[this.props.item][2]
             .map((val, i) => (
               <ListItem key={i}>
                 <CheckBox checked={val.checked} onPress={() => this.addGuest(val, i)}/>
                 <Body>
-                  <Text>{val.guest}</Text>
+                  <Text>Guest: {val.guest}</Text>
                 </Body>
               </ListItem>
             ))}
@@ -92,11 +79,11 @@ class Checkbox extends Component {
   }
 }
 
-const mapStateToProps = ({selectedParty}) => {
-
+const mapStateToProps = ({selectedParty, saveReceipt}) => {
+  const {ocrResult} = saveReceipt;
   const {selected} = selectedParty;
 
-  return {selected};
+  return {selected, ocrResult};
 };
 
-export default connect(mapStateToProps)(Checkbox);
+export default connect(mapStateToProps, {saveReceipt})(Checkbox);
