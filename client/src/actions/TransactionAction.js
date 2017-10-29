@@ -49,12 +49,10 @@ export const updatePhone = (tipPer, tip, perPerson) => {
 }
 
 export const updateCustomTip = (val) => {
-    console.log("HITTING UPDATE CUSTOM TIP: " + val);
     return {type: UPDATE_CUSTOM_TIP, payload: val}
 }
 
 export const saveTipAmount = (val) => {
-    console.log("HITTING SAVE TIP AMOUNT: " + val);
     return {type: SAVE_TIP_AMOUNT, payload: val}
 
 }

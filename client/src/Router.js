@@ -12,6 +12,8 @@ import AddTax from './pages/AddTax';
 import settings from './pages/Settings';
 import ThankYou from './pages/ThankYou';
 import request from './pages/Requests';
+import ConfirmGuests from './pages/ConfirmGuests';
+import Checkbox from './components/common/CheckBox';
 
 const RouterComponent = () => {
     return (
@@ -39,12 +41,14 @@ const RouterComponent = () => {
                     <Scene key="AddTip" component={AddTax} hideNavBar={true}/>
                     <Scene key="SplitEvenly" component={SplitEvenly} hideNavBar={true}/>
                     <Scene key="CategorizeItems" component={CategorizeItems} hideNavBar={true}/>
+                    <Scene key="ConfirmGuests" component={ConfirmGuests} hideNavBar={true}/>
                     <Scene
                         key="splitEvenlyRequest"
                         component={SplitEvenlyRequest}
                         hideNavBar={true}/>
                     <Scene key="ThankYou" component={ThankYou} hideNavBar={true}/>
                     <Scene key="request" component={request} hideNavBar={true}/>
+                    <Scene key="Checkbox" component={Checkbox} hideNavBar={true}/>
                     <Scene key="settings" component={settings} hideNavBar={true}/>
                 </Scene>
 

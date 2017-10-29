@@ -114,6 +114,9 @@ class SplitEvenly extends Component {
     onButtonPress() {
         Actions.AddTip();
     }
+    onButtonPress1() {
+        Actions.ConfirmGuests();
+    }
 
     render() {
 
@@ -198,7 +201,18 @@ class SplitEvenly extends Component {
                             .onButtonPress
                             .bind(this)}>
                             <Text style={itemText}>
-                                Total Up
+                                Split Evenly
+                            </Text>
+                        </Button>
+                    </View>
+                    <View style={[paddIt, splitButton]}>
+                        <Button
+                            success
+                            onPress={this
+                            .onButtonPress1
+                            .bind(this)}>
+                            <Text style={itemText}>
+                                Everyone for themselves!
                             </Text>
                         </Button>
                     </View>
