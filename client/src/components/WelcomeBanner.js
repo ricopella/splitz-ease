@@ -14,7 +14,7 @@ const Banner = () => {
 
         <View>
             <Image
-                source={require("../../public/assets/images/splitz.png")}
+                source={require("../../public/assets/images/splitz-blue.png")}
                 style={styles.ImageStyle}/>
         </View>
     )

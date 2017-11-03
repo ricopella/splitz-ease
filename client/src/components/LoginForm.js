@@ -22,7 +22,7 @@ const styles = {
     },
     textStyle1: {
         fontSize: 50,
-        color: '#EA9683',
+        color: '#5161BB',
         alignSelf: "center",
         paddingTop: 125
     },
