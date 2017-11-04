@@ -59,12 +59,15 @@ const styles = StyleSheet.create({
         fontSize: 22
     },
     textInput: {
-        width: 50,
-        height: 50,
-        backgroundColor: "#fff",
-        fontSize: 25,
-        marginRight: 45,
-        paddingLeft: 10
+        // width: 50,
+        // borderBottomWidth: 1,
+        // borderBottomColor: '#D8D8D8',
+        fontSize: 20
+        // height: 50,
+        // backgroundColor: "#fff",
+        // fontSize: 25,
+        // marginRight: 45,
+        // paddingLeft: 10
     }
 });
 
@@ -239,7 +242,7 @@ class SplitEvenlyRequest extends Component {
 
                                     <Input
                                         style={textInput}
-                                        placeholder="XXX-XXX-XXXX"
+                                        placeholder="___-___-____"
                                         keyboardType='numeric'
                                         key={i}
                                         onChangeText={this

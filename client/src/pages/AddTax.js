@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Image} from 'react-native';
 import Nav from './../components/common/Nav';
 import {updateTip, updateReceipt, updateCustomTip, saveTipAmount} from '../actions';
 import {connect} from 'react-redux';
@@ -66,6 +66,16 @@ const styles = StyleSheet.create({
         marginRight: 10,
         marginLeft: 80,
         paddingLeft: 10
+    },
+    customTip: {
+        width: 60,
+        borderBottomWidth: 1,
+        borderBottomColor: '#D8D8D8',
+        // height: 40,
+        // backgroundColor: "#fff",
+        fontSize: 20
+        // marginRight: 45,
+        // paddingLeft: 40
     }
 });
 
@@ -115,7 +125,8 @@ class AddTax extends Component {
             splitButton,
             lightHeaderText,
             radioStyle,
-            numInput
+            numInput,
+            customTip
         } = styles;
 
         return (
@@ -144,9 +155,15 @@ class AddTax extends Component {
                         },
                         paddIt
                     ]}>
-                        {/* <View> */}
-                        <Text style={lightHeaderText}>How much tip would you like to add?</Text>
-                        {/* </View> */}
+                        <View>
+                                <Image
+                                    style={{margin: 10}}
+                                    source={require('./../../public/assets/images/service-blue.png')}
+                                />
+                            </View>
+                        <View>
+                            <Text style={lightHeaderText}>How much tip would you like to add?</Text>
+                        </View>
                     </View>
                     {/* Content */}
                     <View>
@@ -231,7 +248,7 @@ class AddTax extends Component {
                                 }}/>
                             </View>
                             <View>
-                                <Text >
+                                <Text>
                                     <Text style={itemText}>Great Service{'\n'}</Text>
                                     <Text>20% Tip</Text>
                                 </Text>
@@ -264,11 +281,16 @@ class AddTax extends Component {
                             <View>
                                 <Text >
                                     <Text style={itemText}>Custom Tip{'\n'}</Text>
+                                    <Text>Specify Amount</Text>
                                 </Text>
                             </View>
-                            <View style={alignRight}>
+
+
+                            <View style={{paddingLeft: 120}}>
+                                {/* <Text style={itemText}>$9.00</Text> */}
                                 <Input
-                                    style={[itemText, numInput]}
+                                    /* {{style={[customTip, {paddingLeft: 50}]}}} */
+                                    style={customTip}
                                     keyboardType={'numeric'}
                                     placeholder='$0.00'
                                     onChangeText={this
@@ -276,6 +298,7 @@ class AddTax extends Component {
                                     .bind(this)}
                                     value={this.state.customTip}/>
                             </View>
+
                         </View>
 
                         <View style={[paddIt, splitButton]}>

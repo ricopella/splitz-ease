@@ -26,7 +26,7 @@ The application is built with React Native and uses OCR technology to scan a rec
 * [axios](https://www.npmjs.com/package/axios)
 * [firebase](https://www.npmjs.com/package/firebase)
 * [native-base](https://www.npmjs.com/package/native-base)
-* [react](https://www.npmjs.com/package/react
+* [react](https://www.npmjs.com/package/react)
 * [react-native](https://www.npmjs.com/package/react-native)
 * [react-native-communications](https://www.npmjs.com/package/react-native-communications)
 * [react-native-image-picker](https://www.npmjs.com/package/react-native-image-picker)

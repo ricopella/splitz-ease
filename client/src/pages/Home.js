@@ -122,7 +122,7 @@ class home extends Component {
                             <Text style={currentBalanceText}>Current{'\n'}Balance</Text>
                         </View>
                         <View style={alignRight}>
-                            <Text style={currentBalanceAmount}>$54.45</Text>
+                            <Text style={currentBalanceAmount}>$19.87</Text>
                         </View>
                     </View>
                     {/* Action buttons */}
@@ -188,7 +188,7 @@ class home extends Component {
                             </Text>
                         </View>
                         <View style={alignRight}>
-                            <Text style={positivePayment}>13.32</Text>
+                            <Text style={positivePayment}>43.32</Text>
                         </View>
                     </View>
 

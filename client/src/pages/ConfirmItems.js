@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, TouchableNativeFeedback, TouchableOpacity, View, ScrollView} from 'react-native';
+import {StyleSheet, TouchableNativeFeedback, TouchableOpacity, View, ScrollView, Image} from 'react-native';
 import {saveReceipt, updateReceipt} from '../actions';
 import {connect} from 'react-redux';
 import Nav from './../components/common/Nav';
@@ -44,6 +44,11 @@ const styles = StyleSheet.create({
     itemText: {
         fontSize: 22
     },
+    taxText: {
+        fontSize: 18,
+        // marginTop: 10,
+        padding: 5
+    },
     itemPrice: {
         fontSize: 22
     },
@@ -57,20 +62,25 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     textInput: {
-        width: 218,
-        height: 40,
-        backgroundColor: "#fff",
-        fontSize: 18,
-        marginRight: 45,
-        paddingLeft: 10
+        width: 220,
+        borderBottomWidth: 1,
+        borderBottomColor: '#D8D8D8',
+        marginRight: 30,
+        // height: 40,
+        // backgroundColor: "#fff",
+        fontSize: 20
+        // marginRight: 45,
+        // paddingLeft: 40
     },
     numInput: {
-        width: 80,
-        height: 40,
-        backgroundColor: "#fff",
-        fontSize: 18,
-        marginRight: 45,
-        paddingLeft: 10
+        width: 60,
+        borderBottomWidth: 1,
+        borderBottomColor: '#D8D8D8',
+        // height: 40,
+        // backgroundColor: "#fff",
+        fontSize: 20
+        // marginRight: 45,
+        // paddingLeft: 40
     }
 });
 
@@ -127,7 +137,8 @@ class ConfirmItems extends Component {
             itemPadding,
             splitButton,
             textInput,
-            numInput
+            numInput,
+            taxText
         } = styles;
 
         return (
@@ -149,6 +160,7 @@ class ConfirmItems extends Component {
                     </Header>
                     <Content>
                         {/* Sub heading */}
+                        
                         <View
                             style={[
                             {
@@ -159,7 +171,14 @@ class ConfirmItems extends Component {
                             paddIt
                         ]}>
                             <View>
+                                <Image
+                                    style={{margin: 10}}
+                                    source={require('./../../public/assets/images/check-blue.png')}
+                                />
+                            </View>
+                            <View>
                                 <Text style={lightHeaderText}>Do these prices look right?</Text>
+                                <Text>Please confirm and make any adjustments.</Text>
                             </View>
                         </View>
                         {/* Recent Activity */}
@@ -186,7 +205,7 @@ class ConfirmItems extends Component {
                                             .bind(this, i)}
                                             value={val[0]}/>
                                     </View>
-                                    <View>
+                                    <View style={{paddingLeft: 50}}>
                                         <Input
                                             key={"p" + i}
                                             keyboardType={'numeric'}
@@ -203,15 +222,16 @@ class ConfirmItems extends Component {
                             style={[
                             {
                                 flex: 1,
-                                flexDirection: 'row'
+                                flexDirection: 'row',
+                                marginTop: 15
                             },
                             itemPadding
                         ]}>
                             <View>
-                                <Text style={itemText}>Tax</Text>
+                                <Text style={taxText}>Tax</Text>
                             </View>
                             <View style={alignRight}>
-                                <Text style={itemPrice}>{this.props.tax}</Text>
+                                <Text style={taxText}>{this.props.tax}</Text>
                             </View>
                         </View>
                         <View
@@ -223,10 +243,10 @@ class ConfirmItems extends Component {
                             itemPadding
                         ]}>
                             <View>
-                                <Text style={itemText}>Total</Text>
+                                <Text style={[itemText, {padding: 5, fontWeight: 'bold'}]}>Total</Text>
                             </View>
                             <View style={alignRight}>
-                                <Text style={itemPrice}>{this.props.total}</Text>
+                                <Text style={[itemPrice, {fontWeight: 'bold'}]}>{this.props.total}</Text>
                             </View>
                         </View>
                         <View style={[paddIt, splitButton]}>

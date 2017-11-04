@@ -13,7 +13,7 @@ const styles = {
     buttonStyle: {
         flex: 1,
         alignSelf: 'stretch',
-        backgroundColor: '#EA9683',
+        backgroundColor: '#5161BB',
         marginLeft: 5,
         marginRight: 5
     }
