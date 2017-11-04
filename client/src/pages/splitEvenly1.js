@@ -205,14 +205,14 @@ class SplitEvenly extends Component {
                             </Text>
                         </Button>
                     </View>
-                    <View style={[paddIt, splitButton]}>
+                    <View style={splitButton}>
                         <Button
                             success
                             onPress={this
                             .onButtonPress1
                             .bind(this)}>
                             <Text style={itemText}>
-                                Everyone for themselves!
+                                Split by Plate
                             </Text>
                         </Button>
                     </View>

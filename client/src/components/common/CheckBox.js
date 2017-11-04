@@ -11,11 +11,16 @@ import {
   CheckBox,
   Text,
   Body,
-  Button
+  Button,
+  List,
+  Item
 } from 'native-base';
 const styles = StyleSheet.create({
 
   paddIt: {
+    padding: 20
+  },
+  guestNumberRow: {
     padding: 20
   },
   splitButton: {
@@ -63,23 +68,27 @@ class Checkbox extends Component {
   }
 
   render() {
-    const {itemText, paddIt, splitButton} = styles;
+    const {itemText, guestNumberRow, splitButton, paddIt} = styles;
 
     return (
       <Container>
         <Header/>
         <Content>
-          {this
-            .state
-            .ocrResult[this.state.item][2]
-            .map((val, i) => (
-              <ListItem key={i}>
-                <CheckBox checked={val.checked} onPress={() => this.addGuest(val, i)}/>
-                <Body>
-                  <Text>Guest: {val.guest}</Text>
-                </Body>
-              </ListItem>
-            ))}
+          <List>
+            {this
+              .state
+              .ocrResult[this.state.item][2]
+              .map((val, i) => (
+                <Item 
+                  style={guestNumberRow}
+                  key={i}>
+                  <CheckBox checked={val.checked} onPress={() => this.addGuest(val, i)}/>
+                  <Body>
+                    <Text style={{fontSize: 20}}>Guest: {val.guest}</Text>
+                  </Body>
+                </Item>
+              ))}
+            </List>
         </Content>
         <View style={[paddIt, splitButton]}>
           <Button success onPress={this

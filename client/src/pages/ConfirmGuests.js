@@ -57,13 +57,16 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   textInput: {
-    width: 218,
-    height: 40,
-    backgroundColor: "#fff",
-    fontSize: 18,
-    marginRight: 45,
-    paddingLeft: 10
-  },
+    width: 220,
+    borderBottomWidth: 1,
+    borderBottomColor: '#D8D8D8',
+    marginRight: 30,
+    // height: 40,
+    // backgroundColor: "#fff",
+    fontSize: 20
+    // marginRight: 45,
+    // paddingLeft: 40
+},
   numInput: {
     width: 80,
     height: 40,
@@ -211,7 +214,7 @@ class ConfirmGuests extends Component {
                   <View>
                     <Button success onPress={() => this.goToCheckBox(val, i)}>
                       <Text style={itemText}>
-                        Choose Guest
+                        + Guest
                       </Text>
                     </Button>
                   </View>
